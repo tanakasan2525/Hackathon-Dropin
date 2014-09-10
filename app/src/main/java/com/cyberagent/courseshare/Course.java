@@ -13,6 +13,14 @@ public class Course {
         coordinatesList = new ArrayList<Coordinates>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Coordinates> getCoordinatesList() {
+        return coordinatesList;
+    }
+
     public void addCoordinatesToList(double latitude, double longitude) {
         Coordinates coordinates = new Coordinates(latitude, longitude);
         coordinatesList.add(coordinates);
