@@ -16,10 +16,14 @@ import java.util.ArrayList;
 
 public class CourseListViewActivity extends Activity {
 
+    private ArrayList<Course> courseList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list_view);
+
+
     }
 
 
