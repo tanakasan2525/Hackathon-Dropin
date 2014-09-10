@@ -2,6 +2,7 @@ package com.cyberagent.courseshare;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,42 +15,27 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 
+/**
+ * コース画面のアクティビティ
+ */
 public class CourceActivity extends FragmentActivity {
 
     private GoogleMap map; // Might be null if Google Play services APK is not available.
 
+	private Course course;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_cource);
-        setUpMapIfNeeded();
 
-		// 渋谷マークシティ決め打ち
-		double lat = 35.65787;
-		double lon = 139.698066;
-		LatLng base = new LatLng(lat, lon);
+		// テスト用ダミーデータ
+		course = new Course();
+		course.addCoordinatesToList(35.65787,139.698066);  // 渋谷マークシティ
+		course.addCoordinatesToList(35.66147, 139.709464); // 青山学院大学
 
-		CameraPosition.Builder builder = new CameraPosition.Builder()
-				.bearing(0)
-				.tilt(0)
-				.zoom(16)
-				.target(base);
-		this.map.moveCamera(CameraUpdateFactory.newCameraPosition(builder.build()));
-
-		double lat2 = 35.661478;
-		double lon2 = 139.709464;
-		LatLng goal = new LatLng(lat, lon);
-
-		ArrayList<LatLng> points = new ArrayList<LatLng>();
-		points.add(base);
-		points.add(goal);
-
-		PolylineOptions lineOptions = new PolylineOptions();
-		lineOptions.addAll(points);
-		lineOptions.width(10);
-		lineOptions.color(0x550000ff);
-
-		this.map.addPolyline(lineOptions);
+		setUpMapIfNeeded();
     }
 
     @Override
@@ -93,6 +79,30 @@ public class CourceActivity extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #map} is not null.
      */
     private void setUpMap() {
-        this.map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        //this.map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+
+		ArrayList<Coordinates> coords = this.course.getCoordinatesList();
+		ArrayList<LatLng> points = new ArrayList<LatLng>();
+
+		for (Coordinates coord : coords) {
+			LatLng latlon = new LatLng(coord.getLatitude(), coord.getLongitude());
+			points.add(latlon);
+		}
+
+		PolylineOptions lineOptions = new PolylineOptions();
+		lineOptions.addAll(points);
+		lineOptions.width(10);
+		lineOptions.color(0x550000ff);
+		this.map.addPolyline(lineOptions);
+
+		Coordinates start = coords.get(0);
+		LatLng center = new LatLng(start.getLatitude(), start.getLongitude());
+
+		CameraPosition.Builder builder = new CameraPosition.Builder()
+				.bearing(0)
+				.tilt(0)
+				.zoom(16)
+				.target(center);
+		this.map.moveCamera(CameraUpdateFactory.newCameraPosition(builder.build()));
     }
 }
