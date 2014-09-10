@@ -1,28 +1,40 @@
 package com.cyberagent.courseshare;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 
 public class CourseListViewActivity extends Activity {
 
-    private ArrayList<Course> courseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list_view);
 
+        findViewById(R.id.create_json).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Course course = new Course();
+
+                try {
+                    FileOutputStream fos = openFileOutput("SaveDate.bat", MODE_PRIVATE);
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
     }
 

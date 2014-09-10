@@ -1,11 +1,12 @@
 package com.cyberagent.courseshare;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by shogo on 2014/09/10.
  */
-public class Course {
+public class Course implements Serializable{
     /**
      * コースクラス
      */
