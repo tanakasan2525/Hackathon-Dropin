@@ -6,9 +6,6 @@ import java.util.ArrayList;
  * Created by shogo on 2014/09/10.
  */
 public class Course {
-    /**
-     * コースクラス
-     */
     private String name;
     private ArrayList<Coordinates> coordinatesList;
 
