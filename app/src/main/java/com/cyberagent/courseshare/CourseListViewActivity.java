@@ -1,39 +1,37 @@
 package com.cyberagent.courseshare;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import net.arnx.jsonic.JSON;
+
+import java.util.ArrayList;
 
 
 public class CourseListViewActivity extends Activity {
+
+    private LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list_view);
 
-        findViewById(R.id.create_json).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Course course = new Course();
-                CourseShareDBManager dbManager = CourseShareDBManager.createInstance(getApplicationContext());
-                dbManager.saveCourse(course);
-            }
-        });
+        linearLayout = (LinearLayout) findViewById(R.id.course_list);
+        CourseShareDBManager dbManager = CourseShareDBManager.createInstance(getApplicationContext());
+        ArrayList<Course> courseList = dbManager.fetchCourseList();
 
-        findViewById(R.id.decode).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CourseShareDBManager dbManager = CourseShareDBManager.createInstance(getApplicationContext());
-                dbManager.fetchCourseList();
-            }
-        });
 
+        for (int i = 0; i < courseList.size(); i++) {
+            CourseView courseView = new CourseView(this, courseList.get(i));
+            linearLayout.addView(courseView);
+        }
     }
 
 

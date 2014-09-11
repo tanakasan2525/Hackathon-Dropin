@@ -1,28 +1,15 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.cyberagent.courseshare.CourseListViewActivity"
-    tools:ignore="MergeRootFrame" >
-    <LinearLayout
-            android:orientation="vertical"
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" android:layout_gravity="left|top">
+            android:layout_height="fill_parent"
+            android:id="@+id/scroll_view">
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CreateJson"
-                    android:id="@+id/create_json"/>
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Decode"
-                    android:id="@+id/decode"/>
+                android:layout_height="fill_parent" android:id="@+id/course_list">
         </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+    </ScrollView>
+</LinearLayout>
