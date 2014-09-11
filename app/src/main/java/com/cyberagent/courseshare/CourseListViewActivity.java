@@ -1,6 +1,7 @@
 package com.cyberagent.courseshare;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,18 +23,16 @@ public class CourseListViewActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Course course = new Course();
-                course.setName("hogehoge");
-                json = JSON.encode(course, true);
-                Log.v("JSON", json);
+                CourseShareDBManager dbManager = CourseShareDBManager.createInstance(getApplicationContext());
+                dbManager.saveCourse(course);
             }
         });
 
         findViewById(R.id.decode).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Course course = JSON.decode(json, Course.class);
-                String name = course.getName();
-                Log.v("JSON", name);
+                CourseShareDBManager dbManager = CourseShareDBManager.createInstance(getApplicationContext());
+                dbManager.fetchCourseList();
             }
         });
 
