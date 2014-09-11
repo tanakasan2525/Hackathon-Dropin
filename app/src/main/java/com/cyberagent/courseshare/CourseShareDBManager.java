@@ -25,7 +25,6 @@ public class CourseShareDBManager {
     public static CourseShareDBManager createInstance(Context context) {
         if (courseShareDBManager == null) {
             courseShareDBManager = new CourseShareDBManager(context);
-            return courseShareDBManager;
         }
         return courseShareDBManager;
     }
@@ -57,7 +56,10 @@ public class CourseShareDBManager {
         db = helper.getWritableDatabase();
         ArrayList<Course> courseList = new ArrayList<Course>();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + CourseShareSQLHelper.TABLE_NAME, new String[]{});
+        Log.v("sql_test", "fetch before");
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + CourseShareSQLHelper.TABLE_NAME + ";", new String[]{});
+
         Log.v("sql_test", String.valueOf(cursor.getCount()));
 
         boolean next = cursor.moveToFirst();
@@ -77,15 +79,17 @@ public class CourseShareDBManager {
 
     public void deleteTable() {
         db = helper.getWritableDatabase();
-        String sql = "drop table " + CourseShareSQLHelper.TABLE_NAME;
+        String sql = "drop table " + CourseShareSQLHelper.TABLE_NAME + ";";
+        Log.v("sql_test", "exec before");
         db.execSQL(sql);
+        Log.v("sql_test", "exec after");
         db.close();
     }
 
 
 
     // private Helper
-    private class CourseShareSQLHelper extends SQLiteOpenHelper {
+    public class CourseShareSQLHelper extends SQLiteOpenHelper {
 
         public static final String DATABASE_NAME = "sqlite3.db";
         public static final int VERSION = 1;
@@ -94,7 +98,7 @@ public class CourseShareDBManager {
         public static final String TABLE_NAME = "course_table";
 
         // SQL
-        private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"(id INTEGER PRIMARY KEY AUTOINCREMENT, "+COLUMN_NAME+" TEXT)";
+        public static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"(id INTEGER PRIMARY KEY AUTOINCREMENT, "+COLUMN_NAME+" TEXT);";
 
         public CourseShareSQLHelper(Context context) {
             super(context, CourseShareSQLHelper.DATABASE_NAME, null, CourseShareSQLHelper.VERSION);

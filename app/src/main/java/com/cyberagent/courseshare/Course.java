@@ -21,6 +21,10 @@ public class Course {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public ArrayList<LatLng> getCoordinatesList() {
         return coordinatesList;
     }

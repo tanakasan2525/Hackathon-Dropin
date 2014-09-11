@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 /**
@@ -23,6 +24,8 @@ public class CourseView extends LinearLayout {
     public CourseView(Context context, Course course) {
         super(context);
         this.course = course;
+        TextView textView = (TextView) findViewById(R.id.textView);
+        //textView.setText(course.getName());
         setLayout(context);
     }
 

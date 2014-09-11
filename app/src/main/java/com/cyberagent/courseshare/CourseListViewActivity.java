@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import net.arnx.jsonic.JSON;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class CourseListViewActivity extends Activity {
@@ -24,14 +25,36 @@ public class CourseListViewActivity extends Activity {
         setContentView(R.layout.activity_course_list_view);
 
         linearLayout = (LinearLayout) findViewById(R.id.course_list);
-        CourseShareDBManager dbManager = CourseShareDBManager.createInstance(getApplicationContext());
-        ArrayList<Course> courseList = dbManager.fetchCourseList();
+
+        final CourseDataManager dataManager = CourseDataManager.createInstance(getApplicationContext());
+        ArrayList<Course> courseList = dataManager.getCourseList();
 
 
         for (int i = 0; i < courseList.size(); i++) {
             CourseView courseView = new CourseView(this, courseList.get(i));
             linearLayout.addView(courseView);
         }
+
+        findViewById(R.id.create).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Course course = new Course();
+                Random rand = new Random();
+                course.setName("Random" + rand.nextInt(100));
+                dataManager.saveCourse(course);
+
+                CourseView courseView = new CourseView(getApplicationContext(), course);
+                linearLayout.addView(courseView);
+            }
+        });
+
+        // テーブルのデータをすべて削除
+        findViewById(R.id.delete_table).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataManager.deleteLocalData();
+            }
+        });
     }
 
 

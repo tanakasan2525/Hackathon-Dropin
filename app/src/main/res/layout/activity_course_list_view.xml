@@ -1,15 +1,32 @@
 <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:weightSum="1">
     <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/scroll_view">
+            android:layout_height="431dp"
+            android:id="@+id/scroll_view" android:layout_weight="0.38">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" android:id="@+id/course_list">
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="59dp" android:layout_gravity="center_horizontal"
+            >
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text="Create"
+                android:id="@+id/create" android:layout_weight="1"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:text="Delete Table"
+                android:id="@+id/delete_table" android:layout_weight="1"/>
+    </LinearLayout>
 </LinearLayout>
