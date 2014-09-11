@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import net.arnx.jsonic.JSON;
 
@@ -31,7 +32,7 @@ public class CourseShareDBManager {
 
     // プライベートインスタンス
     private CourseShareDBManager(Context context) {
-        helper = CourseShareSQLHelper.createInstance(context);
+        helper = new CourseShareSQLHelper(context);
     }
 
     // 渡されたコースをJSONにして保存
@@ -74,4 +75,29 @@ public class CourseShareDBManager {
         return courseList;
     }
 
+    public class CourseShareSQLHelper extends SQLiteOpenHelper {
+
+        public static final String DATABASE_NAME = "sqlite3.db";
+        public static final int VERSION = 1;
+
+        public static final String COLUMN_NAME = "course_json";
+        public static final String TABLE_NAME = "course_table";
+
+        // SQL
+        private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"(id INTEGER PRIMARY KEY AUTOINCREMENT, "+COLUMN_NAME+" TEXT)";
+
+        public CourseShareSQLHelper(Context context) {
+            super(context, CourseShareSQLHelper.DATABASE_NAME, null, CourseShareSQLHelper.VERSION);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            db.execSQL(CREATE_TABLE);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        }
+    }
 }
