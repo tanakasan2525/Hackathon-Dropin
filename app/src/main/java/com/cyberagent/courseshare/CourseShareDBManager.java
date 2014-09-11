@@ -75,7 +75,17 @@ public class CourseShareDBManager {
         return courseList;
     }
 
-    public class CourseShareSQLHelper extends SQLiteOpenHelper {
+    public void deleteTable() {
+        db = helper.getWritableDatabase();
+        String sql = "drop table " + CourseShareSQLHelper.TABLE_NAME;
+        db.execSQL(sql);
+        db.close();
+    }
+
+
+
+    // private Helper
+    private class CourseShareSQLHelper extends SQLiteOpenHelper {
 
         public static final String DATABASE_NAME = "sqlite3.db";
         public static final int VERSION = 1;
