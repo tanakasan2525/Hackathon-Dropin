@@ -20,6 +20,7 @@ public class CourseShareDBManager {
     private CourseShareSQLHelper helper;
     private SQLiteDatabase db;
 
+    // シングルトンインスタンス
     public static CourseShareDBManager createInstance(Context context) {
         if (courseShareDBManager == null) {
             courseShareDBManager = new CourseShareDBManager(context);
@@ -28,12 +29,15 @@ public class CourseShareDBManager {
         return courseShareDBManager;
     }
 
+    // プライベートインスタンス
     private CourseShareDBManager(Context context) {
         helper = CourseShareSQLHelper.createInstance(context);
-        db = helper.getWritableDatabase();
     }
 
+    // 渡されたコースをJSONにして保存
     public void saveCourse(Course course) {
+        db = helper.getWritableDatabase();
+
         String courseJson = JSON.encode(course);
         Log.v("sql_test", courseJson);
         ContentValues values = new ContentValues();
@@ -43,15 +47,31 @@ public class CourseShareDBManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        db.close();
     }
 
+    // 保存してあるコースのリストを取得
     public ArrayList<Course> fetchCourseList() {
-        ArrayList<Course> courseList;
+        db = helper.getWritableDatabase();
+        ArrayList<Course> courseList = new ArrayList<Course>();
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + CourseShareSQLHelper.TABLE_NAME, new String[]{});
-        boolean next = cursor.moveToFirst();
         Log.v("sql_test", String.valueOf(cursor.getCount()));
-        return null;
+
+        boolean next = cursor.moveToFirst();
+        while (next) {
+            String jsonCourse = cursor.getString(1);
+            Course course = JSON.decode(jsonCourse, Course.class);
+            courseList.add(course);
+            Log.v("sql_test", jsonCourse);
+
+            next = cursor.moveToNext();
+        }
+
+        db.close();
+
+        return courseList;
     }
 
 }
