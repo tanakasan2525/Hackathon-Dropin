@@ -12,8 +12,6 @@ import net.arnx.jsonic.JSON;
 
 public class CourseListViewActivity extends Activity {
 
-    String json;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
