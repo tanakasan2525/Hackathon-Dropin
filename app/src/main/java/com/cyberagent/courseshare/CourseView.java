@@ -24,8 +24,6 @@ public class CourseView extends LinearLayout {
     public CourseView(Context context, Course course) {
         super(context);
         this.course = course;
-        TextView textView = (TextView) findViewById(R.id.textView);
-        //textView.setText(course.getName());
         setLayout(context);
     }
 
@@ -36,5 +34,7 @@ public class CourseView extends LinearLayout {
 
     public void setLayout(Context context) {
         View layout = LayoutInflater.from(context).inflate(R.layout.sample_course_view, this);
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(course.getName());
     }
 }

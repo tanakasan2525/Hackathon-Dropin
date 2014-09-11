@@ -40,10 +40,10 @@ public class CourseListViewActivity extends Activity {
             public void onClick(View v) {
                 Course course = new Course();
                 Random rand = new Random();
-                course.setName("Random" + rand.nextInt(100));
+                course.setName("Course " + rand.nextInt(100));
                 dataManager.saveCourse(course);
 
-                CourseView courseView = new CourseView(getApplicationContext(), course);
+                CourseView courseView = new CourseView(getBaseContext(), course);
                 linearLayout.addView(courseView);
             }
         });
@@ -53,8 +53,10 @@ public class CourseListViewActivity extends Activity {
             @Override
             public void onClick(View v) {
                 dataManager.deleteLocalData();
+                linearLayout.removeAllViews();
             }
         });
+
     }
 
 
