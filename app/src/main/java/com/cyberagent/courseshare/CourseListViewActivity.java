@@ -2,19 +2,16 @@ package com.cyberagent.courseshare;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
+import net.arnx.jsonic.JSON;
 
 
 public class CourseListViewActivity extends Activity {
 
+    String json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +22,18 @@ public class CourseListViewActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Course course = new Course();
+                course.setName("hogehoge");
+                json = JSON.encode(course, true);
+                Log.v("JSON", json);
+            }
+        });
 
-                try {
-                    FileOutputStream fos = openFileOutput("SaveDate.bat", MODE_PRIVATE);
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
+        findViewById(R.id.decode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Course course = JSON.decode(json, Course.class);
+                String name = course.getName();
+                Log.v("JSON", name);
             }
         });
 

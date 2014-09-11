@@ -21,6 +21,10 @@ public class Course implements Serializable{
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public ArrayList<Coordinates> getCoordinatesList() {
         return coordinatesList;
     }
