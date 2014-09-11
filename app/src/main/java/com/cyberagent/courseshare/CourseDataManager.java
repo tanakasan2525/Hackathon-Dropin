@@ -22,14 +22,16 @@ public class CourseDataManager {
 
     private static CourseDataManager singleton = null;
 
-    private Context context;
+    private SQLiteOpenHelper helper;
+    private SQLiteDatabase db;
 
     /**
      * プライベートコンストラクタ
      * @param context
      */
     private CourseDataManager(Context context) {
-        this.context = context;
+        helper = new CourseSQLOpenHelper(context);
+        db = helper.getWritableDatabase();
     }
 
     /**
@@ -57,8 +59,6 @@ public class CourseDataManager {
      * @param course
      */
     private void saveToLocalConvertToJson(Course course) {
-        SQLiteOpenHelper helper = new CourseSQLOpenHelper(this.context);
-        SQLiteDatabase db = helper.getWritableDatabase();
 
         // CourseクラスをJSONにして保存
         String courseJson = JSON.encode(course);
@@ -68,8 +68,6 @@ public class CourseDataManager {
 
         db.insert(TABLE_NAME, null, values);
 
-        db.close();
-        helper.close();
     }
 
     /**
@@ -87,9 +85,6 @@ public class CourseDataManager {
     public ArrayList<Course> getCourseListFromLocal() {
         ArrayList<Course> courseList = new ArrayList<Course>();
 
-        SQLiteOpenHelper helper = new CourseSQLOpenHelper(this.context);
-        SQLiteDatabase db = helper.getWritableDatabase();
-
         String selectSql = "SELECT * FROM "+TABLE_NAME+";";
         Cursor cursor = db.rawQuery(selectSql, new String[]{});
 
@@ -106,9 +101,6 @@ public class CourseDataManager {
             next = cursor.moveToNext();
         }
 
-        db.close();
-        helper.close();
-
         return courseList;
     }
 
@@ -116,13 +108,7 @@ public class CourseDataManager {
      * コースのデータをすべて削除
      */
     public void deleteLocalData() {
-        SQLiteOpenHelper helper = new CourseSQLOpenHelper(this.context);
-        SQLiteDatabase db = helper.getWritableDatabase();
-
         db.delete(TABLE_NAME, null, null);
-
-        db.close();
-        helper.close();
     }
 
     /**
