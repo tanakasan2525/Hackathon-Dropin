@@ -1,36 +1,32 @@
 package com.cyberagent.courseshare;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by shogo on 2014/09/10.
  */
-public class Course implements Serializable{
+public class Course {
     /**
      * コースクラス
      */
     private String name;
-    private ArrayList<Coordinates> coordinatesList;
+    private ArrayList<LatLng> coordinatesList;
 
     public Course() {
-        coordinatesList = new ArrayList<Coordinates>();
+        coordinatesList = new ArrayList<LatLng>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ArrayList<Coordinates> getCoordinatesList() {
+    public ArrayList<LatLng> getCoordinatesList() {
         return coordinatesList;
     }
 
     public void addCoordinatesToList(double latitude, double longitude) {
-        Coordinates coordinates = new Coordinates(latitude, longitude);
+        LatLng coordinates = new LatLng(latitude, longitude);
         coordinatesList.add(coordinates);
     }
 
