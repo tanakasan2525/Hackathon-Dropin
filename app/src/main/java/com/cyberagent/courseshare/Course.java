@@ -7,14 +7,14 @@ import com.google.android.gms.maps.model.LatLng;
  * Created by shogo on 2014/09/10.
  */
 public class Course {
-    /**
-     * コースクラス
-     */
     private String name;
     private ArrayList<LatLng> coordinatesList;
+	private ArrayList<Spot> spotList;
 
-    public Course() {
-        coordinatesList = new ArrayList<LatLng>();
+    public Course(String name) {
+		this.name = name;
+		this.coordinatesList = new ArrayList<LatLng>();
+		this.spotList = new ArrayList<Spot>();
     }
 
     public String getName() {
@@ -29,9 +29,18 @@ public class Course {
         return coordinatesList;
     }
 
+	public ArrayList<Spot> getSpotList() {
+		return this.spotList;
+	}
+
     public void addCoordinatesToList(double latitude, double longitude) {
         LatLng coordinates = new LatLng(latitude, longitude);
         coordinatesList.add(coordinates);
     }
 
+	public void addSpot(Spot spot) {
+		this.spotList.add(spot);
+	}
+
 }
+
