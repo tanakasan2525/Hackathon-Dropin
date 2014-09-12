@@ -39,9 +39,8 @@ public class CourseListViewActivity extends Activity {
         findViewById(R.id.create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Course course = new Course();
-                Random rand = new Random();
-                course.setName("Course " + rand.nextInt(100));
+				Random rand = new Random();
+                Course course = new Course("Course " + rand.nextInt(100));
                 dataManager.saveCourse(course);
 
                 CourseView courseView = new CourseView(getBaseContext(), course);
