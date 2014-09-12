@@ -51,7 +51,7 @@ public class CourseDataManager {
      * @param course
      */
     public void saveCourse(Course course) {
-        saveToLocalConvertToJson(course);
+        this.saveToLocalConvertToJson(course);
     }
 
     /**
@@ -75,14 +75,15 @@ public class CourseDataManager {
      * @return
      */
     public ArrayList<Course> getCourseList() {
-        return getCourseListFromLocal();
+        ArrayList<Course> courseList = this.getCourseListFromLocal();
+        return courseList;
     }
 
     /**
      * ローカルに保存したデータからコースリストを生成して返すメソッド
      * @return
      */
-    public ArrayList<Course> getCourseListFromLocal() {
+    private ArrayList<Course> getCourseListFromLocal() {
         ArrayList<Course> courseList = new ArrayList<Course>();
 
         String selectSql = "SELECT * FROM "+TABLE_NAME+";";

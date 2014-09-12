@@ -35,6 +35,7 @@ public class CourseListViewActivity extends Activity {
             linearLayout.addView(courseView);
         }
 
+
         findViewById(R.id.create).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
