@@ -1,7 +1,10 @@
 package com.cyberagent.courseshare;
 
 import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,17 +33,26 @@ import java.util.TooManyListenersException;
  */
 public class Map {
 	private Activity owner;
+	MapWrapperLayout mapView;
 	private SupportMapFragment mapFragment;
 	private GoogleMap map;
 
 	private HashMap<String, Pin> pins;
 	private ArrayList<Pin> waypoints;	// 確定した寄り道場所
 
-	public Map(Activity owner, SupportMapFragment mapFragment) {
+	public Map(Activity owner, MapWrapperLayout mapView, SupportMapFragment mapFragment) {
 		this.owner = owner;
+		this.mapView = mapView;
 		this.mapFragment = mapFragment;
 		this.pins = new HashMap<String, Pin>();
 		this.waypoints = new ArrayList<Pin>();
+
+		setUpMapIfNeeded();
+
+		// MapWrapperLayout initialization
+		// 39 - default marker height
+		// 20 - offset between the default InfoWindow bottom edge and it's content bottom edge
+		mapView.init(map, getPixelsFromDp(owner, 39 + 20));
 	}
 
 	public void setUpMapIfNeeded() {
@@ -54,15 +66,16 @@ public class Map {
 
 	private void setUpMap() {
 		this.map.setInfoWindowAdapter(new CustomInfoAdapter());
-		
-		this.map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+
+		/*this.map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 			@Override
 			public boolean onMarkerClick(Marker marker) {
 				Pin pin = pins.get(marker.getId());
 
 				return false;
 			}
-		});
+		});*/
+
 	}
 
 	/**
@@ -87,9 +100,13 @@ public class Map {
 	 * すべてのピンと道を削除します。
 	 */
 	public void removeAllPins() {
-		for (Entry<String, Pin> pin : this.pins.entrySet())
-			pin.getValue().marker.remove();
 		removeAllRoutes();
+		for (Entry<String, Pin> pinKey : this.pins.entrySet()) {
+			Pin pin = pinKey.getValue();
+			if (!this.waypoints.contains(pin))
+				pin.marker.remove();
+		}
+		pins.clear();
 	}
 
 	/**
@@ -100,7 +117,7 @@ public class Map {
 	public void setRoute(String pinID, ArrayList<LatLng> points) {
 		PolylineOptions lineOptions = new PolylineOptions();
 		lineOptions.addAll(points);
-		lineOptions.width(10);
+		lineOptions.width(11);
 		lineOptions.color(0x550000ff);
 		this.pins.get(pinID).route = this.map.addPolyline(lineOptions);
 	}
@@ -109,9 +126,12 @@ public class Map {
 	 * すべての道を削除します。
 	 */
 	public void removeAllRoutes() {
-		for (Entry<String, Pin> pin : this.pins.entrySet()) {
-			pin.getValue().route.remove();
-			pin.getValue().route = null;
+		for (Entry<String, Pin> pinKey : this.pins.entrySet()) {
+			Pin pin = pinKey.getValue();
+			if (!this.waypoints.contains(pin) && pin.route != null) {
+				pin.route.remove();
+				pin.route = null;
+			}
 		}
 	}
 
@@ -121,8 +141,10 @@ public class Map {
 	 */
 	public void addWeyPoint(String pinID) {
 		Pin pin = this.pins.get(pinID);
+		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+		pin.marker.setIcon(icon);
 		if (pin.route != null) {
-			pin.route.setColor(0x55ff0000);
+			pin.route.setColor(0x5500ff00);
 		}
 		this.waypoints.add(pin);
 	}
@@ -141,6 +163,11 @@ public class Map {
 		this.map.animateCamera(CameraUpdateFactory.newCameraPosition(builder.build()));
 	}
 
+	private static int getPixelsFromDp(Context context, float dp) {
+		final float scale = context.getResources().getDisplayMetrics().density;
+		return (int)(dp * scale + 0.5f);
+	}
+
 	private class Pin {
 		public Marker marker;
 		public Polyline route;
@@ -156,50 +183,53 @@ public class Map {
 	 */
 	private class CustomInfoAdapter implements GoogleMap.InfoWindowAdapter {
 
-		private final View window;
+		private ViewGroup window;
+		private TextView title;
+		private TextView snippet;
+		private ImageView icon;
+		private Button btnDropIn;
+
+		private OnInfoWindowElemTouchListener infoButtonListener;
 
 		public CustomInfoAdapter() {
-			this.window = owner.getLayoutInflater().inflate(R.layout.course_custom_info_window, null);
+			this.window = (ViewGroup)owner.getLayoutInflater().inflate(R.layout.course_custom_info_window, null);
+			this.title = (TextView) window.findViewById(R.id.title);
+			this.snippet = (TextView) window.findViewById(R.id.snippet);
+			this.icon = (ImageView) window.findViewById(R.id.icon);
+			this.btnDropIn = (Button) window.findViewById(R.id.btn_drop_in);
+			icon.setMaxWidth(200);
+			icon.setMaxHeight(200);
+
+			this.infoButtonListener = new OnInfoWindowElemTouchListener(this.btnDropIn,
+					owner.getResources().getDrawable(R.drawable.btn_ok),
+					owner.getResources().getDrawable(R.drawable.btn_ok))
+			{
+				@Override
+				protected void onClickConfirmed(View v, Marker marker) {
+					addWeyPoint(marker.getId());
+					removeAllPins();
+				}
+			};
+			this.btnDropIn.setOnTouchListener(infoButtonListener);
 		}
 
 		@Override
 		public View getInfoWindow(Marker marker) {
-			render(marker, this.window);
+			// Setting up the infoWindow with current's marker info
+			this.title.setText(marker.getTitle());
+			this.snippet.setText(marker.getSnippet());
+			this.infoButtonListener.setMarker(marker);
+			//icon.setImageResource(imgID);
+			// We must call this to set the current marker and infoWindow references
+			// to the MapWrapperLayout
+			mapView.setMarkerWithInfoWindow(marker, this.window);
 			return this.window;
 		}
 
 		@Override
 		public View getInfoContents(Marker marker) {
+			// getInfoWindow()の戻り値がnullの時だけ呼ばれるっぽい
 			return null;
-		}
-
-		/**
-		 * InfoWindow を表示する
-		 * @param marker {@link Marker}
-		 * @param view {@link View}
-		 */
-		private void render(final Marker marker, View view) {
-			// ここでどの Marker がタップされたか判別する
-			//if (marker.equals(marker)) {
-			// 画像
-			ImageView icon = (ImageView) view.findViewById(R.id.icon);
-			//icon.setImageResource(imgID);
-			icon.setMaxWidth(200);
-			icon.setMaxHeight(200);
-			//}
-			TextView title = (TextView) view.findViewById(R.id.title);
-			TextView snippet = (TextView) view.findViewById(R.id.snippet);
-			title.setText(marker.getTitle());
-			snippet.setText(marker.getSnippet());
-
-			Button btnDropIn = (Button) view.findViewById(R.id.btn_drop_in);
-			btnDropIn.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					addWeyPoint(marker.getId());
-					removeAllPins();
-				}
-			});
 		}
 
 	}
