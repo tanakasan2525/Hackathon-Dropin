@@ -96,18 +96,44 @@ public class CourceActivity extends FragmentActivity {
 
 		this.map.setUpMapIfNeeded();
 
-		// 道の描画
-		ArrayList<LatLng> points = this.course.getCoordinatesList();
-		this.map.addRoute(points);
-
-		// 中心位置を最初の場所としてカメラを移動
-		LatLng center = points.get(0);
-		this.map.setCenter(center);
-
 		// 主要な場所の処理
 		for (Spot spot : this.course.getSpotList()) {
 			this.map.addPin(spot);
 		}
+
+		ArrayList<LatLng> points = new ArrayList<LatLng>();
+
+		Spot spot = new Spot("渋谷マークシティ", new LatLng(35.65787,139.698066),
+				"サイバーエージェントのオフィスがあります。");
+		String pinID = this.map.addPin(spot);
+
+		points.add(new LatLng(35.65787,139.698066));  // 渋谷マークシティ
+		points.add(new LatLng(35.6587292,139.7000174));
+		points.add(new LatLng(35.6588081,139.7005457));
+		points.add(new LatLng(35.6585071,139.7010799));
+		points.add(new LatLng(35.6585152,139.7013252));
+		points.add(new LatLng(35.658517, 139.701334));   // 渋谷駅
+		this.map.setRoute(pinID, points);
+
+		spot = new Spot("渋谷マークシティ", new LatLng(35.65787,139.698066),
+				"サイバーエージェントのオフィスがあります。");
+		pinID = this.map.addPin(spot);
+
+		points.clear();
+		points.add(new LatLng(35.65787,139.698066));  // 渋谷マークシティ
+		points.add(new LatLng(35.6722044,139.6962304)); // 代々木公園
+		/*points.add(new LatLng(35.6587292,139.7000174));
+		points.add(new LatLng(35.6588751,139.7005146));
+		points.add(new LatLng(35.65898870000001,139.7010571));
+		points.add(new LatLng(35.6587918,139.7020231));
+		points.add(new LatLng(35.6589562,139.7025314));
+		points.add(new LatLng(35.6588729,139.7030199));
+		points.add(new LatLng(35.6591188,139.7037352));*/ // 渋谷ヒカリエ
+		this.map.setRoute(pinID, points);
+
+		// 中心位置を最初の場所としてカメラを移動
+		LatLng center = points.get(0);
+		this.map.setCenter(center);
 	}
 
 	@Override
