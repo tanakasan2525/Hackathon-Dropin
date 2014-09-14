@@ -1,17 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-	<padding android:left="10dp" android:top="10dp"
-			 android:right="10dp" android:bottom="10dp" />
-	<corners android:radius="4dp" />
-	<gradient
-		android:angle="270"
-		android:startColor="#5D9CEC"
-		android:endColor="#4A89DC"
-		android:type="linear" />
-	<!--android:startColor="#79bbff"
-		android:endColor="#4197ee"-->
-	<!--<stroke
-		android:width="2dp"
-		android:color="#469df5" />-->
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+	android:shape="rectangle">
+
+	<item android:state_pressed="true">
+		<shape android:shape="rectangle">
+			<gradient
+				android:startColor="#E9573F"
+				android:endColor="#E9573F"
+				android:angle="90"
+				/>
+			<corners
+				android:bottomRightRadius="3dp"
+				android:bottomLeftRadius="3dp"
+				android:topLeftRadius="3dp"
+				android:topRightRadius="3dp"
+				/>
+			<stroke
+				android:width="4px"
+				android:color="#E9573F"
+				/>
+			<padding
+				android:left="7dp"
+				android:top="7dp"
+				android:right="7dp"
+				android:bottom="7dp"
+				/>
+		</shape>
+	</item>
+
+	<item android:state_focused="true">
+		<shape android:shape="rectangle">
+			<gradient
+				android:startColor="#E9573F"
+				android:endColor="#E9573F"
+				android:angle="90"
+				/>
+			<corners
+				android:bottomRightRadius="3dp"
+				android:bottomLeftRadius="3dp"
+				android:topLeftRadius="3dp"
+				android:topRightRadius="3dp"
+				/>
+			<stroke
+				android:width="2px"
+				android:color="#E9573F"
+				/>
+			<padding
+				android:left="7dp"
+				android:top="7dp"
+				android:right="7dp"
+				android:bottom="7dp"
+				/>
+		</shape>
+	</item>
+	<item>
+		<shape >
+			<gradient
+				android:startColor="#FC6E51"
+				android:endColor="#FC6E51"
+				android:angle="90"
+				/>
+			<corners
+				android:bottomRightRadius="3dp"
+				android:bottomLeftRadius="3dp"
+				android:topLeftRadius="3dp"
+				android:topRightRadius="3dp"
+				/>
+			<stroke
+				android:width="1px"
+				android:color="#E9573F"
+				/>
+			<padding
+				android:left="7dp"
+				android:top="7dp"
+				android:right="7dp"
+				android:bottom="7dp"
+				/>
+		</shape>
+	</item>
+
+</selector>
 

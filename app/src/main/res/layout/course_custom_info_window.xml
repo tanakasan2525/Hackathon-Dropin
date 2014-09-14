@@ -7,7 +7,7 @@
 			  android:paddingLeft="25dp"
 			  android:paddingRight="25dp"
 			  android:paddingTop="10dp"
-			  android:paddingBottom="25dp">
+			  android:paddingBottom="30dp">
 
 	<ImageView
 		android:id="@+id/icon"
@@ -46,6 +46,7 @@
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_gravity="center"
 			android:text="寄り道する"
 			android:textColor="#FFFFFF"
 			android:background="@drawable/btn_ok"

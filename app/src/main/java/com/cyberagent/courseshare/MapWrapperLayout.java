@@ -72,7 +72,6 @@ public class MapWrapperLayout extends RelativeLayout {
 		boolean ret = false;
 		// Make sure that the infoWindow is shown and we have all the needed references
 		if (marker != null && marker.isInfoWindowShown() && map != null && infoWindow != null) {
-			Log.v("TEST", "MapWrapperLayout: dispatchTouchEvent");
 			// Get a marker position on the screen
 			Point point = map.getProjection().toScreenLocation(marker.getPosition());
 
