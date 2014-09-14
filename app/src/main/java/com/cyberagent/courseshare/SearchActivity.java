@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 
 
 public class SearchActivity extends Activity {
@@ -24,7 +25,6 @@ public class SearchActivity extends Activity {
 		autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
 
 		autoCompView.setOnKeyListener(new View.OnKeyListener() {
-
 			//コールバックとしてonKey()メソッドを定義
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -39,8 +39,8 @@ public class SearchActivity extends Activity {
 				return false;
 			}
 		});
-    }
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,4 +60,28 @@ public class SearchActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+	public void onClickRestaurant(View view) {
+		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
+		i.putExtra("keyword", "レストラン");
+		startActivity(i);
+	}
+
+	public void onClickCafe(View view) {
+		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
+		i.putExtra("keyword", "カフェ");
+		startActivity(i);
+	}
+
+	public void onClickBar(View view) {
+		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
+		i.putExtra("keyword", "居酒屋");
+		startActivity(i);
+	}
+
+	public void onClickGasSt(View view) {
+		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
+		i.putExtra("keyword", "ガソリンスタンド");
+		startActivity(i);
+	}
 }
