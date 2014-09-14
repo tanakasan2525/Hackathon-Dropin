@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.internal.d;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.TooManyListenersException;
 
@@ -42,7 +43,7 @@ public class Map {
 	private ArrayList<Pin> pins;	// 寄り道候補のピン
 	private ArrayList<Pin> waypoints;	// 確定した寄り道場所
 
-	private Route dropInRoute;
+	//private Route dropInRoute;
 
 	public Map(Activity owner, MapWrapperLayout mapView, SupportMapFragment mapFragment) {
 		this.owner = owner;
@@ -70,6 +71,12 @@ public class Map {
 
 	private void setUpMap() {
 		this.map.setInfoWindowAdapter(new CustomInfoAdapter());
+		this.map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+			@Override
+			public void onMapClick(LatLng latLng) {
+				removeRoute();
+			}
+		});
 	}
 
 	public void setStartAndGoal(Spot start, Spot goal) {
@@ -104,11 +111,15 @@ public class Map {
 	 */
 	public void removeAllPins() {
 		removeRoute();
-		for (Pin pin : this.pins) {
-			if (!this.waypoints.contains(pin) && !pin.equals(this.startPin) && !pin.equals(this.goalPin))
+
+		Iterator<Pin> i = this.pins.iterator();
+		while(i.hasNext()){
+			Pin pin = i.next();
+			if (!this.waypoints.contains(pin) && !pin.equals(this.startPin) && !pin.equals(this.goalPin)) {
 				pin.marker.remove();
+				i.remove();
+			}
 		}
-		pins.clear();
 	}
 
 	/**
@@ -116,13 +127,19 @@ public class Map {
 	 * @param startPin 始点
 	 * @param goalPin 終点
 	 */
-	public Route setRoute(Pin startPin, Pin goalPin) {
-
-		removeRoute();
-
+	public Route setPreviewRoute(Pin startPin, Pin goalPin) {
 		Route route = new Route(startPin, goalPin);
 		route.line = addLines(getRoutes(startPin, goalPin), 0x550000ff);
-		this.dropInRoute = route;
+		startPin.previewNextRoute = route;
+		goalPin.previewPrevRoute = route;
+		return route;
+	}
+
+	public Route setRoute(Pin startPin, Pin goalPin) {
+		Route route = new Route(startPin, goalPin);
+		route.line = addLines(getRoutes(startPin, goalPin), 0x5500ff00);
+		startPin.nextRoute = route;
+		goalPin.prevRoute = route;
 		return route;
 	}
 
@@ -130,9 +147,21 @@ public class Map {
 	 * 道を削除します。
 	 */
 	public void removeRoute() {
-		if (this.dropInRoute != null) {
-			this.dropInRoute.line.remove();
-			this.dropInRoute = null;
+		Pin pin = getStartPin();
+		while (true) {
+			if (pin.previewNextRoute != null) {
+				Route route = pin.previewNextRoute;
+				route.line.remove();
+				pin.previewNextRoute = null;
+				pin = route.next;
+			}
+			else {
+				if (pin.nextRoute != null) {
+					pin = pin.nextRoute.next;
+				} else {
+					break;
+				}
+			}
 		}
 	}
 
@@ -143,24 +172,59 @@ public class Map {
 	public void addWeyPoint(Pin pin) {
 		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
 		pin.marker.setIcon(icon);
-		if (this.dropInRoute != null) {
-			this.dropInRoute.line.setColor(0x5500ff00);
 
-			Pin prevPin = this.dropInRoute.prev;
-			Pin nextPin = prevPin.nextRoute.next;
+		// preview と 決定したルートの入れ替え
+		Pin prevPin = pin.previewPrevRoute.prev;
+		Pin nextPin = pin.previewNextRoute.next;
 
-			nextPin.prevRoute.line.remove();
+		nextPin.prevRoute.line.remove();
 
-			Route nextRoute = new Route(pin, nextPin);
-			nextRoute.line = addLines(getRoutes(pin, nextPin), 0x5500ff00);
-			nextPin.prevRoute = nextRoute;
-			pin.nextRoute = nextRoute;
-			pin.prevRoute = this.dropInRoute;
-			prevPin.nextRoute = this.dropInRoute;
-			this.dropInRoute = null;
-		}
+		pin.nextRoute = pin.previewNextRoute;
+		pin.prevRoute = pin.previewPrevRoute;
+		prevPin.nextRoute = prevPin.previewNextRoute;
+		nextPin.prevRoute = nextPin.previewPrevRoute;
+		prevPin.nextRoute.line.setColor(0x5500ff00);
+		nextPin.prevRoute.line.setColor(0x5500ff00);
+
+		pin.previewNextRoute = null;
+		pin.previewPrevRoute = null;
+		prevPin.previewNextRoute = null;
+		nextPin.previewPrevRoute = null;
 
 		this.waypoints.add(pin);
+	}
+
+	/**
+	 * 経由地から取り除きます。
+	 * @param pin 取り除くピン
+	 */
+	public void removeWeyPoint(Pin pin) {
+		Pin nextPin = pin.nextRoute.next;
+		Pin prevPin = pin.prevRoute.prev;
+
+		nextPin.prevRoute.line.remove();
+		prevPin.nextRoute.line.remove();
+
+		setRoute(prevPin, nextPin);
+
+		pin.marker.remove();
+		this.pins.remove(pin);
+		this.waypoints.remove(pin);
+	}
+
+	/**
+	 * 経由地を入れ替えます。
+	 * @param pin1
+	 * @param pin2
+	 */
+	public void swapWayPoint(Pin pin1, Pin pin2) {
+		Pin nextPin1 = pin1.nextRoute.next;
+		Pin prevPin1 = pin1.prevRoute.prev;
+
+		Pin nextPin2 = pin2.nextRoute.next;
+		Pin prevPin2 = pin2.prevRoute.prev;
+
+		//pin2.prevRoute
 	}
 
 	/**
@@ -231,7 +295,8 @@ public class Map {
 		private ImageView icon;
 		private Button btnDropIn;
 
-		private OnInfoWindowElemTouchListener infoButtonListener;
+		private OnInfoWindowElemTouchListener infoBtnAddListener;
+		private OnInfoWindowElemTouchListener infoBtnRemoveListener;
 
 		int debugFlag = 0;
 
@@ -244,7 +309,8 @@ public class Map {
 			icon.setMaxWidth(200);
 			icon.setMaxHeight(200);
 
-			this.infoButtonListener = new OnInfoWindowElemTouchListener(this.btnDropIn,
+			// 経由地に追加用リスナー
+			this.infoBtnAddListener = new OnInfoWindowElemTouchListener(this.btnDropIn,
 					owner.getResources().getDrawable(R.drawable.btn_ok),
 					owner.getResources().getDrawable(R.drawable.btn_ok))
 			{
@@ -260,25 +326,50 @@ public class Map {
 					}
 				}
 			};
-			this.btnDropIn.setOnTouchListener(infoButtonListener);
+
+			// 経由地から削除用のリスナー
+			this.infoBtnRemoveListener = new OnInfoWindowElemTouchListener(this.btnDropIn,
+					owner.getResources().getDrawable(R.drawable.btn_ok),
+					owner.getResources().getDrawable(R.drawable.btn_ok))
+			{
+				@Override
+				protected void onClickConfirmed(View v, Marker marker) {
+					removeWeyPoint(getPinFromMarker(marker));
+				}
+			};
 		}
 
 		@Override
 		public View getInfoWindow(Marker marker) {
-			// Setting up the infoWindow with current's marker info
 			this.title.setText(marker.getTitle());
 			this.snippet.setText(marker.getSnippet());
-			this.infoButtonListener.setMarker(marker);
 			//icon.setImageResource(imgID);
-			// We must call this to set the current marker and infoWindow references
-			// to the MapWrapperLayout
+
 			mapView.setMarkerWithInfoWindow(marker, this.window);
 
-			Pin prevPin = getPrevPin();
 			Pin pin = getPinFromMarker(marker);
-			setRoute(prevPin, pin);
 
-			return this.window;
+			if (!waypoints.contains(pin) && !pin.equals(startPin) && !pin.equals(goalPin)) {
+				this.infoBtnAddListener.setMarker(marker);
+				this.btnDropIn.setOnTouchListener(infoBtnAddListener);
+				this.btnDropIn.setText("寄り道する");
+				this.btnDropIn.setEnabled(true);
+
+				removeRoute();
+
+				Pin prevPin = getPrevPin();
+				setPreviewRoute(prevPin, pin);
+				setPreviewRoute(pin, getGoalPin());
+			} else if (pin.equals(startPin) || pin.equals(goalPin)) {
+				this.btnDropIn.setEnabled(false);
+			} else {
+				this.infoBtnRemoveListener.setMarker(marker);
+				this.btnDropIn.setOnTouchListener(infoBtnRemoveListener);
+				this.btnDropIn.setText("取り消し");
+				this.btnDropIn.setEnabled(true);
+			}
+
+			return this.window; // ここでViewを返すとオリジナルの吹き出しが作れるっぽい
 		}
 
 		@Override
@@ -293,6 +384,9 @@ public class Map {
 		public Marker marker;
 		public Route prevRoute; // このピンに着く前の道
 		public Route nextRoute; // このピンから出る次の道
+
+		public Route previewPrevRoute;
+		public Route previewNextRoute;
 
 		Pin(Marker marker) {
 			this.marker = marker;

@@ -40,7 +40,6 @@ public abstract class OnInfoWindowElemTouchListener implements OnTouchListener {
 			switch (event.getActionMasked()) {
 				case MotionEvent.ACTION_DOWN: startPress(); break;
 
-				// We need to delay releasing of the view a little so it shows the pressed state on the screen
 				case MotionEvent.ACTION_UP: handler.postDelayed(confirmClickRunnable, 150); break;
 
 				case MotionEvent.ACTION_CANCEL: endPress(); break;
@@ -48,9 +47,7 @@ public abstract class OnInfoWindowElemTouchListener implements OnTouchListener {
 			}
 		}
 		else {
-			// If the touch goes outside of the view's area
-			// (like when moving finger out of the pressed button)
-			// just release the press
+			// 押しながらずらして領域外に行った時など
 			endPress();
 		}
 		return false;
@@ -89,7 +86,7 @@ public abstract class OnInfoWindowElemTouchListener implements OnTouchListener {
 	};
 
 	/**
-	 * This is called after a successful click
+	 * クリックされた時のコールバックメソッド
 	 */
 	protected abstract void onClickConfirmed(View v, Marker marker);
 }

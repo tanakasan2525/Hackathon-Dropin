@@ -7,5 +7,6 @@
     <string name="title_activity_course_list_view">CourseListViewActivity</string>
     <string name="title_activity_course">CourseActivity</string>
     <string name="title_activity_cource">Map</string>
+    <string name="title_activity_search">SearchActivity</string>
 
 </resources>

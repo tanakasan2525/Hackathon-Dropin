@@ -19,23 +19,13 @@ public class MapWrapperLayout extends RelativeLayout {
 
 	private GoogleMap map;
 
-	/**
-	 * Vertical offset in pixels between the bottom edge of our InfoWindow
-	 * and the marker position (by default it's bottom edge too).
-	 * It's a good idea to use custom markers and also the InfoWindow frame,
-	 * because we probably can't rely on the sizes of the default marker and frame.
-	 */
 	private int bottomOffsetPixels;
 
 	/**
-	 * A currently selected marker
+	 * 現在選択しているマーカー
 	 */
 	private Marker marker;
 
-	/**
-	 * Our custom view which is returned from either the InfoWindowAdapter.getInfoContents
-	 * or InfoWindowAdapter.getInfoWindow
-	 */
 	private View infoWindow;
 
 	public MapWrapperLayout(Context context) {
@@ -51,7 +41,7 @@ public class MapWrapperLayout extends RelativeLayout {
 	}
 
 	/**
-	 * Must be called before we can route the touch events
+	 * タッチイベントが起こる前に一度呼び出すメソッド
 	 */
 	public void init(GoogleMap map, int bottomOffsetPixels) {
 		this.map = map;
@@ -59,8 +49,7 @@ public class MapWrapperLayout extends RelativeLayout {
 	}
 
 	/**
-	 * Best to be called from either the InfoWindowAdapter.getInfoContents
-	 * or InfoWindowAdapter.getInfoWindow.
+	 * InfoWindowAdapter.getInfoContents または InfoWindowAdapter.getInfoWindowで呼び出すメソッド
 	 */
 	public void setMarkerWithInfoWindow(Marker marker, View infoWindow) {
 		this.marker = marker;
@@ -70,23 +59,21 @@ public class MapWrapperLayout extends RelativeLayout {
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {
 		boolean ret = false;
-		// Make sure that the infoWindow is shown and we have all the needed references
+
 		if (marker != null && marker.isInfoWindowShown() && map != null && infoWindow != null) {
-			// Get a marker position on the screen
+
 			Point point = map.getProjection().toScreenLocation(marker.getPosition());
 
-			// Make a copy of the MotionEvent and adjust it's location
-			// so it is relative to the infoWindow left top corner
+			// InfoWindowのクライアント領域に変換
 			MotionEvent copyEv = MotionEvent.obtain(ev);
 			copyEv.offsetLocation(
 					-point.x + (infoWindow.getWidth() / 2),
 					-point.y + infoWindow.getHeight() + bottomOffsetPixels);
 
-			// Dispatch the adjusted MotionEvent to the infoWindow
+			// 調節したイベントを呼び出し
 			ret = infoWindow.dispatchTouchEvent(copyEv);
 		}
-		// If the infoWindow consumed the touch event, then just return true.
-		// Otherwise pass this event to the super class and return it's result
+
 		return ret || super.dispatchTouchEvent(ev);
 	}
 }

@@ -5,13 +5,43 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
 
-	<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:tools="http://schemas.android.com/tools"
+	<FrameLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:id="@+id/map"
-		tools:context="com.cyberagent.courseshare.CourceActivity"
-		android:name="com.google.android.gms.maps.SupportMapFragment"/>
+		android:layout_height="match_parent">
+
+		<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/map"
+			tools:context="com.cyberagent.courseshare.CourceActivity"
+			android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="#1F4788">
+			<ImageView
+				android:layout_width="50dp"
+				android:layout_height="50dp"/>
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:layout_gravity="center_vertical"
+				android:gravity="center_vertical"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:drawableLeft="@drawable/abc_ic_search"
+				android:hint="検索"
+				android:background="#FFFFFF"
+				android:id="@+id/btn_search"/>
+			<ImageView
+				android:layout_width="50dp"
+				android:layout_height="50dp"/>
+		</LinearLayout>
+
+	</FrameLayout>
 
 </com.cyberagent.courseshare.MapWrapperLayout>
 
