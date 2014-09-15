@@ -1,9 +1,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context=".FirstActivity">
 
 
     <TextView
@@ -37,37 +39,45 @@
         android:layout_gravity="center_horizontal"
         android:hint="経由地"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/timeLeftButton"
+        android:layout_width="313dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:text="暇な時間"
+        android:layout_gravity="center_horizontal" />
 
-        <NumberPicker
-            android:id="@+id/hours"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp" />
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="1"-->
+        <!--android:layout_marginTop="20dp">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="時間"
-            android:id="@+id/textView2"
-            android:gravity="center"/>
+        <!--<NumberPicker-->
+            <!--android:id="@+id/hours"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="100dp" />-->
 
-        <NumberPicker
-            android:id="@+id/minutes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="分"
-            android:id="@+id/textView3"
-            android:gravity="center"/>
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="時間"-->
+            <!--android:id="@+id/textView2"-->
+            <!--android:gravity="center"/>-->
+
+        <!--<NumberPicker-->
+            <!--android:id="@+id/minutes"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="分"-->
+            <!--android:id="@+id/textView3"-->
+            <!--android:gravity="center"/>-->
+    <!--</LinearLayout>-->
 
     <Button
         android:id="@+id/searchButton"
