@@ -16,10 +16,13 @@ import io.github.axxiss.places.PlacesSettings;
 import io.github.axxiss.places.Response;
 import io.github.axxiss.places.callback.PlacesCallback;
 import io.github.axxiss.places.model.Event;
+import io.github.axxiss.places.model.Photo;
 import io.github.axxiss.places.model.Place;
 import io.github.axxiss.places.request.NearbySearch;
 import io.github.axxiss.places.request.PlaceSearch;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +33,8 @@ import java.util.List;
 public class MapAPIManager {
     // Log.v用のタグ
     public static final String TAG = "MapApiDebug";
+
+    public static final int IMAGE_SIZE = 150;
 
     private Context context;
 
@@ -73,19 +78,51 @@ public class MapAPIManager {
                 ArrayList<Spot> spots = new ArrayList<Spot>();
                 Place[] places = response.getResults();
                 for (int i = 0; i < places.length; i++) {
+                    String name = null;//名前
+                    LatLng latLng = null;//座標
+                    String description = null;//説明
+                    List<URI> imageUri = null;//画像のURL
+
                     // 名前
-                    String name = places[i].getName();
+                    name = places[i].getName();
+
                     // 座標
                     double lat = places[i].getGeometry().getLocation().getLat();
                     double lng = places[i].getGeometry().getLocation().getLng();
-                    LatLng latLng = new LatLng(lat, lng);
-                    // サマリー
-                    List<Event> events = places[i].getEvents();
+                    latLng = new LatLng(lat, lng);
 
+                    // 画像データ
+                    if (places[i].getPhotos() != null) {
+                        // URIリストの作成
+                        imageUri = new ArrayList<URI>();
+                        // 画像のリストを走査
+                        for (Photo photo : places[i].getPhotos()) {
+                            // URI文字列の作成
+                            String mapsUrl = "https://maps.googleapis.com/maps/api/place/photo?";
+                            String maxWidth = "maxwidth=" + photo.getWidth();
+                            String maxHeight = "maxheight=" + IMAGE_SIZE;
+                            String ref = "photoreference=" + IMAGE_SIZE;
+                            String sensor = "sensor=true";
+                            String key = "key=" + context.getResources().getString(R.string.google_api_key);
 
-                    Spot spot = new Spot(name, latLng);
+                            String reqUrl = mapsUrl+maxWidth+"&"+maxHeight+"&"+ref+"&"+sensor+"&"+key;
+                            Log.v(TAG+"_photo", reqUrl);
+
+                            // URI オブジェクトの作成
+                            URI uri = null;
+                            try {
+                                uri = new URI(reqUrl);
+                            } catch (URISyntaxException e) {
+                                e.printStackTrace();
+                            }
+                            imageUri.add(uri);
+                        }
+
+                    }
+
+                    Spot spot = new Spot(name, latLng, description, imageUri);
+                    spot.getDescription();
                     spots.add(spot);
-
                 }
 
                 listener.onEndRequestListener(spots);
@@ -137,11 +174,8 @@ public class MapAPIManager {
 
                 // 最短ルートのみ取得
                 Route route = routes.get(0);
-                route.setOverviewPolyline(latLngs);
-                Log.v(TAG, route.getOverviewPolyline().toString());
                 // 座標間のリストを取得
                 ArrayList<Leg> legs = route.getLegs();
-                Log.v(TAG, legs.size()+"");
                 // 各座標間のステップのリストを取得
                 for (Leg leg : legs) {
 
@@ -151,13 +185,10 @@ public class MapAPIManager {
 
                     // 各ステップのPolyLineを設定しコールバックに渡すリストにセット
                     ArrayList<Step> steps = leg.getSteps();
-                    Log.v(TAG, steps.size()+"");
                     for (Step step : steps) {
                         latLngs.addAll(step.getPolyLine());
-                        Log.v(TAG, step.getPolyLine().toString());
                     }
                 }
-                Log.v(TAG, latLngs.size()+"");
 
                 // 時間の設定
                 data.put("duration", duration);
