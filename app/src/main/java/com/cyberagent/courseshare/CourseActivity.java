@@ -144,7 +144,7 @@ public class CourseActivity extends FragmentActivity {
 			}
 		});
 
-		this.map = new Map(this, mapView, (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map));
+		this.map = new Map(this, mapView, (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map), this.apiManager);
 
 		ArrayList<LatLng> points = new ArrayList<LatLng>();
 		points.add(new LatLng(35.658517,139.701334));
@@ -231,34 +231,8 @@ public class CourseActivity extends FragmentActivity {
 			@Override
 			public void onEndRequestListener(ArrayList<Spot> spots) {
 
-				ArrayList<LatLng> baseWaypoints = new ArrayList<LatLng>();
-
-				LatLng start = map.getStartPin().spot.getCoordinates();
-				LatLng goal = map.getGoalPin().spot.getCoordinates();
-
-				Log.v("TEST", "" + spots.size());
-
-				int i = 0;
-
-				for (final Spot spot : spots) {
-					ArrayList<LatLng> waypoints = new ArrayList<LatLng>(baseWaypoints);
-					waypoints.add(spot.getCoordinates());
-
-					if (++i == 5) {
-						Log.v("TEST", "start:" + start + " goal:" + goal + " waypoints: " + spot.getCoordinates().latitude + ", " + spot.getCoordinates().longitude);
-					}
-
-					apiManager.routingPlaces(start, goal, waypoints, new OnEndDirectionsRequestListener() {
-						@Override
-						public void onEndDirectionListener(ArrayList<LatLng> latLngs, HashMap<String, Object> data) {
-
-							Log.v("TEST", "" + latLngs.size());
-							spot.setDirection(latLngs);
-							spot.setDuration((Long)data.get("duration"));
-						}
-					});
+				for (Spot spot : spots)
 					map.addPin(spot);
-				}
 
 				waitDialog.dismiss();
 			}

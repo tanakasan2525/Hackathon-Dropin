@@ -2,6 +2,7 @@ package com.cyberagent.courseshare;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,19 +39,24 @@ public class Map {
 	private SupportMapFragment mapFragment;
 	private GoogleMap map;
 
+	private MapAPIManager apiManager;
+	Handler  handler;
+
 	private Pin startPin;
 	private Pin goalPin;
 	private ArrayList<Pin> pins;	// 寄り道候補のピン
 	private ArrayList<Pin> waypoints;	// 確定した寄り道場所
 
-	//private Route dropInRoute;
+	private Polyline dropInRoute;
 
-	public Map(Activity owner, MapWrapperLayout mapView, SupportMapFragment mapFragment) {
+	public Map(Activity owner, MapWrapperLayout mapView, SupportMapFragment mapFragment, MapAPIManager apiManager) {
 		this.owner = owner;
 		this.mapView = mapView;
 		this.mapFragment = mapFragment;
+		this.apiManager = apiManager;
 		this.pins = new ArrayList<Pin>();
 		this.waypoints = new ArrayList<Pin>();
+		this.handler = new Handler();
 
 		setUpMapIfNeeded();
 
@@ -112,8 +118,6 @@ public class Map {
 	 * すべてのピンと道を削除します。
 	 */
 	public void removeAllPins() {
-		removeRoute();
-
 		Iterator<Pin> i = this.pins.iterator();
 		while(i.hasNext()){
 			Pin pin = i.next();
@@ -128,12 +132,26 @@ public class Map {
 	 * 道を設定します。
 	 * @param pin 設定するピン
 	 */
-	public void setPreviewRoute(Pin pin) {
-		PolylineOptions lineOptions = new PolylineOptions();
-		lineOptions.addAll(pin.spot.getDirection());
-		lineOptions.width(11);
-		lineOptions.color(0x550000ff);
-		pin.line = this.map.addPolyline(lineOptions);
+	public void setPreviewRoute(final Pin pin) {
+		if (pin.line != null) return;
+
+		LatLng start = getPrevPin().spot.getCoordinates();
+		LatLng goal = this.goalPin.spot.getCoordinates();
+		ArrayList<LatLng> wp = new ArrayList<LatLng>();
+		for (Pin w : this.waypoints)
+			wp.add(w.spot.getCoordinates());
+		wp.add(pin.spot.getCoordinates());
+		this.apiManager.routingPlaces(start, goal, wp, new OnEndDirectionsRequestListener() {
+			@Override
+			public void onEndDirectionListener(ArrayList<LatLng> latLngs, HashMap<String, Object> data) {
+				//pin.spot.setDirection(latLngs);
+				PolylineOptions lineOptions = new PolylineOptions();
+				lineOptions.addAll(latLngs);
+				lineOptions.width(11);
+				lineOptions.color(0x550000ff);
+				dropInRoute = map.addPolyline(lineOptions);
+			}
+		});
 	}
 	/*public Route setPreviewRoute(Pin startPin, Pin goalPin) {
 		Route route = new Route(startPin, goalPin);
@@ -143,8 +161,37 @@ public class Map {
 		return route;
 	}*/
 
-	public void setRoute(Pin pin) {
-		pin.line.setColor(0x5500ff00);
+	abstract class MapTask implements Runnable {
+		Pin pin;
+		MapTask(Pin p) { pin = p; }
+
+		@Override
+		public abstract void run();
+	}
+
+	public void setRoute(Pin p) {
+		(new Thread(new MapTask(p) {
+			@Override
+			public void run() {
+				while (dropInRoute == null) {
+					try {
+						Thread.sleep(500);
+					} catch ( InterruptedException e ) {
+						e.printStackTrace();
+					}
+				}
+
+				handler.post(new MapTask(this.pin) {
+					@Override
+					public void run() {
+						this.pin.line = dropInRoute;
+						this.pin.line.setColor(0x5500ff00);
+						dropInRoute = null;
+					}
+				});
+			}
+		})).start();
+
 	}
 	/*public Route setRoute(Pin startPin, Pin goalPin) {
 		Route route = new Route(startPin, goalPin);
@@ -159,9 +206,12 @@ public class Map {
 	 * 道を削除します。
 	 */
 	public void removeRoute() {
-		if (getPrevPin().line != null) {
-			getPrevPin().line.remove();
+		if (dropInRoute != null) {
+			dropInRoute.remove();
 		}
+		/*if (getNewPin().line != null) {
+			getNewPin().line.remove();
+		}*/
 		/*Pin pin = getStartPin();
 		while (true) {
 			if (pin.previewNextRoute != null) {
@@ -187,6 +237,8 @@ public class Map {
 	public void addWeyPoint(Pin pin) {
 		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
 		pin.marker.setIcon(icon);
+
+		removeRoute();
 
 		setRoute(pin);
 
@@ -281,6 +333,13 @@ public class Map {
 			return waypoints.get(waypoints.size() - 1);
 	}
 
+	public Pin getNewPin() {
+		if (this.waypoints.isEmpty())
+			return this.goalPin;
+		else
+			return waypoints.get(waypoints.size() - 1);
+	}
+
 	private Pin getPinFromMarker(Marker marker) {
 		for (Pin p : pins)
 			if (marker.equals(p.marker)) {
@@ -288,13 +347,6 @@ public class Map {
 			}
 		return null;
 	}
-
-	/*private ArrayList<LatLng> getRoutes(Pin start, Pin goal) {
-		ArrayList<LatLng> points = new ArrayList<LatLng>(); // APIにする
-		points.add(start.marker.getPosition());
-		points.add(goal.marker.getPosition());
-		return points;
-	}*/
 
 	private Polyline addLines(ArrayList<LatLng> points, int color) {
 		PolylineOptions lineOptions = new PolylineOptions();
