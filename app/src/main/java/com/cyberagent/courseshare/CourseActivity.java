@@ -35,6 +35,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * コース画面のアクティビティ
@@ -161,6 +162,18 @@ public class CourseActivity extends FragmentActivity {
 				"青山学院大学の文系が集まるキャンパスです。");
 		this.map.addPin(spot);
 
+        // MapAPIManager テスト
+        /*
+        MapAPIManager manager = new MapAPIManager(this);
+        ArrayList<LatLng> latLngs = new ArrayList<LatLng>();
+        latLngs.add(spot.getCoordinates());
+        manager.routingPlaces(start.getCoordinates(), goal.getCoordinates(),latLngs, new OnEndDirectionsRequestListener() {
+            @Override
+            public void onEndDirectionListener(ArrayList<LatLng> latLngs, HashMap<String, Object> data) {
+                Log.v(MapAPIManager.TAG, data.toString());
+            }
+        });
+        */
 
 		// 中心位置を最初の場所としてカメラを移動
 		LatLng center = new LatLng(35.658517, 139.701334);
