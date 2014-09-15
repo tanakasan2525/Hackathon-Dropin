@@ -21,6 +21,7 @@ import io.github.axxiss.places.request.NearbySearch;
 import io.github.axxiss.places.request.PlaceSearch;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ import java.util.List;
  */
 public class MapAPIManager {
     // Log.v用のタグ
-    private static final String TAG = "MapApiDebug";
+    public static final String TAG = "MapApiDebug";
 
     private Context context;
 
@@ -57,6 +58,7 @@ public class MapAPIManager {
         // 検索範囲の指定
         NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
 
+        // 検索ワードの設定
         for (String word : searchWords) {
             search.setKeyword(word);
             Log.v(TAG, "word:" + word);
@@ -80,6 +82,7 @@ public class MapAPIManager {
                     // サマリー
                     List<Event> events = places[i].getEvents();
 
+
                     Spot spot = new Spot(name, latLng);
                     spots.add(spot);
 
@@ -96,17 +99,26 @@ public class MapAPIManager {
         });
     }
 
+    /**
+     * スタートとゴールのLatLngクラスと寄り道部分のLatLngクラスのリストを渡すと
+     * 設定したコールバックにルートのLatLngクラスリストを渡すメソッド
+     * @param start
+     * @param goal
+     * @param waypoints
+     * @param listener
+     */
     public void routingPlaces(LatLng start, LatLng goal, ArrayList<LatLng> waypoints, final OnEndDirectionsRequestListener listener) {
         // Google Map Directions のライブラリのインスタンス
         GoogleDirections googleDirections = new GoogleDirections();
 
+        // ウェイポイントの座標をセットする文字列リスト
         ArrayList<String> strWaypoints = new ArrayList<String>();
-
-        // 座標の文字列リストを生成
+        // 各座標の座標数値を文字列に変換して文字列リストに追加
         for (LatLng waypoint : waypoints) {
             String strWaypoint = waypoint.latitude + "," + waypoint.longitude;
             strWaypoints.add(strWaypoint);
         }
+        // ゴールの部分の座標を文字列リストに追加
         strWaypoints.add(goal.latitude + "," + goal.longitude);
 
         // コールバック
@@ -115,12 +127,27 @@ public class MapAPIManager {
             public void onGetRouteListener(ArrayList<Route> routes) {
                 // コールバックに渡すリスト
                 ArrayList<LatLng> latLngs = new ArrayList<LatLng>();
+
+                // 各種データを入れるHashMap
+                HashMap<String, Object> data = new HashMap<String, Object>();
+                // 時間
+                long duration = 0;
+                // 距離
+                long distance = 0;
+
                 // 最短ルートのみ取得
                 Route route = routes.get(0);
-                // 区切りのリストを取得
+                // 座標間のリストを取得
                 ArrayList<Leg> legs = route.getLegs();
                 Log.v(TAG, legs.size()+"");
+                // 各座標間のステップのリストを取得
                 for (Leg leg : legs) {
+
+                    // データの設定
+                    duration += leg.getDurationValue();
+                    distance += leg.getDistanceValue();
+
+                    // 各ステップのPolyLineを設定しコールバックに渡すリストにセット
                     ArrayList<Step> steps = leg.getSteps();
                     Log.v(TAG, steps.size()+"");
                     for (Step step : steps) {
@@ -129,7 +156,13 @@ public class MapAPIManager {
                     }
                 }
                 Log.v(TAG, latLngs.size()+"");
-                listener.onEndDirectionListener(latLngs);
+
+                // 時間の設定
+                data.put("duration", duration);
+                // 距離の設定
+                data.put("distance", distance);
+
+                listener.onEndDirectionListener(latLngs, data);
             }
         });
     }
