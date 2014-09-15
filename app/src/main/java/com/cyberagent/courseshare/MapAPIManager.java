@@ -35,9 +35,6 @@ public class MapAPIManager {
     // Google Direction のオプション
     private DirectionOption option;
 
-    // 検索時の半径(m)
-    private static int SEARCH_RADIUS;
-
     public MapAPIManager(Context context) {
         this.context = context;
         option = new DirectionOption();
@@ -45,23 +42,20 @@ public class MapAPIManager {
         option.setTravelMode(DirectionOption.TravelMode.WALKING);
     }
 
-    // 半径を設定するメソッド
-    public static void setRadius(int radius) {
-        SEARCH_RADIUS = radius;
-    }
 
 
     /**
-     * 緯度経度と文字列のリストを受け取りリクエスト終了時のリクエストを返すメソッド
+     * 緯度経度と文字列のリストと半径を受け取りリクエスト終了時のリクエストを返すメソッド
      * @param lat
      * @param lng
      * @param searchWords
+     * @param radius
      * @param listener
      */
-    public void searchPlaces(double lat, double lng, ArrayList<String> searchWords, final OnEndPlaceRequestListener listener) {
+    public void searchPlaces(double lat, double lng, ArrayList<String> searchWords, int radius, final OnEndPlaceRequestListener listener) {
         PlacesSettings.getInstance().setApiKey(context.getResources().getString(R.string.google_maps_key));
         // 検索範囲の指定
-        NearbySearch search = PlaceSearch.nearbySearch(lat, lng, SEARCH_RADIUS);
+        NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
 
         for (String word : searchWords) {
             search.setKeyword(word);
