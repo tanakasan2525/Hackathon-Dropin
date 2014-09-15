@@ -1,6 +1,5 @@
 package com.cyberagent.courseshare;
 
-import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -9,9 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
+
 
 /**
  * コース画面のアクティビティ
@@ -78,8 +76,56 @@ public class CourceActivity extends FragmentActivity {
 				"青山学院大学の文系が集まるキャンパスです。"));
 
 
+        /*
+        PlacesSettings.getInstance().setApiKey(getResources().getString(R.string.google_maps_key));
+        PlacesSettings.getInstance().setApiKey("AIzaSyAN_B0_xjV4FP4_POmqV8djx_ALEdgpBtc");
+        NearbySearch search = PlaceSearch.nearbySearch(35.658517,139.701334, 2000);
+        search.setKeyword("ガスト");
 
-		CoursePagerAdapter adapter = new CoursePagerAdapter(this);
+        search.sendRequest(new PlacesCallback() {
+            @Override
+            public void onSuccess(Response response) {
+                Log.v("req_debug", "request success");
+            }
+
+            @Override
+            public void onException(Exception exception) {
+                Log.v("req_debug", "request exception");
+
+            }
+        });
+        */
+
+
+
+        MapAPIManager manager = new MapAPIManager(map);
+        MapAPIManager.setRadius(2000);
+
+        ArrayList<String> keywords = new ArrayList<String>();
+        keywords.add("ガスト");
+        manager.searchPlaces(35.658517, 139.701334, keywords, new OnEndPlaceRequestListener() {
+
+            @Override
+            public void onEndRequestListener(ArrayList<Spot> spots) {
+
+            }
+        });
+
+        LatLng start = new LatLng(35.65787,139.698066);
+        ArrayList<LatLng> waypoints = new ArrayList<LatLng>();
+        waypoints.add(new LatLng(35.661905, 139.709577));
+        waypoints.add(new LatLng(35.6591188,139.7037352));
+        LatLng goal = new LatLng(35.66147,139.709464);
+        manager.routingPlaces(start, goal, waypoints, new OnEndDirectionsRequestListener() {
+            @Override
+            public void onEndDirectionListener(ArrayList<LatLng> latLngs) {
+
+            }
+        });
+
+
+
+        CoursePagerAdapter adapter = new CoursePagerAdapter(this);
 
 		LinearLayout mapView = (LinearLayout)layoutFactory.inflate(R.layout.activity_cource, null);
 		adapter.add(new CourseGuideSpotView(this, this.course));

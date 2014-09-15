@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import net.arnx.jsonic.JSON;
 
 import java.util.ArrayList;
 import java.util.Random;
