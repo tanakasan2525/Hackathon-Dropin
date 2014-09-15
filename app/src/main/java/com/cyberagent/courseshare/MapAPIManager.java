@@ -84,6 +84,7 @@ public class MapAPIManager {
                     String description = null;//説明
                     ArrayList<URI> imageUri = null;//画像のURL
                     double rating;
+                    int priceLevel;
 
                     // 名前
                     name = places[i].getName();
@@ -125,8 +126,11 @@ public class MapAPIManager {
                     // 評価
                     rating = places[i].getRating();
 
+                    priceLevel = places[i].getPrice_level();
+
                     Spot spot = new Spot(name, latLng, description, imageUri);
                     spot.setRating(rating);
+                    spot.setPriceLevel(priceLevel);
 
                     spot.getDescription();
                     spots.add(spot);

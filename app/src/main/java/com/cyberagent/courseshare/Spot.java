@@ -17,6 +17,7 @@ public class Spot {
 	private ArrayList<LatLng> direction;
 	private long duration;
     private double rating;
+    private int priceLevel;
 
 	public Spot(String name, LatLng coordinates) {
 		this(name, coordinates, null);
@@ -65,11 +66,19 @@ public class Spot {
 		return this.duration;
 	}
 
+    public double getRating() {
+        return this.rating;
+    }
+
     public void setRating(double rating) {
         this.rating = rating;
     }
 
-    public double getRating() {
-        return this.rating;
+    public int getPriceLevel() {
+        return priceLevel;
+    }
+
+    public void setPriceLevel(int priceLevel) {
+        this.priceLevel = priceLevel;
     }
 }
