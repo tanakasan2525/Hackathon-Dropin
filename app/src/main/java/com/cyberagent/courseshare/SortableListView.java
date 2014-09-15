@@ -25,8 +25,8 @@ public class SortableListView extends ListView implements
 	private static final int SCROLL_SPEED_SLOW = 8;
 	private static final Bitmap.Config DRAG_BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
 
-	private boolean mSortable = false;
-	private boolean mDragging = false;
+	private boolean mSortable = true;
+	private boolean mDragging = true;
 	private DragListener mDragListener = new SimpleDragListener();
 	private int mBitmapBackgroundColor = Color.argb(128, 0xFF, 0xFF, 0xFF);
 	private Bitmap mDragBitmap = null;
@@ -85,10 +85,9 @@ public class SortableListView extends ListView implements
 		if (!mSortable) {
 			return super.onTouchEvent(event);
 		}
-		Log.v("TEST", "onTouchEvent: " + event.getAction());
+
 		switch (event.getAction()) {
 			case MotionEvent.ACTION_DOWN: {
-				Log.v("TEST", "TOUCH");
 				storeMotionEvent(event);
 				break;
 			}
@@ -119,7 +118,6 @@ public class SortableListView extends ListView implements
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view,
 								   int position, long id) {
-		Log.v("TEST", "LongClick");
 		return startDrag();
 	}
 
@@ -246,7 +244,6 @@ public class SortableListView extends ListView implements
 
 			mActionDownEvent.recycle();
 			mActionDownEvent = null;
-			Log.v("TEST", "reset");
 			return true;
 		}
 		return false;

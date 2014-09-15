@@ -30,9 +30,8 @@ public class SearchActivity extends Activity {
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				// エンターキーで決定
 				if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-					Intent i = new Intent(getApplicationContext(), CourseActivity.class);
-					i.putExtra("keyword", autoCompView.getText().toString());
-					startActivity(i);
+					returnIntent(autoCompView.getText().toString());
+
 					return true;
 				}
 
@@ -61,27 +60,26 @@ public class SearchActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+	private void returnIntent(String keyword) {
+		Intent i = new Intent();
+		i.putExtra("keyword", keyword);
+		setResult(RESULT_OK, i);
+		finish();
+	}
+
 	public void onClickRestaurant(View view) {
-		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
-		i.putExtra("keyword", "レストラン");
-		startActivity(i);
+		returnIntent("レストラン");
 	}
 
 	public void onClickCafe(View view) {
-		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
-		i.putExtra("keyword", "カフェ");
-		startActivity(i);
+		returnIntent("カフェ");
 	}
 
 	public void onClickBar(View view) {
-		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
-		i.putExtra("keyword", "居酒屋");
-		startActivity(i);
+		returnIntent("居酒屋");
 	}
 
 	public void onClickGasSt(View view) {
-		Intent i = new Intent(getApplicationContext(), CourseActivity.class);
-		i.putExtra("keyword", "ガソリンスタンド");
-		startActivity(i);
+		returnIntent("ガソリンスタンド");
 	}
 }
