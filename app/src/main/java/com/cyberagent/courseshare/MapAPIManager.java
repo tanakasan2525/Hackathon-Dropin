@@ -54,7 +54,7 @@ public class MapAPIManager {
      * @param listener
      */
     public void searchPlaces(double lat, double lng, ArrayList<String> searchWords, int radius, final OnEndPlaceRequestListener listener) {
-        PlacesSettings.getInstance().setApiKey(context.getResources().getString(R.string.google_maps_key));
+        PlacesSettings.getInstance().setApiKey(context.getResources().getString(R.string.google_api_key));
         // 検索範囲の指定
         NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
 
@@ -137,6 +137,8 @@ public class MapAPIManager {
 
                 // 最短ルートのみ取得
                 Route route = routes.get(0);
+                route.setOverviewPolyline(latLngs);
+                Log.v(TAG, route.getOverviewPolyline().toString());
                 // 座標間のリストを取得
                 ArrayList<Leg> legs = route.getLegs();
                 Log.v(TAG, legs.size()+"");
