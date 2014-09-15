@@ -1,17 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
-
-	<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:tools="http://schemas.android.com/tools"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/drawer_layout"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:id="@+id/map"
-		tools:context="com.cyberagent.courseshare.CourceActivity"
-		android:name="com.google.android.gms.maps.SupportMapFragment"/>
+		android:layout_height="match_parent" >
 
-</LinearLayout>
+	<com.cyberagent.courseshare.MapWrapperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:id="@+id/activity_course_layout">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:tools="http://schemas.android.com/tools"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/map"
+				tools:context="com.cyberagent.courseshare.CourceActivity"
+				android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:background="#1F4788">
+				<ImageView
+					android:layout_width="50dp"
+					android:layout_height="50dp"/>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:layout_gravity="center_vertical"
+					android:gravity="center_vertical"
+					android:textAppearance="?android:attr/textAppearanceSmall"
+					android:drawableLeft="@drawable/abc_ic_search"
+					android:hint="検索"
+					android:background="#FFFFFF"
+					android:id="@+id/btn_search"/>
+				<ImageView
+					android:layout_width="50dp"
+					android:layout_height="50dp"/>
+			</LinearLayout>
+
+		</FrameLayout>
+
+	</com.cyberagent.courseshare.MapWrapperLayout>
+
+	<!-- Navigation Drawer のレイアウト -->
+	<LinearLayout
+		android:id="@+id/left_drawer"
+		android:layout_width="240dp"
+		android:layout_height="match_parent"
+		android:layout_gravity="left"
+		android:orientation="vertical"
+		android:background="#333" >
+
+		<Button
+			android:id="@+id/drawer_button"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:text="drawer button" />
+		<com.cyberagent.courseshare.SortableListView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/waypoint_list"/>
+		<RatingBar
+			android:id="@+id/ratingbar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:isIndicator="false"
+			style="?android:attr/ratingBarStyleIndicator"
+			android:numStars="5"
+			android:rating="3"
+			android:stepSize="0.5"/>
+	</LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
 
