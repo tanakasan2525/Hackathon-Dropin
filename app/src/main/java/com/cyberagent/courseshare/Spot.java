@@ -55,4 +55,12 @@ public class Spot {
 	public URI getImageURI() {
 		return this.imageUri;
 	}
+
+	public ArrayList<LatLng> getDirection() {
+		return this.direction;
+	}
+
+	public long getDuration() {
+		return this.duration;
+	}
 }

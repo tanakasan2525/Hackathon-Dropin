@@ -146,20 +146,13 @@ public class CourseActivity extends FragmentActivity {
 
 		this.map = new Map(this, mapView, (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map));
 
-		Bundle b = getIntent().getExtras();
-		if (b != null) {
-			String keyword = b.getString("keyword");
-			if (keyword != null) {
-				btnSearch.setText(keyword);
-				search(keyword);
-			}
-		}
-
-
 		ArrayList<LatLng> points = new ArrayList<LatLng>();
+		points.add(new LatLng(35.658517,139.701334));
+		points.add(new LatLng(35.6701676,139.7026946));
 
 		Spot start = new Spot("渋谷駅", new LatLng(35.658517,139.701334), "JR東日本、東急、東京メトロの駅です。");
 		Spot goal = new Spot("原宿駅", new LatLng(35.6701676,139.7026946), "原宿駅です");
+		goal.setDirection(points);
 		this.map.setStartAndGoal(start, goal);
 
 		Spot spot = new Spot("青山学院大学", new LatLng(35.66147,139.709464),
@@ -182,6 +175,15 @@ public class CourseActivity extends FragmentActivity {
 		// 中心位置を最初の場所としてカメラを移動
 		LatLng center = new LatLng(35.658517, 139.701334);
 		this.map.setCenter(center);
+
+		Bundle b = getIntent().getExtras();
+		if (b != null) {
+			String keyword = b.getString("keyword");
+			if (keyword != null) {
+				btnSearch.setText(keyword);
+				search(keyword);
+			}
+		}
 	}
 
 	@Override
@@ -222,12 +224,39 @@ public class CourseActivity extends FragmentActivity {
 		ArrayList<String> keywords = new ArrayList<String>();
 		keywords.add(keyword);
 
+		LatLng prevPoint = this.map.getPrevPin().spot.getCoordinates();
+
 		// call WebAPI
-		this.apiManager.searchPlaces(35.658517, 139.701334, keywords, 1000, new OnEndPlaceRequestListener() {
+		this.apiManager.searchPlaces(prevPoint.latitude, prevPoint.longitude, keywords, 1000, new OnEndPlaceRequestListener() {
 			@Override
 			public void onEndRequestListener(ArrayList<Spot> spots) {
 
-				for (Spot spot : spots) {
+				ArrayList<LatLng> baseWaypoints = new ArrayList<LatLng>();
+
+				LatLng start = map.getStartPin().spot.getCoordinates();
+				LatLng goal = map.getGoalPin().spot.getCoordinates();
+
+				Log.v("TEST", "" + spots.size());
+
+				int i = 0;
+
+				for (final Spot spot : spots) {
+					ArrayList<LatLng> waypoints = new ArrayList<LatLng>(baseWaypoints);
+					waypoints.add(spot.getCoordinates());
+
+					if (++i == 5) {
+						Log.v("TEST", "start:" + start + " goal:" + goal + " waypoints: " + spot.getCoordinates().latitude + ", " + spot.getCoordinates().longitude);
+					}
+
+					apiManager.routingPlaces(start, goal, waypoints, new OnEndDirectionsRequestListener() {
+						@Override
+						public void onEndDirectionListener(ArrayList<LatLng> latLngs, HashMap<String, Object> data) {
+
+							Log.v("TEST", "" + latLngs.size());
+							spot.setDirection(latLngs);
+							spot.setDuration((Long)data.get("duration"));
+						}
+					});
 					map.addPin(spot);
 				}
 

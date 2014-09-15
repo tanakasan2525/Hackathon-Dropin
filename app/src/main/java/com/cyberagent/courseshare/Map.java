@@ -82,10 +82,12 @@ public class Map {
 	public void setStartAndGoal(Spot start, Spot goal) {
 		this.startPin = addPin(start);
 		this.goalPin = addPin(goal);
-		Route route = new Route(this.startPin, this.goalPin);
-		route.line = addLines(getRoutes(this.startPin, this.goalPin), 0x5500ff00);
-		this.goalPin.prevRoute = route;
-		this.startPin.nextRoute = route;
+		setPreviewRoute(this.goalPin);
+		setRoute(this.goalPin);
+		//Route route = new Route(this.startPin, this.goalPin);
+		//route.line = addLines(getRoutes(this.startPin, this.goalPin), 0x5500ff00);
+		//this.goalPin.prevRoute = route;
+		//this.startPin.nextRoute = route;
 	}
 
 	/**
@@ -101,7 +103,7 @@ public class Map {
 				.title(spot.getName())
 				.snippet(spot.getDescription())
 				.icon(icon);
-		Pin pin = new Pin(this.map.addMarker(options));
+		Pin pin = new Pin(this.map.addMarker(options), spot);
 		this.pins.add(pin);
 		return pin;
 	}
@@ -124,30 +126,43 @@ public class Map {
 
 	/**
 	 * 道を設定します。
-	 * @param startPin 始点
-	 * @param goalPin 終点
+	 * @param pin 設定するピン
 	 */
-	public Route setPreviewRoute(Pin startPin, Pin goalPin) {
+	public void setPreviewRoute(Pin pin) {
+		PolylineOptions lineOptions = new PolylineOptions();
+		lineOptions.addAll(pin.spot.getDirection());
+		lineOptions.width(11);
+		lineOptions.color(0x550000ff);
+		pin.line = this.map.addPolyline(lineOptions);
+	}
+	/*public Route setPreviewRoute(Pin startPin, Pin goalPin) {
 		Route route = new Route(startPin, goalPin);
 		route.line = addLines(getRoutes(startPin, goalPin), 0x550000ff);
-		startPin.previewNextRoute = route;
-		goalPin.previewPrevRoute = route;
+		//startPin.previewNextRoute = route;
+		//goalPin.previewPrevRoute = route;
 		return route;
-	}
+	}*/
 
-	public Route setRoute(Pin startPin, Pin goalPin) {
+	public void setRoute(Pin pin) {
+		pin.line.setColor(0x5500ff00);
+	}
+	/*public Route setRoute(Pin startPin, Pin goalPin) {
 		Route route = new Route(startPin, goalPin);
 		route.line = addLines(getRoutes(startPin, goalPin), 0x5500ff00);
-		startPin.nextRoute = route;
-		goalPin.prevRoute = route;
+		//startPin.nextRoute = route;
+		//goalPin.prevRoute = route;
 		return route;
-	}
+	}*/
+
 
 	/**
 	 * 道を削除します。
 	 */
 	public void removeRoute() {
-		Pin pin = getStartPin();
+		if (getPrevPin().line != null) {
+			getPrevPin().line.remove();
+		}
+		/*Pin pin = getStartPin();
 		while (true) {
 			if (pin.previewNextRoute != null) {
 				Route route = pin.previewNextRoute;
@@ -162,7 +177,7 @@ public class Map {
 					break;
 				}
 			}
-		}
+		}*/
 	}
 
 	/**
@@ -173,8 +188,10 @@ public class Map {
 		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
 		pin.marker.setIcon(icon);
 
+		setRoute(pin);
+
 		// preview と 決定したルートの入れ替え
-		Pin prevPin = pin.previewPrevRoute.prev;
+		/*Pin prevPin = pin.previewPrevRoute.prev;
 		Pin nextPin = pin.previewNextRoute.next;
 
 		nextPin.prevRoute.line.remove();
@@ -189,7 +206,7 @@ public class Map {
 		pin.previewNextRoute = null;
 		pin.previewPrevRoute = null;
 		prevPin.previewNextRoute = null;
-		nextPin.previewPrevRoute = null;
+		nextPin.previewPrevRoute = null;*/
 
 		this.waypoints.add(pin);
 	}
@@ -199,13 +216,15 @@ public class Map {
 	 * @param pin 取り除くピン
 	 */
 	public void removeWeyPoint(Pin pin) {
-		Pin nextPin = pin.nextRoute.next;
+		/*Pin nextPin = pin.nextRoute.next;
 		Pin prevPin = pin.prevRoute.prev;
 
 		nextPin.prevRoute.line.remove();
 		prevPin.nextRoute.line.remove();
 
-		setRoute(prevPin, nextPin);
+		setRoute(prevPin, nextPin);*/
+
+		pin.line.remove();
 
 		pin.marker.remove();
 		this.pins.remove(pin);
@@ -218,7 +237,7 @@ public class Map {
 	 * @param pin2
 	 */
 	public void swapWayPoint(Pin pin1, Pin pin2) {
-		Pin nextPin1 = pin1.nextRoute.next;
+		/*Pin nextPin1 = pin1.nextRoute.next;
 		Pin prevPin1 = pin1.prevRoute.prev;
 
 		Pin nextPin2 = pin2.nextRoute.next;
@@ -230,7 +249,7 @@ public class Map {
 		pin1.prevRoute = pin2.prevRoute;
 		pin1.nextRoute = pin2.nextRoute;
 		pin2.prevRoute = prev;
-		pin2.prevRoute = next;
+		pin2.prevRoute = next;*/
 	}
 
 	/**
@@ -270,12 +289,12 @@ public class Map {
 		return null;
 	}
 
-	private ArrayList<LatLng> getRoutes(Pin start, Pin goal) {
+	/*private ArrayList<LatLng> getRoutes(Pin start, Pin goal) {
 		ArrayList<LatLng> points = new ArrayList<LatLng>(); // APIにする
 		points.add(start.marker.getPosition());
 		points.add(goal.marker.getPosition());
 		return points;
-	}
+	}*/
 
 	private Polyline addLines(ArrayList<LatLng> points, int color) {
 		PolylineOptions lineOptions = new PolylineOptions();
@@ -362,10 +381,11 @@ public class Map {
 				this.btnDropIn.setEnabled(true);
 
 				removeRoute();
+				setPreviewRoute(pin);
 
-				Pin prevPin = getPrevPin();
+				/*Pin prevPin = getPrevPin();
 				setPreviewRoute(prevPin, pin);
-				setPreviewRoute(pin, getGoalPin());
+				setPreviewRoute(pin, getGoalPin());*/
 			} else if (pin.equals(startPin) || pin.equals(goalPin)) {
 				this.btnDropIn.setEnabled(false);
 			} else {
@@ -387,15 +407,18 @@ public class Map {
 	}
 
 	class Pin {
+		public Spot spot;
 		public Marker marker;
-		public Route prevRoute; // このピンに着く前の道
-		public Route nextRoute; // このピンから出る次の道
+		public Polyline line;
+		//public Route prevRoute; // このピンに着く前の道
+		//public Route nextRoute; // このピンから出る次の道
 
-		public Route previewPrevRoute;
-		public Route previewNextRoute;
+		//public Route previewPrevRoute;
+		//public Route previewNextRoute;
 
-		Pin(Marker marker) {
+		Pin(Marker marker, Spot spot) {
 			this.marker = marker;
+			this.spot = spot;
 		}
 	}
 

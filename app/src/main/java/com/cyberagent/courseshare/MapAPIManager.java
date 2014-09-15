@@ -135,6 +135,9 @@ public class MapAPIManager {
                 // 距離
                 long distance = 0;
 
+				// for debug
+				if (routes.isEmpty()) return;
+
                 // 最短ルートのみ取得
                 Route route = routes.get(0);
                 // 座標間のリストを取得
