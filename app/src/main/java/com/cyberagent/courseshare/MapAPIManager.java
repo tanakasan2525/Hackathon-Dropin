@@ -62,7 +62,7 @@ public class MapAPIManager {
         PlacesSettings.getInstance().setApiKey(context.getResources().getString(R.string.google_api_key)/*context.getResources().getString(R.string.google_maps_key)*/);
 
         // 検索範囲の指定
-        NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
+        final NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
 
         // 検索ワードの設定
         for (String word : searchWords) {
@@ -83,6 +83,7 @@ public class MapAPIManager {
                     LatLng latLng = null;//座標
                     String description = null;//説明
                     ArrayList<URI> imageUri = null;//画像のURL
+                    double rating;
 
                     // 名前
                     name = places[i].getName();
@@ -121,7 +122,12 @@ public class MapAPIManager {
 
                     }
 
+                    // 評価
+                    rating = places[i].getRating();
+
                     Spot spot = new Spot(name, latLng, description, imageUri);
+                    spot.setRating(rating);
+
                     spot.getDescription();
                     spots.add(spot);
                 }

@@ -16,6 +16,7 @@ public class Spot {
     private ArrayList<URI> imageUri; 				// リスト化するかどうか。。。
 	private ArrayList<LatLng> direction;
 	private long duration;
+    private double rating;
 
 	public Spot(String name, LatLng coordinates) {
 		this(name, coordinates, null);
@@ -63,4 +64,12 @@ public class Spot {
 	public long getDuration() {
 		return this.duration;
 	}
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public double getRating() {
+        return this.rating;
+    }
 }
