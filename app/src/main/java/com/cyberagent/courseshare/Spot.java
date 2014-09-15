@@ -3,6 +3,7 @@ package com.cyberagent.courseshare;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.net.URI;
+import java.util.ArrayList;
 
 /**
  * メインとなる場所を表すクラス
@@ -12,16 +13,16 @@ public class Spot {
 	private String name;
 	private LatLng coordinates;
 	private String description;
-	private URI imageUri; 				// リスト化するかどうか。。。
+	private URI imageUri; 					// リスト化するかどうか。。。
+	private ArrayList<LatLng> direction;
+	private long duration;
 
 	public Spot(String name, LatLng coordinates) {
 		this(name, coordinates, null);
 	}
 
 	public Spot(String name, LatLng coordinates, String description) {
-		this.name = name;
-		this.coordinates = coordinates;
-		this.description = description;
+		this(name, coordinates, description, null);
 	}
 
 	public Spot(String name, LatLng coordinates, String description, URI imageUri) {
@@ -29,6 +30,14 @@ public class Spot {
 		this.coordinates = coordinates;
 		this.description = description;
 		this.imageUri = imageUri;
+	}
+
+	void setDirection(ArrayList<LatLng> direction) {
+		this.direction = direction;
+	}
+
+	void setDuration(long duration) {
+		this.duration = duration;
 	}
 
 	public String getName() {

@@ -43,6 +43,8 @@ public class CourseActivity extends FragmentActivity {
 
 	private Map map;
 
+	private MapAPIManager apiManager;
+
 	LayoutInflater layoutFactory;
 
 	private ProgressDialog waitDialog;
@@ -54,6 +56,8 @@ public class CourseActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+		this.apiManager = new MapAPIManager(this);
 
 		//layoutFactory = LayoutInflater.from(this);
 
@@ -109,7 +113,7 @@ public class CourseActivity extends FragmentActivity {
 		};
 
 		drawer.setDrawerListener(drawerToggle);
-
+		
 		// UpNavigationアイコン(アイコン横の<の部分)を有効に
 		// NavigationDrawerではR.drawable.drawerで上書き
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -193,7 +197,7 @@ public class CourseActivity extends FragmentActivity {
 			return true;
 		}
 
-		return super.onOptionsItemSelected(item);
+		return false;//super.onOptionsItemSelected(item);
 	}
 
 	public void search(String keyword) {
@@ -201,9 +205,22 @@ public class CourseActivity extends FragmentActivity {
 		this.waitDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		this.waitDialog.setMessage("検索中");
 		this.waitDialog.show();
-		// call WebAPI
 
-		this.waitDialog.dismiss();
+		ArrayList<String> keywords = new ArrayList<String>();
+		keywords.add(keyword);
+
+		// call WebAPI
+		this.apiManager.searchPlaces(35.658517, 139.701334, keywords, 1000, new OnEndPlaceRequestListener() {
+			@Override
+			public void onEndRequestListener(ArrayList<Spot> spots) {
+
+				for (Spot spot : spots) {
+					map.addPin(spot);
+				}
+
+				waitDialog.dismiss();
+			}
+		});
 	}
 
 
