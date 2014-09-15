@@ -3,14 +3,19 @@ package com.cyberagent.courseshare;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,25 +47,88 @@ public class CourseActivity extends FragmentActivity {
 
 	private ProgressDialog waitDialog;
 
+	private ActionBarDrawerToggle drawerToggle;
+	private DrawerLayout drawer;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		layoutFactory = LayoutInflater.from(this);
+		//layoutFactory = LayoutInflater.from(this);
 
-		CoursePagerAdapter adapter = new CoursePagerAdapter(this);
+		//CoursePagerAdapter adapter = new CoursePagerAdapter(this);
 
-		MapWrapperLayout mapView = (MapWrapperLayout)layoutFactory.inflate(R.layout.activity_cource, null);
-		adapter.add(new CourseGuideSpotView(this));
-		adapter.add(mapView);
+		//MapWrapperLayout mapView = (MapWrapperLayout)layoutFactory.inflate(R.layout.activity_cource, null);
+		//adapter.add(new CourseGuideSpotView(this));
+		//adapter.add(mapView);
 
 		// ViewPager を生成
-		ViewPager viewPager = new ViewPager(this);
-		viewPager.setAdapter(adapter);
+		//ViewPager viewPager = new ViewPager(this);
+		//viewPager.setAdapter(adapter);
 
 		// レイアウトにセット
-		setContentView(viewPager);
+		//setContentView(viewPager);
+		setContentView(R.layout.activity_cource);
+
+		drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		drawerToggle = new ActionBarDrawerToggle(this, drawer,
+				R.drawable.ic_launcher, R.string.hello_world, // open
+				R.string.hello_world) { // close
+			@Override
+			public void onDrawerClosed(View drawerView) {
+
+			}
+
+			@Override
+			public void onDrawerOpened(View drawerView) {
+
+			}
+
+			@Override
+			public void onDrawerSlide(View drawerView, float slideOffset) {
+				super.onDrawerSlide(drawerView, slideOffset); // アイコンのアニメーション
+
+				// MapFragmentとの相性が悪く、メニューの上にMapが表示されてしまうバグの回避
+				// drawerViewを前面へ
+				drawer.bringChildToFront(drawerView);
+				drawer.requestLayout();
+
+				// drawerViewの余白部分の背景を透明にする
+				drawer.setScrimColor(Color.TRANSPARENT);
+			}
+
+			@Override
+			public void onDrawerStateChanged(int newState) {
+				// newState
+				// 表示済み、閉じ済みの状態：0
+				// ドラッグ中状態:1
+				// ドラッグを放した後のアニメーション中：2
+
+			}
+		};
+
+		drawer.setDrawerListener(drawerToggle);
+
+		// UpNavigationアイコン(アイコン横の<の部分)を有効に
+		// NavigationDrawerではR.drawable.drawerで上書き
+		//getActionBar().setDisplayHomeAsUpEnabled(true);
+		// UpNavigationを有効に
+		//getActionBar().setHomeButtonEnabled(true);
+
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1);
+
+		// 要素の追加（1）
+		adapter.add("メニュー１");
+		adapter.add("メニュー２");
+		adapter.add("メニュー３");
+
+		SortableListView listView = (SortableListView)findViewById(R.id.waypoint_list);
+		listView.setAdapter(adapter);
+
+
+		MapWrapperLayout mapView = (MapWrapperLayout)findViewById(R.id.activity_course_layout);
 
 		TextView btnSearch = (TextView)mapView.findViewById(R.id.btn_search);
 		btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +171,29 @@ public class CourseActivity extends FragmentActivity {
 	protected void onResume() {
 		super.onResume();
 		this.map.setUpMapIfNeeded();
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		drawerToggle.syncState();
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		drawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		// ActionBarDrawerToggleにandroid.id.home(up ナビゲーション)を渡す。
+		if (drawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 	public void search(String keyword) {

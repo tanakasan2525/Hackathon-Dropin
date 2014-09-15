@@ -224,7 +224,13 @@ public class Map {
 		Pin nextPin2 = pin2.nextRoute.next;
 		Pin prevPin2 = pin2.prevRoute.prev;
 
-		//pin2.prevRoute
+		Route prev = pin1.prevRoute;
+		Route next = pin1.nextRoute;
+
+		pin1.prevRoute = pin2.prevRoute;
+		pin1.nextRoute = pin2.nextRoute;
+		pin2.prevRoute = prev;
+		pin2.prevRoute = next;
 	}
 
 	/**
