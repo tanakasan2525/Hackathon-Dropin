@@ -159,9 +159,23 @@ public class CourseActivity extends FragmentActivity {
 				"青山学院大学の文系が集まるキャンパスです。");
 		this.map.addPin(spot);
 
+        //******************************
         // MapAPIManager テスト
-        /*
+        //******************************
+        ///*
         MapAPIManager manager = new MapAPIManager(this);
+        LatLng latLng = start.getCoordinates();
+        ArrayList<String> keywords = new ArrayList<String>();
+        keywords.add("food");
+        manager.searchPlaces(latLng.latitude,latLng.longitude, keywords, 2000, new OnEndPlaceRequestListener() {
+            @Override
+            public void onEndRequestListener(ArrayList<Spot> spots) {
+                for (Spot s : spots) {
+                    //Log.v(MapAPIManager.TAG, s.toString());
+                }
+
+            }
+        });
         ArrayList<LatLng> latLngs = new ArrayList<LatLng>();
         latLngs.add(spot.getCoordinates());
         manager.routingPlaces(start.getCoordinates(), goal.getCoordinates(),latLngs, new OnEndDirectionsRequestListener() {
@@ -170,7 +184,7 @@ public class CourseActivity extends FragmentActivity {
                 Log.v(MapAPIManager.TAG, data.toString());
             }
         });
-        */
+        //*/
 
 		// 中心位置を最初の場所としてカメラを移動
 		LatLng center = new LatLng(35.658517, 139.701334);

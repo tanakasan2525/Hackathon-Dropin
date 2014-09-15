@@ -13,7 +13,7 @@ public class Spot {
 	private String name;
 	private LatLng coordinates;
 	private String description;
-	private URI imageUri; 					// リスト化するかどうか。。。
+    private ArrayList<URI> imageUri; 				// リスト化するかどうか。。。
 	private ArrayList<LatLng> direction;
 	private long duration;
 
@@ -25,7 +25,7 @@ public class Spot {
 		this(name, coordinates, description, null);
 	}
 
-	public Spot(String name, LatLng coordinates, String description, URI imageUri) {
+	public Spot(String name, LatLng coordinates, String description, ArrayList<URI> imageUri) {
 		this.name = name;
 		this.coordinates = coordinates;
 		this.description = description;
@@ -52,7 +52,7 @@ public class Spot {
 		return this.description;
 	}
 
-	public URI getImageURI() {
+	public ArrayList<URI> getImageURI() {
 		return this.imageUri;
 	}
 
