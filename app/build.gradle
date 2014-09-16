@@ -25,5 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:20.0.0'
     compile files('libs/async-google-places-0.3.2.arr')
     compile 'com.android.support:support-v4:20.0.+'
-
+    compile project(':AndroidBootstrap')
 }
