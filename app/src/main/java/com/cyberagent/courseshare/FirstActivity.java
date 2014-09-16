@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.beardedhen.androidbootstrap.BootstrapEditText;
 
 public class FirstActivity extends Activity {

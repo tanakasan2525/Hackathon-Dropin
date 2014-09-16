@@ -70,13 +70,13 @@
         android:text="検索"
         android:textColor="@color/white"
         android:background="@drawable/searchbutton_customize"/>
-    <!--<com.beardedhen.androidbootstrap.BootstrapEditText-->
-        <!--android:layout_width="150dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:gravity="center"-->
-        <!--android:hint="rounded"-->
-        <!--bootstrap:be_roundedCorners="true"-->
-        <!--bootstrap:be_state="success" />-->
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:hint="rounded"
+        bootstrap:be_roundedCorners="true"
+        bootstrap:be_state="success" />
 
 </LinearLayout>
