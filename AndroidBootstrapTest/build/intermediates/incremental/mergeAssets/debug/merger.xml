@@ -2,17 +2,17 @@
 <merger version="2" >
 
     <dataSet config="unspecified" >
-        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrapTest/build/intermediates/exploded-aar/CourseShare/AndroidBootstrap/unspecified/assets" />
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\assets" />
     </dataSet>
     <dataSet config="main" >
-        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrapTest/assets" >
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\assets" >
             <file
                 name="fontawesome-webfont.ttf"
-                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrapTest/assets/fontawesome-webfont.ttf" />
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\assets\fontawesome-webfont.ttf" />
         </source>
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrapTest/src/debug/assets" />
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\src\debug\assets" />
     </dataSet>
 
 </merger>
