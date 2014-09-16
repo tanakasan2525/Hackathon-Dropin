@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -36,6 +37,24 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,6 +66,8 @@ public class CourseActivity extends FragmentActivity {
 	private Map map;
 
 	private MapAPIManager apiManager;
+
+	private PersonTracker personTracker;
 
 	private ArrayList<MapTask> mapTasks;
 
@@ -63,6 +84,7 @@ public class CourseActivity extends FragmentActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		this.apiManager = new MapAPIManager(this);
+		this.personTracker = new PersonTracker(this);
 		this.mapTasks = new ArrayList<MapTask>();
 
 		//layoutFactory = LayoutInflater.from(this);
@@ -162,8 +184,40 @@ public class CourseActivity extends FragmentActivity {
 		String waypoint = i.getStringExtra("transitPoint");
 		int timeLeft = i.getIntExtra("timeLeft", 0);
 
+		// Google ジオコーディングテスト
+		/*try {
+			StringBuilder sb = new StringBuilder("http://maps.google.com/maps/api/geocode/json?sensor=false");
+			sb.append("&address=" + URLEncoder.encode(start, "utf8"));
+			MyWeb.getJson(sb.toString(), new MyWeb.JsonListener() {
+				@Override
+				public void callback(JSONObject json) {
+					Log.v("TEST", "callback " + json);
+					try {
+						double lat = json.getJSONArray("results").getJSONObject(0)
+								.getJSONObject("geometry").getJSONObject("location")
+								.getDouble("lat");
+
+						double lng = json.getJSONArray("results").getJSONObject(0)
+								.getJSONObject("geometry").getJSONObject("location")
+								.getDouble("lng");
+
+						LatLng latlng = new LatLng(lat, lng);
+						Log.v("TEST", latlng.toString());
+
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
+
 		this.mapTasks.add(new MapTask(TaskType.START, "dummy")); // doNextTaskをうまく動かすためのダミー
-		this.mapTasks.add(new MapTask(TaskType.START, start));
+
+		if (!"現在地".equals(start)) {
+			this.mapTasks.add(new MapTask(TaskType.START, start));
+		}
 		this.mapTasks.add(new MapTask(TaskType.GOAL, goal));
 		if (waypoint != null)
 			this.mapTasks.add(new MapTask(TaskType.WAYPOINT, waypoint));
@@ -171,10 +225,13 @@ public class CourseActivity extends FragmentActivity {
 		resetSpotList();
 
 		// カメラの移動
-		LatLng center = new LatLng(35.658517, 139.701334);
-		this.map.setCenter(center);
+		LatLng now = new LatLng(this.personTracker.getLatitude(), this.personTracker.getLongitude());
+		this.map.setCenter(now);
 
-		doNextTask();
+		if ("現在地".equals(start)) {
+			this.map.confirmPin(this.map.addPin(new Spot(start, now)));
+		} else
+			doNextTask();
 	}
 
 	@Override
@@ -252,13 +309,21 @@ public class CourseActivity extends FragmentActivity {
 			@Override
 			public void onEndRequestListener(ArrayList<Spot> spots) {
 
-				if (!spots.isEmpty())
-					map.setCenter(spots.get(0).getCoordinates());
+				//if (!spots.isEmpty())
+				//	map.setCenter(spots.get(0).getCoordinates());
 
-				for (Spot spot : spots)
-					map.addPin(spot);
+				if (waitDialog != null)
+					waitDialog.dismiss();
+				waitDialog = null;
 
-				waitDialog.dismiss();
+				if (spots.size() == 1) {
+					// 候補のピンがひとつしかない場合は確定
+					Map.Pin pin = map.addPin(spots.get(0));
+					map.confirmPin(pin);
+				} else {
+					for (Spot spot : spots)
+						map.addPin(spot);
+				}
 			}
 		});
 	}
@@ -326,3 +391,53 @@ public class CourseActivity extends FragmentActivity {
 	}
 
 }
+
+class MyWeb {
+	public interface JsonListener {
+		public void callback(JSONObject json);
+	}
+
+	public static void getJson(String uri, final JsonListener listener) {
+		(new AsyncTask<String, Integer, Integer>() {
+			@Override
+			protected Integer doInBackground(String... contents) {
+				HttpURLConnection conn = null;
+				StringBuilder stringBuilder = new StringBuilder();
+				try {
+					URL url = new URL(contents[0]);
+					conn = (HttpURLConnection) url.openConnection();
+					InputStreamReader in = new InputStreamReader(conn.getInputStream());
+
+					int read;
+					char[] buff = new char[1024];
+					while ((read = in.read(buff)) != -1) {
+						stringBuilder.append(buff, 0, read);
+					}
+
+				} catch (MalformedURLException e) {
+					listener.callback(null);
+					return null;
+				} catch (IOException e) {
+					listener.callback(null);
+					return null;
+				} finally {
+					if (conn != null) {
+						conn.disconnect();
+					}
+				}
+
+				JSONObject jsonObject = null;
+				try {
+					jsonObject = new JSONObject(stringBuilder.toString());
+
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				listener.callback(jsonObject);
+				return 0;
+			}
+
+		}).execute(uri);
+	}
+}
+
