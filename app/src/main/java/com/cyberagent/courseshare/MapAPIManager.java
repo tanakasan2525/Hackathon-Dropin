@@ -15,11 +15,13 @@ import com.google.android.gms.maps.model.LatLng;
 import io.github.axxiss.places.PlacesSettings;
 import io.github.axxiss.places.Response;
 import io.github.axxiss.places.callback.PlacesCallback;
+import io.github.axxiss.places.enums.RankBy;
 import io.github.axxiss.places.model.Event;
 import io.github.axxiss.places.model.Photo;
 import io.github.axxiss.places.model.Place;
 import io.github.axxiss.places.request.NearbySearch;
 import io.github.axxiss.places.request.PlaceSearch;
+import io.github.axxiss.places.request.TextSearch;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -62,7 +64,7 @@ public class MapAPIManager {
         PlacesSettings.getInstance().setApiKey(context.getResources().getString(R.string.google_api_key)/*context.getResources().getString(R.string.google_maps_key)*/);
 
         // 検索範囲の指定
-        final NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
+        NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
 
         String searchWord = "";
         // 検索ワードの設定
@@ -152,6 +154,8 @@ public class MapAPIManager {
             public void onException(Exception exception) {
                 exception.printStackTrace();
                 Log.v(TAG, "Request error");
+                ArrayList<Spot> spots = new ArrayList<Spot>();
+                listener.onEndRequestListener("Error", spots);
             }
         });
     }
