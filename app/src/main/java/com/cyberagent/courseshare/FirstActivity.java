@@ -40,7 +40,7 @@ public class FirstActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         //遷移させる画面の決定
-        intent = new Intent(FirstActivity.this,CourceActivity.class);
+        intent = new Intent(FirstActivity.this, CourseActivity.class);
         findViews();
         initViews(intent);
     }
