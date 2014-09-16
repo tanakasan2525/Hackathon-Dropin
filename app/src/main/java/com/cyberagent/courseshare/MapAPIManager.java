@@ -64,11 +64,13 @@ public class MapAPIManager {
         // 検索範囲の指定
         final NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
 
+        String searchWord = "";
         // 検索ワードの設定
         for (String word : searchWords) {
-            search.setKeyword(word);
-            Log.v(TAG, "word:" + word);
+            searchWord += word + "&";
         }
+        Log.v(TAG, "search word:" + searchWord);
+        search.setKeyword(searchWord);
 
         // リクエストの送信
         search.sendRequest(new PlacesCallback() {
