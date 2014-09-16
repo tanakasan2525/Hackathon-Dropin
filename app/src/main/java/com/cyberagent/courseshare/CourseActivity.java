@@ -282,13 +282,13 @@ public class CourseActivity extends FragmentActivity {
 			MapTask mt = this.mapTasks.get(0);
 			switch (mt.type) {
 				case START:
-					Toast.makeText(this, "現在地を選択してください", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, "現在地を選択してください", Toast.LENGTH_LONG).show();
 					break;
 				case GOAL:
-					Toast.makeText(this, "目的地を選択してください", Toast.LENGTH_SHORT).show();;
+					Toast.makeText(this, "目的地を選択してください", Toast.LENGTH_LONG).show();
 					break;
 				case WAYPOINT:
-					Toast.makeText(this, "寄り道する場所を選択してください", Toast.LENGTH_SHORT).show();;
+					Toast.makeText(this, "寄り道する場所を選択してください", Toast.LENGTH_LONG).show();
 					break;
 			}
 			search(mt.keyword);

@@ -262,14 +262,15 @@ public class Map {
 	 * 経由地から取り除きます。
 	 * @param pin 取り除くピン
 	 */
-	public void removeWeyPoint(Pin pin) {
+	public void removeWayPoint(Pin pin) {
 
 		removeRoute();
-		setRoute();
 
 		pin.marker.remove();
 		this.pins.remove(pin);
 		this.waypoints.remove(pin);
+
+		setRoute();
 
 		owner.resetSpotList();
 	}
@@ -403,7 +404,7 @@ public class Map {
 			{
 				@Override
 				protected void onClickConfirmed(View v, Marker marker) {
-					removeWeyPoint(getPinFromMarker(marker));
+					removeWayPoint(getPinFromMarker(marker));
 				}
 			};
 		}
