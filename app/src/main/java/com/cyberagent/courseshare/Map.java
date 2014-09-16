@@ -2,6 +2,9 @@ package com.cyberagent.courseshare;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +26,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.internal.d;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.BinaryHttpResponseHandler;
+import org.apache.http.Header;
 
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.channels.AsynchronousCloseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -418,6 +429,39 @@ public class Map {
 
 			mapView.setMarkerWithInfoWindow(marker, this.window);
             Spot spot = pin.spot;
+            final ArrayList<URI> imgURIs = spot.getImageURI();
+            if (imgURIs != null) {
+                URL url = null;
+                InputStream inputStream;
+                AsyncHttpClient client = new AsyncHttpClient();
+                try {
+                    Log.v("INPUT_TEST", "error 1");
+                    url = imgURIs.get(0).toURL();
+                    Log.v("INPUT_TEST", "error 2");
+                    final ImageView imgView = this.icon;
+                    client.get(url.toString(), new BinaryHttpResponseHandler(){
+                        @Override
+                        public void onSuccess(byte[] binaryData) {
+                            super.onSuccess(binaryData);
+                            Log.v("INPUT_TEST", "IMG request sucsess");
+                            Bitmap bmp = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
+                            imgView.setImageBitmap(bmp);
+                        }
+                    });
+                    /*
+                    inputStream = url.openStream();
+                    Log.v("INPUT_TEST", "error 3");
+                    Drawable drawable = Drawable.createFromStream(inputStream, "");
+                    Log.v("INPUT_TEST", "error 4");
+
+                    this.icon.setImageDrawable(drawable);
+                    */
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
 
 			if (!waypoints.contains(pin) && !pin.equals(startPin) && !pin.equals(goalPin)) {
