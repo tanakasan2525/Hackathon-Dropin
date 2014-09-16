@@ -455,6 +455,7 @@ public class Map {
                             handleMemberPin.img = bmp;
                             handleMemberIcon.setImageBitmap(bmp);
                             Log.v("INPUT_TEST", handleMemberPin.spot.getName());
+							getInfoContents(handleMemberPin.marker);
                         }
                     });
 
@@ -499,6 +500,9 @@ public class Map {
 		@Override
 		public View getInfoContents(Marker marker) {
 			// getInfoWindow()の戻り値がnullの時だけ呼ばれるっぽい
+			if (marker != null && marker.isInfoWindowShown()) {
+				marker.showInfoWindow();
+			}
 			return null;
 		}
 

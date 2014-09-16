@@ -184,6 +184,8 @@ public class CourseActivity extends FragmentActivity {
 		String waypoint = i.getStringExtra("transitPoint");
 		int timeLeft = i.getIntExtra("timeLeft", 0);
 
+
+
 		// Google ジオコーディングテスト
 		/*try {
 			StringBuilder sb = new StringBuilder("http://maps.google.com/maps/api/geocode/json?sensor=false");
