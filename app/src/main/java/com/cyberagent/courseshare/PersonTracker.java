@@ -185,7 +185,6 @@ public class PersonTracker extends Service implements LocationListener, SensorEv
     public void onLocationChanged(Location location) {
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();
-
         //新しい位置に人を表示させるメソッド
 
     }
