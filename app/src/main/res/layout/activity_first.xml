@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
+    android:focusableInTouchMode="true"
+    android:id="@+id/firstActivity"
     tools:context=".FirstActivity">
-
-
 
     <TextView
         android:layout_width="match_parent"
@@ -20,29 +20,100 @@
         android:layout_gravity="center_horizontal"
         />
 
-    <EditText
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/start"
-        android:layout_gravity="center_horizontal"
-        android:text="現在地"
-        android:hint="出発地"/>
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/start_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="出発"
+            android:textColor="@color/white"
+            android:background="@drawable/start_text"/>
+
+        <!--<EditText-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/start"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:text="現在地"-->
+            <!--android:hint="出発地"/>-->
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/start"
+            android:text="現在地"
+            android:hint="出発地"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
+            bootstrap:bb_roundedCorners ="true"
+            bootstrap:bb_icon_right="fa-location-arrow"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="info" />
 
 
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="現在地"
+            android:layout_gravity="center_horizontal"
+            bootstrap:bb_roundedCorners ="true"
+            bootstrap:bb_icon_right="fa-location-arrow"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="info" />
 
-    <EditText
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/goal"
-        android:layout_gravity="center_horizontal"
-        android:hint="目的地"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/end_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="到着"
+            android:textColor="@color/white"
+            android:background="@drawable/end_text"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/transitPoint"
-        android:layout_gravity="center_horizontal"
-        android:hint="経由地"/>
+
+        <com.beardedhen.androidbootstrap.BootstrapEditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/goal"
+            android:hint="目的地"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
+            bootstrap:bb_roundedCorners ="true"
+            bootstrap:bb_icon_right="fa-location-arrow"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="info" />
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:id="@+id/goalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="現在地"
+            android:layout_gravity="center_horizontal"
+            bootstrap:bb_roundedCorners ="true"
+            bootstrap:bb_icon_right="fa-location-arrow"
+            bootstrap:bb_size="small"
+            bootstrap:bb_type="info" />
+
+    </LinearLayout>
 
     <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/timeLeftButton"
@@ -55,12 +126,23 @@
         bootstrap:bb_icon_right="fa-angle-down"
         bootstrap:bb_type="success" />
 
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:id="@+id/transitPoint"
+        android:hint="よりみち"
+        />
+
+
+
     <!--<com.beardedhen.androidbootstrap.FontAwesomeText-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:textSize="32sp"-->
-        <!--bootstrap:fa_icon="fa-github" />-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:textSize="32sp"-->
+    <!--bootstrap:fa_icon="fa-github" />-->
 
     <Button
         android:id="@+id/searchButton"
@@ -70,13 +152,6 @@
         android:text="検索"
         android:textColor="@color/white"
         android:background="@drawable/searchbutton_customize"/>
-    <com.beardedhen.androidbootstrap.BootstrapEditText
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:hint="rounded"
-        bootstrap:be_roundedCorners="true"
-        bootstrap:be_state="success" />
+
 
 </LinearLayout>

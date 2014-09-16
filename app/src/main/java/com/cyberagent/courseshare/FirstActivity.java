@@ -2,16 +2,23 @@ package com.cyberagent.courseshare;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
@@ -22,6 +29,8 @@ import com.beardedhen.androidbootstrap.BootstrapEditText;
 public class FirstActivity extends Activity {
 
     private Button searchButton;
+    private BootstrapButton startButton;
+    private BootstrapButton goalButton;
     private EditText start;
     private EditText goal;
     private BootstrapButton timeLeftButton;
@@ -29,9 +38,16 @@ public class FirstActivity extends Activity {
     private NumberPicker minutes;
     private EditText transitPoint;
     //空き時間の初期設定（分）
+    private int hoursLeft = 1;
+    private int minutesLeft = 0;
     private int timeLeft = 60;
     //検索ができるかどうかのチェック
     private boolean isSearchEnabled = false;
+
+    // キーボード表示を制御するためのオブジェクト
+    InputMethodManager inputMethodManager;
+    // 背景のレイアウト
+    private LinearLayout mainLayout;
 
     Intent intent;
     @Override
@@ -39,10 +55,37 @@ public class FirstActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mainLayout = (LinearLayout) findViewById(R.id.firstActivity);
         //遷移させる画面の決定
         intent = new Intent(FirstActivity.this, CourseActivity.class);
         findViews();
         initViews(intent);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+//        final AutoCompleteTextView autoCompView = (AutoCompleteTextView)findViewById(R.id.transitPoint);
+//        autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
+//
+//        autoCompView.setOnKeyListener(new View.OnKeyListener() {
+//            //コールバックとしてonKey()メソッドを定義
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                // エンターキーで決定
+//                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//                    returnIntent(autoCompView.getText().toString());
+//
+//                    return true;
+//                }
+//
+//                return false;
+//            }
+//        });
+    }
+    private void returnIntent(String keyword) {
+        Intent i = new Intent();
+        i.putExtra("keyword", keyword);
+        setResult(RESULT_OK, i);
+        finish();
     }
 
     private void findViews() {
@@ -50,13 +93,29 @@ public class FirstActivity extends Activity {
         this.start = (EditText)findViewById(R.id.start);
         this.goal = (EditText)findViewById(R.id.goal);
         this.timeLeftButton = (BootstrapButton) findViewById(R.id.timeLeftButton);
+        this.startButton = (BootstrapButton)findViewById(R.id.startButton);
+        this.goalButton = (BootstrapButton)findViewById(R.id.goalButton);
 //        this.hours = (NumberPicker)findViewById(R.id.hours);
 //        this.minutes = (NumberPicker)findViewById(R.id.minutes);
         this.transitPoint = (EditText)findViewById(R.id.transitPoint);
     }
 
     private void initViews(final Intent intent){
-        timeLeftButton.setText("空き時間: "+ Integer.toString(timeLeft)+"分");
+        timeLeftButton.setText("空き時間： "+ Integer.toString(hoursLeft)+"時間"+Integer.toString(minutesLeft)+"分");
+
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start.setText("現在地");
+            }
+        });
+
+        goalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goal.setText("現在地");
+            }
+        });
 
         //ボタンクリック時の処理を実装する
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -108,8 +167,11 @@ public class FirstActivity extends Activity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        timeLeft = hours.getValue()* 60 + minutes.getValue();
-                        timeLeftButton.setText("空き時間: "+ Integer.toString(timeLeft)+"分");
+                        hoursLeft = hours.getValue();
+                        minutesLeft = minutes.getValue();
+                        timeLeft = hoursLeft*60 + minutesLeft;
+                        timeLeftButton.setText("空き時間： "+ Integer.toString(hours.getValue()) +"時間 "
+                                +Integer.toString(minutes.getValue())+"分");
                     }
                 });
         // アラートダイアログの否定ボタンがクリックされた時に呼び出されるコールバックリスナーを登録します
@@ -169,5 +231,18 @@ public class FirstActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    // 画面タップ時の処理
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+// キーボードを隠す
+        inputMethodManager.hideSoftInputFromWindow(mainLayout.getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+// 背景にフォーカスを移す
+        mainLayout.requestFocus();
+
+        return true;
+
     }
 }
