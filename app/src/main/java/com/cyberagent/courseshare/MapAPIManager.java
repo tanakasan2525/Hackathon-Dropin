@@ -104,9 +104,9 @@ public class MapAPIManager {
                         for (Photo photo : places[i].getPhotos()) {
                             // URI文字列の作成
                             String mapsUrl = "https://maps.googleapis.com/maps/api/place/photo?";
-                            String maxWidth = "maxwidth=" + photo.getWidth();
+                            String maxWidth = "maxwidth=" + IMAGE_SIZE;
                             String maxHeight = "maxheight=" + IMAGE_SIZE;
-                            String ref = "photoreference=" + IMAGE_SIZE;
+                            String ref = "photoreference=" + photo.getPhoto_reference();
                             String sensor = "sensor=true";
                             String key = "key=" + context.getResources().getString(R.string.google_api_key);
 
