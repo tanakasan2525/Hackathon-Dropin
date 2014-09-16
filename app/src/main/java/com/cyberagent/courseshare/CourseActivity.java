@@ -178,37 +178,6 @@ public class CourseActivity extends FragmentActivity {
 		String waypoint = i.getStringExtra("transitPoint");
 		int timeLeft = i.getIntExtra("timeLeft", 0);
 
-
-
-		// Google ジオコーディングテスト
-		/*try {
-			StringBuilder sb = new StringBuilder("http://maps.google.com/maps/api/geocode/json?sensor=false");
-			sb.append("&address=" + URLEncoder.encode(start, "utf8"));
-			WebUtil.getJson(sb.toString(), new WebUtil.JsonListener() {
-				@Override
-				public void callback(JSONObject json) {
-					Log.v("TEST", "callback " + json);
-					try {
-						double lat = json.getJSONArray("results").getJSONObject(0)
-								.getJSONObject("geometry").getJSONObject("location")
-								.getDouble("lat");
-
-						double lng = json.getJSONArray("results").getJSONObject(0)
-								.getJSONObject("geometry").getJSONObject("location")
-								.getDouble("lng");
-
-						LatLng latlng = new LatLng(lat, lng);
-						Log.v("TEST", latlng.toString());
-
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
-
 		this.mapTasks.add(new MapTask(TaskType.START, "dummy")); // doNextTaskをうまく動かすためのダミー
 
 		if (!"現在地".equals(start)) {
@@ -310,6 +279,10 @@ public class CourseActivity extends FragmentActivity {
 
 				//if (!spots.isEmpty())
 				//	map.setCenter(spots.get(0).getCoordinates());
+
+				if (getTaskType() == TaskType.START)
+					if (!spots.isEmpty())
+						map.setCenter(spots.get(0).getCoordinates());
 
 				if (waitDialog != null)
 					waitDialog.dismiss();

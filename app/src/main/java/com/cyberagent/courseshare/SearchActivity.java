@@ -56,6 +56,8 @@ public class SearchActivity extends Activity {
 			}
 		});
 
+		UIUtil.animateAppearing(mainLayout, 800);
+
     }
 
     @Override

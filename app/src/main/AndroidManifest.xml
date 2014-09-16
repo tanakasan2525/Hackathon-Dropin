@@ -21,11 +21,7 @@
         </activity>
         <activity
             android:name=".FirstActivity"
-            android:label="FirstActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:label="FirstActivity" >
         </activity>
 
         <meta-data
@@ -38,6 +34,15 @@
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_splash" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
         </activity>
     </application>
 

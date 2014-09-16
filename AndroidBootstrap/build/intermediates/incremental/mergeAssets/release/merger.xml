@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/src/main/assets" />
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\src\main\assets" />
     </dataSet>
     <dataSet config="release" >
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/src/release/assets" />
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\src\release\assets" />
     </dataSet>
 
 </merger>

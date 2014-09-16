@@ -27,7 +27,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="horizontal"
-				android:background="#1F4788">
+				android:background="#53cc91">
 				<ImageView
 					android:layout_width="50dp"
 					android:layout_height="50dp"/>
@@ -58,18 +58,31 @@
 		android:layout_height="match_parent"
 		android:layout_gravity="left"
 		android:orientation="vertical"
-		android:background="#333" >
+		android:background="#53cc91"
+		android:alpha="200">
 
-		<Button
-			android:id="@+id/drawer_button"
+		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="48dp"
-			android:text="drawer button" />
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="10dp"
+			android:text="よりみちリスト"
+			android:textSize="30dp"
+			android:textColor="#FFFFFF"
+			android:gravity="center_horizontal"/>
 		<com.cyberagent.courseshare.SortableListView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/waypoint_list"
 			android:background="#CCCCCC"/>
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="- 検索フィルタ -"
+			android:textSize="16dp"
+			android:textColor="#FFFFFF"
+			android:gravity="center_horizontal"/>
 		<RatingBar
 			android:id="@+id/ratingbar"
 			android:layout_width="wrap_content"
@@ -80,6 +93,17 @@
 			android:numStars="5"
 			android:rating="3"
 			android:stepSize="0.5"/>
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="5dp"
+			android:background="#FFFFFF"
+			android:layout_marginTop="30dp"/>
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:src="@drawable/dropin"
+			android:layout_marginTop="10dp"/>
 	</LinearLayout>
 
 </com.cyberagent.courseshare.CourseDrawerLayout>
