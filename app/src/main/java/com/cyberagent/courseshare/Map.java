@@ -107,12 +107,20 @@ public class Map {
 
 	public void setStart(Spot start) {
 		this.startPin = addPin(start);
+		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+		this.startPin.marker.setIcon(icon);
+		this.startPin.marker.setAlpha(1.0f);
+
 		if (this.goalPin != null)
 			setRoute();
 	}
 
 	public void setGoal(Spot goal) {
 		this.goalPin = addPin(goal);
+		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+		this.goalPin.marker.setIcon(icon);
+		this.goalPin.marker.setAlpha(1.0f);
+
 		if (this.startPin != null) {
 			setRoute();
 		}
@@ -124,12 +132,41 @@ public class Map {
 	 * @return 追加したピン
 	 */
 	public Pin addPin(Spot spot) {
-		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE);
+		float hue = 0;
+		float alpha = 0;
+		double rating = spot.getRating();
+		BitmapDescriptor icon ;
+
+		if (rating <= 1) {
+			hue = 225;
+			alpha = 0.4f;
+			icon = BitmapDescriptorFactory.defaultMarker(hue);
+		} else if (rating <= 2) {
+			hue = 180;
+			alpha = 0.5f;
+			icon = BitmapDescriptorFactory.defaultMarker(hue);
+		} else if (rating <= 3) {
+			hue = 135;
+			alpha = 0.6f;
+			icon = BitmapDescriptorFactory.defaultMarker(hue);
+		} else if (rating <= 4) {
+			hue = 90;
+			alpha = 0.8f;
+			icon = BitmapDescriptorFactory.defaultMarker(hue);
+		} else {
+			hue = 45;
+			alpha = 1.0f;
+			icon = BitmapDescriptorFactory.defaultMarker(hue);
+		}
+
 		MarkerOptions options = new MarkerOptions()
 				.position(spot.getCoordinates())
 				.title(spot.getName())
 				.snippet(spot.getDescription())
-				.icon(icon);
+				.icon(icon)
+				.alpha(alpha);
+
+
 		Pin pin = new Pin(this.map.addMarker(options), spot);
 		this.pins.add(pin);
 		return pin;
@@ -145,6 +182,14 @@ public class Map {
 			if (!this.waypoints.contains(pin) && !pin.equals(this.startPin) && !pin.equals(this.goalPin)) {
 				pin.marker.remove();
 				i.remove();
+			}
+		}
+	}
+
+	public void hidePinByRating(float rating) {
+		for (Pin pin : this.pins) {
+			if (!this.waypoints.contains(pin) && !pin.equals(this.startPin) && !pin.equals(this.goalPin)) {
+				pin.marker.setVisible(pin.spot.getRating() >= rating);
 			}
 		}
 	}
@@ -182,14 +227,6 @@ public class Map {
 		});
 	}
 
-	abstract class MapTask implements Runnable {
-		Pin pin;
-		MapTask(Pin p) { pin = p; }
-
-		@Override
-		public abstract void run();
-	}
-
 	public void setRoute() {
 		removeRoute();
 
@@ -211,28 +248,6 @@ public class Map {
 				line = map.addPolyline(lineOptions);
 			}
 		});
-
-		/*(new Thread(new MapTask(p) {
-			@Override
-			public void run() {
-				while (previewLine == null) {
-					try {
-						Thread.sleep(500);
-					} catch ( InterruptedException e ) {
-						e.printStackTrace();
-					}
-				}
-
-				handler.post(new MapTask(this.pin) {
-					@Override
-					public void run() {
-						previewLine.setColor(0x5500ff00);
-						line = previewLine;
-						previewLine = null;
-					}
-				});
-			}
-		})).start();*/
 
 	}
 
@@ -501,7 +516,7 @@ public class Map {
 		public View getInfoContents(Marker marker) {
 			// getInfoWindow()の戻り値がnullの時だけ呼ばれるっぽい
 			if (marker != null && marker.isInfoWindowShown()) {
-				marker.showInfoWindow();
+				marker.showInfoWindow(); // アイコン表示のための再描画
 			}
 			return null;
 		}
