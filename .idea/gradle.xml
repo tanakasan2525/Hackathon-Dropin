@@ -8,6 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/AndroidBootstrap" />
+            <option value="$PROJECT_DIR$/AndroidBootstrapTest" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

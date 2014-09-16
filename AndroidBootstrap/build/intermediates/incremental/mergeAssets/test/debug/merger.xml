@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="debug" >
+        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/src/androidTest/assets" />
+    </dataSet>
+
+</merger>

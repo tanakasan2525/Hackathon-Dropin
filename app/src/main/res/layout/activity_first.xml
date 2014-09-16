@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context=".FirstActivity">
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="よりみち検索"
+        android:id="@+id/appTitle"
+        android:textSize="15pt"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/start"
+        android:layout_gravity="center_horizontal"
+        android:text="現在地"
+        android:hint="出発地"/>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goal"
+        android:layout_gravity="center_horizontal"
+        android:hint="目的地"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/transitPoint"
+        android:layout_gravity="center_horizontal"
+        android:hint="経由地"/>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/timeLeftButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="空き時間"
+        android:layout_gravity="center_horizontal"
+        bootstrap:bb_roundedCorners ="true"
+        bootstrap:bb_icon_right="fa-angle-down"
+        bootstrap:bb_type="success" />
+
+    <!--<com.beardedhen.androidbootstrap.FontAwesomeText-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:textSize="32sp"-->
+        <!--bootstrap:fa_icon="fa-github" />-->
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="検索"
+        android:textColor="@color/white"
+        android:background="@drawable/searchbutton_customize"/>
+    <com.beardedhen.androidbootstrap.BootstrapEditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:hint="rounded"
+        bootstrap:be_roundedCorners="true"
+        bootstrap:be_state="success" />
+
+</LinearLayout>
