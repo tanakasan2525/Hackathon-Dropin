@@ -143,7 +143,6 @@ public class MapAPIManager {
                     spot.setPriceLevel(priceLevel);
                     spot.setTypes(types);
 
-                    spot.getDescription();
                     spots.add(spot);
                 }
 

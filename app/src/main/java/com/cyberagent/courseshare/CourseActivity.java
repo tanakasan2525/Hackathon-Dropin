@@ -77,6 +77,7 @@ public class CourseActivity extends FragmentActivity {
 
 	private ActionBarDrawerToggle drawerToggle;
 	private DrawerLayout drawer;
+	private RatingBar ratingBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -159,24 +160,17 @@ public class CourseActivity extends FragmentActivity {
 			}
 		});
 
-		RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingbar);
+		this.ratingBar = (RatingBar)findViewById(R.id.ratingbar);
 		ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
 			@Override
 			public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 				// レートが変更された際の処理
+				map.hidePinByRating(rating);
 			}
 		});
+		//map.hidePinByRating(rating);
 
 		this.map = new Map(this, mapView, (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map), this.apiManager);
-
-		/*ArrayList<LatLng> points = new ArrayList<LatLng>();
-		points.add(new LatLng(35.658517, 139.701334));
-		points.add(new LatLng(35.6701676, 139.7026946));
-
-		Spot start = new Spot("渋谷駅", new LatLng(35.658517, 139.701334), "JR東日本、東急、東京メトロの駅です。");
-		Spot goal = new Spot("原宿駅", new LatLng(35.6701676, 139.7026946), "原宿駅です");
-		goal.setDirection(points);
-		this.map.setStartAndGoal(start, goal);*/
 
 		Intent i = getIntent();
 		String start = i.getStringExtra("start");
@@ -324,10 +318,12 @@ public class CourseActivity extends FragmentActivity {
 				if (spots.size() == 1) {
 					// 候補のピンがひとつしかない場合は確定
 					Map.Pin pin = map.addPin(spots.get(0));
+					map.hidePinByRating(ratingBar.getRating());
 					map.confirmPin(pin);
 				} else {
 					for (Spot spot : spots)
 						map.addPin(spot);
+					map.hidePinByRating(ratingBar.getRating());
 				}
 			}
 		});

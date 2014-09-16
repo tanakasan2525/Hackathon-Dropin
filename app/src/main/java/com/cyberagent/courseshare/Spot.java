@@ -14,7 +14,7 @@ public class Spot {
 	private String name;
 	private LatLng coordinates;
 	private String description;
-    private ArrayList<URI> imageUri; 				// リスト化するかどうか。。。
+    private ArrayList<URI> imageUri;
 	private ArrayList<LatLng> direction;
 	private long duration;
     private double rating;
