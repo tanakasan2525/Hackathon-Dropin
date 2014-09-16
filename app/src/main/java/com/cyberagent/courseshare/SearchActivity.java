@@ -1,29 +1,42 @@
 package com.cyberagent.courseshare;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 public class SearchActivity extends Activity {
     Intent firstActivityIntent;
+    private LinearLayout mainLayout;
+
+    InputMethodManager inputMethodManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_search);
-
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mainLayout = (LinearLayout) findViewById(R.id.searchActivity);
 		final AutoCompleteTextView autoCompView = (AutoCompleteTextView)findViewById(R.id.autocomplete);
 		autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
+        autoCompView.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                inputMethodManager.showSoftInput(autoCompView, 0);
+            }
+        }, 200);
         firstActivityIntent = getIntent();
 
 		autoCompView.setOnKeyListener(new View.OnKeyListener() {
@@ -70,6 +83,17 @@ public class SearchActivity extends Activity {
 		setResult(RESULT_OK, i);
 		finish();
 	}
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+// キーボードを隠す
+        inputMethodManager.hideSoftInputFromWindow(mainLayout.getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+// 背景にフォーカスを移す
+        mainLayout.requestFocus();
+
+        return true;
+    }
 
 	public void onClickRestaurant(View view) {
 		returnIntent("レストラン");
