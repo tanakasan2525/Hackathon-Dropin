@@ -85,6 +85,8 @@ public class MapAPIManager {
                     ArrayList<URI> imageUri = null;//画像のURL
                     double rating;
                     int priceLevel;
+                    ArrayList<String> types = null;
+
 
                     // 名前
                     name = places[i].getName();
@@ -126,11 +128,16 @@ public class MapAPIManager {
                     // 評価
                     rating = places[i].getRating();
 
+                    // 価格帯
                     priceLevel = places[i].getPrice_level();
+
+                    // タイプ()
+                    types = new ArrayList<String>(places[i].getTypes());
 
                     Spot spot = new Spot(name, latLng, description, imageUri);
                     spot.setRating(rating);
                     spot.setPriceLevel(priceLevel);
+                    spot.setTypes(types);
 
                     spot.getDescription();
                     spots.add(spot);
@@ -182,6 +189,8 @@ public class MapAPIManager {
                 long duration = 0;
                 // 距離
                 long distance = 0;
+                // 各座標間の距離
+                ArrayList<Long> legDuration = new ArrayList<Long>();
 
                 if (routes.isEmpty()) return;
 
@@ -195,6 +204,8 @@ public class MapAPIManager {
                     // データの設定
                     duration += leg.getDurationValue();
                     distance += leg.getDistanceValue();
+                    Log.v(TAG+"_direction", leg.getDurationText());
+                    legDuration.add(leg.getDurationValue());
 
                     // 各ステップのPolyLineを設定しコールバックに渡すリストにセット
                     ArrayList<Step> steps = leg.getSteps();
@@ -207,6 +218,8 @@ public class MapAPIManager {
                 data.put("duration", duration);
                 // 距離の設定
                 data.put("distance", distance);
+                // 各座標間の距離
+                data.put("legs", legs);
 
                 listener.onEndDirectionListener(latLngs, data);
             }

@@ -2,6 +2,7 @@ package com.cyberagent.courseshare;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.lang.reflect.Array;
 import java.net.URI;
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class Spot {
 	private long duration;
     private double rating;
     private int priceLevel;
+    private ArrayList<String> types;
 
 	public Spot(String name, LatLng coordinates) {
 		this(name, coordinates, null);
@@ -81,4 +83,13 @@ public class Spot {
     public void setPriceLevel(int priceLevel) {
         this.priceLevel = priceLevel;
     }
+
+    public ArrayList<String> getTypes() {
+        return types;
+    }
+
+    public void setTypes(ArrayList<String> types) {
+        this.types = types;
+    }
 }
+
