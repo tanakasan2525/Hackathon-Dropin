@@ -188,7 +188,7 @@ public class CourseActivity extends FragmentActivity {
 		/*try {
 			StringBuilder sb = new StringBuilder("http://maps.google.com/maps/api/geocode/json?sensor=false");
 			sb.append("&address=" + URLEncoder.encode(start, "utf8"));
-			MyWeb.getJson(sb.toString(), new MyWeb.JsonListener() {
+			WebUtil.getJson(sb.toString(), new WebUtil.JsonListener() {
 				@Override
 				public void callback(JSONObject json) {
 					Log.v("TEST", "callback " + json);
@@ -293,6 +293,9 @@ public class CourseActivity extends FragmentActivity {
 		this.waitDialog.setMessage("検索中");
 		this.waitDialog.show();
 
+		// 前回の検索結果を削除
+		this.map.removeAllPins();
+
 		ArrayList<String> keywords = new ArrayList<String>();
 		keywords.add(keyword);
 
@@ -390,54 +393,5 @@ public class CourseActivity extends FragmentActivity {
 		}
 	}
 
-}
-
-class MyWeb {
-	public interface JsonListener {
-		public void callback(JSONObject json);
-	}
-
-	public static void getJson(String uri, final JsonListener listener) {
-		(new AsyncTask<String, Integer, Integer>() {
-			@Override
-			protected Integer doInBackground(String... contents) {
-				HttpURLConnection conn = null;
-				StringBuilder stringBuilder = new StringBuilder();
-				try {
-					URL url = new URL(contents[0]);
-					conn = (HttpURLConnection) url.openConnection();
-					InputStreamReader in = new InputStreamReader(conn.getInputStream());
-
-					int read;
-					char[] buff = new char[1024];
-					while ((read = in.read(buff)) != -1) {
-						stringBuilder.append(buff, 0, read);
-					}
-
-				} catch (MalformedURLException e) {
-					listener.callback(null);
-					return null;
-				} catch (IOException e) {
-					listener.callback(null);
-					return null;
-				} finally {
-					if (conn != null) {
-						conn.disconnect();
-					}
-				}
-
-				JSONObject jsonObject = null;
-				try {
-					jsonObject = new JSONObject(stringBuilder.toString());
-
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-				listener.callback(jsonObject);
-				return 0;
-			}
-
-		}).execute(uri);
-	}
 }
 
