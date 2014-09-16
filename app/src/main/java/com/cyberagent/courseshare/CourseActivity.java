@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +48,8 @@ public class CourseActivity extends FragmentActivity {
 
 	private MapAPIManager apiManager;
 
+	private ArrayList<MapTask> mapTasks;
+
 	LayoutInflater layoutFactory;
 
 	private ProgressDialog waitDialog;
@@ -59,6 +63,7 @@ public class CourseActivity extends FragmentActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		this.apiManager = new MapAPIManager(this);
+		this.mapTasks = new ArrayList<MapTask>();
 
 		//layoutFactory = LayoutInflater.from(this);
 
@@ -121,83 +126,48 @@ public class CourseActivity extends FragmentActivity {
 		// UpNavigationを有効に
 		//getActionBar().setHomeButtonEnabled(true);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1);
-
-		// 要素の追加（1）
-		adapter.add("メニュー１");
-		adapter.add("メニュー２");
-		adapter.add("メニュー３");
-
-		SortableListView listView = (SortableListView)findViewById(R.id.waypoint_list);
-		listView.setAdapter(adapter);
-
-
 		MapWrapperLayout mapView = (MapWrapperLayout)findViewById(R.id.activity_course_layout);
 
 		TextView btnSearch = (TextView)mapView.findViewById(R.id.btn_search);
 		btnSearch.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-				startActivity(intent);
+				Intent intent = new Intent(CourseActivity.this, SearchActivity.class);
+			    startActivityForResult(intent, 123);
 			}
 		});
 
-		this.map = new Map(this, mapView, (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map), this.apiManager);
+		RatingBar ratingBar = (RatingBar)findViewById(R.id.ratingbar);
+		ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+			@Override
+			public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+				// レートが変更された際の処理
+			}
+		});
 
-		ArrayList<LatLng> points = new ArrayList<LatLng>();
-		points.add(new LatLng(35.658517,139.701334));
-		points.add(new LatLng(35.6701676,139.7026946));
+		this.map = new Map(this, mapView, (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map), this.apiManager);
 
-		Spot start = new Spot("渋谷駅", new LatLng(35.658517,139.701334), "JR東日本、東急、東京メトロの駅です。");
-		Spot goal = new Spot("原宿駅", new LatLng(35.6701676,139.7026946), "原宿駅です");
+		/*ArrayList<LatLng> points = new ArrayList<LatLng>();
+		points.add(new LatLng(35.658517, 139.701334));
+		points.add(new LatLng(35.6701676, 139.7026946));
+
+		Spot start = new Spot("渋谷駅", new LatLng(35.658517, 139.701334), "JR東日本、東急、東京メトロの駅です。");
+		Spot goal = new Spot("原宿駅", new LatLng(35.6701676, 139.7026946), "原宿駅です");
 		goal.setDirection(points);
-		this.map.setStartAndGoal(start, goal);
+		this.map.setStartAndGoal(start, goal);*/
 
-		Spot spot = new Spot("青山学院大学", new LatLng(35.66147,139.709464),
-				"青山学院大学の文系が集まるキャンパスです。");
-		this.map.addPin(spot);
+		this.mapTasks.add(new MapTask(TaskType.START, "dummy")); // doNextTaskをうまく動かすためのダミー
+		this.mapTasks.add(new MapTask(TaskType.START, "渋谷駅"));
+		this.mapTasks.add(new MapTask(TaskType.GOAL, "原宿駅"));
+		this.mapTasks.add(new MapTask(TaskType.WAYPOINT, "レストラン"));
 
-        //******************************
-        // MapAPIManager テスト
-        //******************************
-        ///*
-        MapAPIManager manager = new MapAPIManager(this);
-        LatLng latLng = start.getCoordinates();
-        ArrayList<String> keywords = new ArrayList<String>();
-        keywords.add("food");
-        manager.searchPlaces(latLng.latitude,latLng.longitude, keywords, 2000, new OnEndPlaceRequestListener() {
-            @Override
-            public void onEndRequestListener(ArrayList<Spot> spots) {
-                for (Spot s : spots) {
-                    //Log.v(MapAPIManager.TAG, s.toString());
-                }
+		resetSpotList();
 
-            }
-        });
-        ArrayList<LatLng> latLngs = new ArrayList<LatLng>();
-        latLngs.add(spot.getCoordinates());
-        manager.routingPlaces(start.getCoordinates(), goal.getCoordinates(),latLngs, new OnEndDirectionsRequestListener() {
-            @Override
-            public void onEndDirectionListener(ArrayList<LatLng> latLngs, HashMap<String, Object> data) {
-                Log.v(MapAPIManager.TAG, data.toString());
-            }
-        });
-        //*/
-
-		// 中心位置を最初の場所としてカメラを移動
+		// カメラの移動
 		LatLng center = new LatLng(35.658517, 139.701334);
 		this.map.setCenter(center);
 
-		Bundle b = getIntent().getExtras();
-		if (b != null) {
-			String keyword = b.getString("keyword");
-			if (keyword != null) {
-				btnSearch.setText(keyword);
-				search(keyword);
-			}
-		}
+		doNextTask();
 	}
 
 	@Override
@@ -205,6 +175,30 @@ public class CourseActivity extends FragmentActivity {
 		super.onResume();
 		this.map.setUpMapIfNeeded();
 	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (data == null) return; // 戻るボタンをおした時
+
+		Bundle bundle = data.getExtras();
+
+		switch (requestCode) {
+			case 123:
+				if (resultCode == RESULT_OK) {
+					TextView btnSearch = (TextView)findViewById(R.id.btn_search);
+					String keyword = bundle.getString("keyword");
+					btnSearch.setText(keyword);
+					search(keyword);
+				} else if (resultCode == RESULT_CANCELED) {
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
@@ -238,12 +232,21 @@ public class CourseActivity extends FragmentActivity {
 		ArrayList<String> keywords = new ArrayList<String>();
 		keywords.add(keyword);
 
-		LatLng prevPoint = this.map.getPrevPin().spot.getCoordinates();
+		LatLng prevPoint;
+
+		if (this.map.getPrevPin() == null) {
+			prevPoint = new LatLng(35.658517, 139.701334); // GPSで現在地を取得
+		} else {
+			prevPoint = this.map.getPrevPin().spot.getCoordinates();
+		}
 
 		// call WebAPI
-		this.apiManager.searchPlaces(prevPoint.latitude, prevPoint.longitude, keywords, 1000, new OnEndPlaceRequestListener() {
+		this.apiManager.searchPlaces(prevPoint.latitude, prevPoint.longitude, keywords, 2000, new OnEndPlaceRequestListener() {
 			@Override
 			public void onEndRequestListener(ArrayList<Spot> spots) {
+
+				if (!spots.isEmpty())
+					map.setCenter(spots.get(0).getCoordinates());
 
 				for (Spot spot : spots)
 					map.addPin(spot);
@@ -253,9 +256,66 @@ public class CourseActivity extends FragmentActivity {
 		});
 	}
 
+	public void resetSpotList() {
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1);
+
+		Map.Pin start = this.map.getStartPin();
+		Map.Pin goal = this.map.getGoalPin();
+
+		if (start != null)
+			adapter.add(start.spot.getName());
+
+		for (Map.Pin pin : this.map.getWaypoints())
+			adapter.add(pin.spot.getName());
+
+		if (goal != null)
+			adapter.add(goal.spot.getName());
+
+		SortableListView listView = (SortableListView)findViewById(R.id.waypoint_list);
+		listView.setAdapter(adapter);
+	}
+
+	public void doNextTask() {
+		this.mapTasks.remove(0);
+		if (!this.mapTasks.isEmpty()) {
+			MapTask mt = this.mapTasks.get(0);
+			switch (mt.type) {
+				case START:
+					Toast.makeText(this, "現在地を選択してください", Toast.LENGTH_LONG).show();
+					break;
+				case GOAL:
+					Toast.makeText(this, "目的地を選択してください", Toast.LENGTH_LONG).show();
+					break;
+				case WAYPOINT:
+					Toast.makeText(this, "寄り道する場所を選択してください", Toast.LENGTH_LONG).show();
+					break;
+			}
+			search(mt.keyword);
+		}
+	}
+
 
 	public Map getMap() {
 		return this.map;
+	}
+
+	public TaskType getTaskType() {
+		if (this.mapTasks.isEmpty())
+			return TaskType.WAYPOINT;
+		else
+			return this.mapTasks.get(0).type;
+	}
+
+	enum TaskType { START, GOAL, WAYPOINT }
+	class MapTask {
+		public TaskType type;
+		public String keyword;
+
+		MapTask(TaskType type, String keyword) {
+			this.type = type;
+			this.keyword = keyword;
+		}
 	}
 
 }

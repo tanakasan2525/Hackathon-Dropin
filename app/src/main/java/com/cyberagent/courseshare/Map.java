@@ -34,7 +34,7 @@ import java.util.TooManyListenersException;
  * Created by tatsuya tanaka on 9/13/2014.
  */
 public class Map {
-	private Activity owner;
+	private CourseActivity owner;
 	MapWrapperLayout mapView;
 	private SupportMapFragment mapFragment;
 	private GoogleMap map;
@@ -47,9 +47,10 @@ public class Map {
 	private ArrayList<Pin> pins;	// 寄り道候補のピン
 	private ArrayList<Pin> waypoints;	// 確定した寄り道場所
 
-	private Polyline dropInRoute;
+	private Polyline previewLine;
+	private Polyline line;
 
-	public Map(Activity owner, MapWrapperLayout mapView, SupportMapFragment mapFragment, MapAPIManager apiManager) {
+	public Map(CourseActivity owner, MapWrapperLayout mapView, SupportMapFragment mapFragment, MapAPIManager apiManager) {
 		this.owner = owner;
 		this.mapView = mapView;
 		this.mapFragment = mapFragment;
@@ -57,6 +58,8 @@ public class Map {
 		this.pins = new ArrayList<Pin>();
 		this.waypoints = new ArrayList<Pin>();
 		this.handler = new Handler();
+
+		mapFragment.setRetainInstance(true);
 
 		setUpMapIfNeeded();
 
@@ -80,7 +83,7 @@ public class Map {
 		this.map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 			@Override
 			public void onMapClick(LatLng latLng) {
-				removeRoute();
+				removePreviewRoute();
 			}
 		});
 	}
@@ -88,12 +91,20 @@ public class Map {
 	public void setStartAndGoal(Spot start, Spot goal) {
 		this.startPin = addPin(start);
 		this.goalPin = addPin(goal);
-		setPreviewRoute(this.goalPin);
-		setRoute(this.goalPin);
-		//Route route = new Route(this.startPin, this.goalPin);
-		//route.line = addLines(getRoutes(this.startPin, this.goalPin), 0x5500ff00);
-		//this.goalPin.prevRoute = route;
-		//this.startPin.nextRoute = route;
+		setRoute();
+	}
+
+	public void setStart(Spot start) {
+		this.startPin = addPin(start);
+		if (this.goalPin != null)
+			setRoute();
+	}
+
+	public void setGoal(Spot goal) {
+		this.goalPin = addPin(goal);
+		if (this.startPin != null) {
+			setRoute();
+		}
 	}
 
 	/**
@@ -102,7 +113,6 @@ public class Map {
 	 * @return 追加したピン
 	 */
 	public Pin addPin(Spot spot) {
-		//this.map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
 		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE);
 		MarkerOptions options = new MarkerOptions()
 				.position(spot.getCoordinates())
@@ -133,33 +143,33 @@ public class Map {
 	 * @param pin 設定するピン
 	 */
 	public void setPreviewRoute(final Pin pin) {
-		if (pin.line != null) return;
+		removePreviewRoute();
 
 		LatLng start = getPrevPin().spot.getCoordinates();
-		LatLng goal = this.goalPin.spot.getCoordinates();
+		LatLng goal;
+		if (this.goalPin == null) {
+			goal = pin.spot.getCoordinates();
+		} else {
+			goal = this.goalPin.spot.getCoordinates();
+		}
 		ArrayList<LatLng> wp = new ArrayList<LatLng>();
-		for (Pin w : this.waypoints)
-			wp.add(w.spot.getCoordinates());
-		wp.add(pin.spot.getCoordinates());
+		if (this.goalPin != null) {
+			for (Pin w : this.waypoints)
+				wp.add(w.spot.getCoordinates());
+			wp.add(pin.spot.getCoordinates());
+		}
 		this.apiManager.routingPlaces(start, goal, wp, new OnEndDirectionsRequestListener() {
 			@Override
 			public void onEndDirectionListener(ArrayList<LatLng> latLngs, HashMap<String, Object> data) {
-				//pin.spot.setDirection(latLngs);
+				if (previewLine != null) return; // 非同期で連続実行されるのを防止
 				PolylineOptions lineOptions = new PolylineOptions();
 				lineOptions.addAll(latLngs);
 				lineOptions.width(11);
 				lineOptions.color(0x550000ff);
-				dropInRoute = map.addPolyline(lineOptions);
+				previewLine = map.addPolyline(lineOptions);
 			}
 		});
 	}
-	/*public Route setPreviewRoute(Pin startPin, Pin goalPin) {
-		Route route = new Route(startPin, goalPin);
-		route.line = addLines(getRoutes(startPin, goalPin), 0x550000ff);
-		//startPin.previewNextRoute = route;
-		//goalPin.previewPrevRoute = route;
-		return route;
-	}*/
 
 	abstract class MapTask implements Runnable {
 		Pin pin;
@@ -169,11 +179,32 @@ public class Map {
 		public abstract void run();
 	}
 
-	public void setRoute(Pin p) {
-		(new Thread(new MapTask(p) {
+	public void setRoute() {
+		removeRoute();
+
+		LatLng start = this.startPin.spot.getCoordinates();
+		LatLng goal = this.goalPin.spot.getCoordinates();
+		ArrayList<LatLng> wp = new ArrayList<LatLng>();
+		for (Pin pin : this.waypoints)
+			wp.add(pin.spot.getCoordinates());
+
+		this.apiManager.routingPlaces(start, goal, wp, new OnEndDirectionsRequestListener() {
+			@Override
+			public void onEndDirectionListener(ArrayList<LatLng> latLngs, HashMap<String, Object> data) {
+				if (line != null) return; // 非同期で連続実行されるのを防止
+				removePreviewRoute();
+				PolylineOptions lineOptions = new PolylineOptions();
+				lineOptions.addAll(latLngs);
+				lineOptions.width(11);
+				lineOptions.color(0x5500ff00);
+				line = map.addPolyline(lineOptions);
+			}
+		});
+
+		/*(new Thread(new MapTask(p) {
 			@Override
 			public void run() {
-				while (dropInRoute == null) {
+				while (previewLine == null) {
 					try {
 						Thread.sleep(500);
 					} catch ( InterruptedException e ) {
@@ -184,50 +215,31 @@ public class Map {
 				handler.post(new MapTask(this.pin) {
 					@Override
 					public void run() {
-						this.pin.line = dropInRoute;
-						this.pin.line.setColor(0x5500ff00);
-						dropInRoute = null;
+						previewLine.setColor(0x5500ff00);
+						line = previewLine;
+						previewLine = null;
 					}
 				});
 			}
-		})).start();
+		})).start();*/
 
 	}
-	/*public Route setRoute(Pin startPin, Pin goalPin) {
-		Route route = new Route(startPin, goalPin);
-		route.line = addLines(getRoutes(startPin, goalPin), 0x5500ff00);
-		//startPin.nextRoute = route;
-		//goalPin.prevRoute = route;
-		return route;
-	}*/
-
 
 	/**
 	 * 道を削除します。
 	 */
-	public void removeRoute() {
-		if (dropInRoute != null) {
-			dropInRoute.remove();
+	public void removePreviewRoute() {
+		if (previewLine != null) {
+			previewLine.remove();
+			previewLine = null;
 		}
-		/*if (getNewPin().line != null) {
-			getNewPin().line.remove();
-		}*/
-		/*Pin pin = getStartPin();
-		while (true) {
-			if (pin.previewNextRoute != null) {
-				Route route = pin.previewNextRoute;
-				route.line.remove();
-				pin.previewNextRoute = null;
-				pin = route.next;
-			}
-			else {
-				if (pin.nextRoute != null) {
-					pin = pin.nextRoute.next;
-				} else {
-					break;
-				}
-			}
-		}*/
+	}
+
+	public void removeRoute() {
+		if (line != null) {
+			line.remove();
+			line = null;
+		}
 	}
 
 	/**
@@ -238,49 +250,29 @@ public class Map {
 		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
 		pin.marker.setIcon(icon);
 
-		removeRoute();
-
-		setRoute(pin);
-
-		// preview と 決定したルートの入れ替え
-		/*Pin prevPin = pin.previewPrevRoute.prev;
-		Pin nextPin = pin.previewNextRoute.next;
-
-		nextPin.prevRoute.line.remove();
-
-		pin.nextRoute = pin.previewNextRoute;
-		pin.prevRoute = pin.previewPrevRoute;
-		prevPin.nextRoute = prevPin.previewNextRoute;
-		nextPin.prevRoute = nextPin.previewPrevRoute;
-		prevPin.nextRoute.line.setColor(0x5500ff00);
-		nextPin.prevRoute.line.setColor(0x5500ff00);
-
-		pin.previewNextRoute = null;
-		pin.previewPrevRoute = null;
-		prevPin.previewNextRoute = null;
-		nextPin.previewPrevRoute = null;*/
-
 		this.waypoints.add(pin);
+
+		removeRoute();
+		setRoute();
+
+		owner.resetSpotList();
 	}
 
 	/**
 	 * 経由地から取り除きます。
 	 * @param pin 取り除くピン
 	 */
-	public void removeWeyPoint(Pin pin) {
-		/*Pin nextPin = pin.nextRoute.next;
-		Pin prevPin = pin.prevRoute.prev;
+	public void removeWayPoint(Pin pin) {
 
-		nextPin.prevRoute.line.remove();
-		prevPin.nextRoute.line.remove();
-
-		setRoute(prevPin, nextPin);*/
-
-		pin.line.remove();
+		removeRoute();
 
 		pin.marker.remove();
 		this.pins.remove(pin);
 		this.waypoints.remove(pin);
+
+		setRoute();
+
+		owner.resetSpotList();
 	}
 
 	/**
@@ -289,19 +281,7 @@ public class Map {
 	 * @param pin2
 	 */
 	public void swapWayPoint(Pin pin1, Pin pin2) {
-		/*Pin nextPin1 = pin1.nextRoute.next;
-		Pin prevPin1 = pin1.prevRoute.prev;
 
-		Pin nextPin2 = pin2.nextRoute.next;
-		Pin prevPin2 = pin2.prevRoute.prev;
-
-		Route prev = pin1.prevRoute;
-		Route next = pin1.nextRoute;
-
-		pin1.prevRoute = pin2.prevRoute;
-		pin1.nextRoute = pin2.nextRoute;
-		pin2.prevRoute = prev;
-		pin2.prevRoute = next;*/
 	}
 
 	/**
@@ -340,6 +320,10 @@ public class Map {
 			return waypoints.get(waypoints.size() - 1);
 	}
 
+	public ArrayList<Pin> getWaypoints() {
+		return this.waypoints;
+	}
+
 	private Pin getPinFromMarker(Marker marker) {
 		for (Pin p : pins)
 			if (marker.equals(p.marker)) {
@@ -375,8 +359,6 @@ public class Map {
 		private OnInfoWindowElemTouchListener infoBtnAddListener;
 		private OnInfoWindowElemTouchListener infoBtnRemoveListener;
 
-		int debugFlag = 0;
-
 		public CustomInfoAdapter() {
 			this.window = (ViewGroup)owner.getLayoutInflater().inflate(R.layout.course_custom_info_window, null);
 			this.title = (TextView) window.findViewById(R.id.title);
@@ -393,13 +375,24 @@ public class Map {
 			{
 				@Override
 				protected void onClickConfirmed(View v, Marker marker) {
-					addWeyPoint(getPinFromMarker(marker));
+					switch (owner.getTaskType()) {
+						case START:
+							setStart(getPinFromMarker(marker).spot);
+							break;
+						case GOAL:
+							setGoal(getPinFromMarker(marker).spot);
+							break;
+						case WAYPOINT:
+							addWeyPoint(getPinFromMarker(marker));
+							break;
+					}
 					removeAllPins();
-					if (debugFlag == 0) {
-						Spot spot = new Spot("ラフォーレ原宿", new LatLng(35.6689883,139.7056496),
-								"ラフォーレ原宿です。");
-						addPin(spot);
-						debugFlag++;
+					removePreviewRoute();
+
+					switch (owner.getTaskType()) {
+						case START:
+						case GOAL:
+							owner.doNextTask();
 					}
 				}
 			};
@@ -411,7 +404,7 @@ public class Map {
 			{
 				@Override
 				protected void onClickConfirmed(View v, Marker marker) {
-					removeWeyPoint(getPinFromMarker(marker));
+					removeWayPoint(getPinFromMarker(marker));
 				}
 			};
 		}
@@ -429,15 +422,21 @@ public class Map {
 			if (!waypoints.contains(pin) && !pin.equals(startPin) && !pin.equals(goalPin)) {
 				this.infoBtnAddListener.setMarker(marker);
 				this.btnDropIn.setOnTouchListener(infoBtnAddListener);
-				this.btnDropIn.setText("寄り道する");
+				switch (owner.getTaskType()) {
+					case START:
+						this.btnDropIn.setText("現在地に設定");
+						break;
+					case GOAL:
+						this.btnDropIn.setText("目的地に設定");
+						setPreviewRoute(pin);
+						break;
+					case WAYPOINT:
+						this.btnDropIn.setText("寄り道する");
+						setPreviewRoute(pin);
+						break;
+				}
 				this.btnDropIn.setEnabled(true);
 
-				removeRoute();
-				setPreviewRoute(pin);
-
-				/*Pin prevPin = getPrevPin();
-				setPreviewRoute(prevPin, pin);
-				setPreviewRoute(pin, getGoalPin());*/
 			} else if (pin.equals(startPin) || pin.equals(goalPin)) {
 				this.btnDropIn.setEnabled(false);
 			} else {
@@ -461,12 +460,6 @@ public class Map {
 	class Pin {
 		public Spot spot;
 		public Marker marker;
-		public Polyline line;
-		//public Route prevRoute; // このピンに着く前の道
-		//public Route nextRoute; // このピンから出る次の道
-
-		//public Route previewPrevRoute;
-		//public Route previewNextRoute;
 
 		Pin(Marker marker, Spot spot) {
 			this.marker = marker;
@@ -474,14 +467,4 @@ public class Map {
 		}
 	}
 
-	class Route {
-		public Polyline line;
-		public Pin prev;
-		public Pin next;
-
-		Route(Pin prev, Pin next) {
-			this.prev = prev;
-			this.next = next;
-		}
-	}
 }
