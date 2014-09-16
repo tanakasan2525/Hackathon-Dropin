@@ -139,17 +139,10 @@ public class PersonTracker extends Service implements LocationListener, SensorEv
     }
 
     public double getLatitude(){
-        if(location != null){
-            latitude = location.getLatitude();
-        }
         return latitude;
     }
 
     public double getLongitude(){
-        if(location != null){
-            longitude = location.getLongitude();
-        }
-
         return longitude;
     }
 

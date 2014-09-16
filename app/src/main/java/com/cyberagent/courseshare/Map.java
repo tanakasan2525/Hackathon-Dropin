@@ -345,6 +345,28 @@ public class Map {
 		return (int)(dp * scale + 0.5f);
 	}
 
+	public void confirmPin(Pin pin) {
+		switch (owner.getTaskType()) {
+			case START:
+				setStart(pin.spot);
+				break;
+			case GOAL:
+				setGoal(pin.spot);
+				break;
+			case WAYPOINT:
+				addWeyPoint(pin);
+				break;
+		}
+		removeAllPins();
+		removePreviewRoute();
+
+		switch (owner.getTaskType()) {
+			case START:
+			case GOAL:
+				owner.doNextTask();
+		}
+	}
+
 	/**
 	 * マーカーをタップした際に表示するウィンドウの処理
 	 */
@@ -375,25 +397,7 @@ public class Map {
 			{
 				@Override
 				protected void onClickConfirmed(View v, Marker marker) {
-					switch (owner.getTaskType()) {
-						case START:
-							setStart(getPinFromMarker(marker).spot);
-							break;
-						case GOAL:
-							setGoal(getPinFromMarker(marker).spot);
-							break;
-						case WAYPOINT:
-							addWeyPoint(getPinFromMarker(marker));
-							break;
-					}
-					removeAllPins();
-					removePreviewRoute();
-
-					switch (owner.getTaskType()) {
-						case START:
-						case GOAL:
-							owner.doNextTask();
-					}
+					confirmPin(getPinFromMarker(marker));
 				}
 			};
 
