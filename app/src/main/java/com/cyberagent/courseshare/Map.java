@@ -411,13 +411,14 @@ public class Map {
 
 		@Override
 		public View getInfoWindow(Marker marker) {
+            Pin pin = getPinFromMarker(marker);
 			this.title.setText(marker.getTitle());
 			this.snippet.setText(marker.getSnippet());
 			//icon.setImageResource(imgID);
 
 			mapView.setMarkerWithInfoWindow(marker, this.window);
+            Spot spot = pin.spot;
 
-			Pin pin = getPinFromMarker(marker);
 
 			if (!waypoints.contains(pin) && !pin.equals(startPin) && !pin.equals(goalPin)) {
 				this.infoBtnAddListener.setMarker(marker);

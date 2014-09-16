@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="debug" >
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/assets" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/assets" />
     </dataSet>
     <dataSet config="main" >
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/src/androidTest/assets" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/src/androidTest/assets" />
     </dataSet>
 
 </merger>

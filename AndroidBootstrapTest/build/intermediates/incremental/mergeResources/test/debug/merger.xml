@@ -2,9 +2,9 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrapTest/src/androidTest/res" />
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrapTest/build/generated/res/rs/test/debug" />
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrapTest/build/generated/res/generated/test/debug" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrapTest/src/androidTest/res" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrapTest/build/generated/res/rs/test/debug" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrapTest/build/generated/res/generated/test/debug" />
     </dataSet>
 
 </merger>

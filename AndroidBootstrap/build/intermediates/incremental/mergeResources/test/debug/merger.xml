@@ -2,214 +2,214 @@
 <merger version="2" >
 
     <dataSet config="debug" >
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res" >
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res" >
             <file
                 name="bbuton_danger"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_danger.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_danger.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_danger_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_danger_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_danger_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_default"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_default.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_default.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_default_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_default_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_default_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_info"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_info.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_info.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_info_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_info_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_info_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_inverse"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_inverse.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_inverse.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_inverse_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_inverse_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_inverse_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_primary"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_primary.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_primary.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_primary_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_primary_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_primary_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_success"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_success.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_success.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_success_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_success_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_success_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_warning"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_warning.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_warning.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_warning_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_warning_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bbuton_warning_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_container_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bthumbnail_container_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bthumbnail_container_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_container_square"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bthumbnail_container_square.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bthumbnail_container_square.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_placeholder_default"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bthumbnail_placeholder_default.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/bthumbnail_placeholder_default.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_danger"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_danger.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_danger.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_danger"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded_danger.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded_danger.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_success"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded_success.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded_success.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_warning"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded_warning.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_rounded_warning.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_success"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_success.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_success.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_warning"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_warning.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/edittext_background_warning.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/thumbnail_circle.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/thumbnail_circle.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle_container"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/thumbnail_circle_container.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/thumbnail_circle_container.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle_minimal"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/thumbnail_circle_minimal.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable/thumbnail_circle_minimal.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_launcher.png"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_launcher.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="bootstrap_button"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_button.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_button.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_fill"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_button_fill.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_button_fill.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_edit_text"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_edit_text.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_edit_text.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_thumbnail.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_thumbnail.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail_circle"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_thumbnail_circle.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/bootstrap_thumbnail_circle.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="font_awesome_text"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/font_awesome_text.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/font_awesome_text.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_title"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/row_title.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/row_title.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_title_and_subtitle"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/row_title_and_subtitle.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/row_title_and_subtitle.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_two_columns"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/row_two_columns.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/layout/row_two_columns.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="main"
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/menu/main.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/menu/main.xml"
                 qualifiers=""
                 type="menu" />
             <file
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/values/values.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/values/values.xml"
                 qualifiers="" >
                 <color name="bbutton_danger_disabled" >#a5d9534f
                 </color>
@@ -446,13 +446,13 @@
                 </style>
             </file>
             <file
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/values-sw720dp-land-v13/values.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/values-sw720dp-land-v13/values.xml"
                 qualifiers="sw720dp-land-v13" >
                 <dimen name="activity_horizontal_margin" >128dp
                 </dimen>
             </file>
             <file
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/values-v11/values.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/values-v11/values.xml"
                 qualifiers="v11" >
 
                 <style
@@ -463,7 +463,7 @@
                 </style>
             </file>
             <file
-                path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/intermediates/bundles/debug/res/values-v14/values.xml"
+                path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/intermediates/bundles/debug/res/values-v14/values.xml"
                 qualifiers="v14" >
 
                 <style
@@ -476,9 +476,9 @@
         </source>
     </dataSet>
     <dataSet config="main" >
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/src/androidTest/res" />
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/generated/res/rs/test/debug" />
-        <source path="/Users/akiyuki/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/build/generated/res/generated/test/debug" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/src/androidTest/res" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/generated/res/rs/test/debug" />
+        <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/generated/res/generated/test/debug" />
     </dataSet>
 
 </merger>
