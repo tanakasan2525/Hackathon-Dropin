@@ -156,10 +156,17 @@ public class CourseActivity extends FragmentActivity {
 		goal.setDirection(points);
 		this.map.setStartAndGoal(start, goal);*/
 
+		Intent i = getIntent();
+		String start = i.getStringExtra("start");
+		String goal = i.getStringExtra("goal");
+		String waypoint = i.getStringExtra("transitPoint");
+		int timeLeft = i.getIntExtra("timeLeft", 0);
+
 		this.mapTasks.add(new MapTask(TaskType.START, "dummy")); // doNextTaskをうまく動かすためのダミー
-		this.mapTasks.add(new MapTask(TaskType.START, "渋谷駅"));
-		this.mapTasks.add(new MapTask(TaskType.GOAL, "原宿駅"));
-		this.mapTasks.add(new MapTask(TaskType.WAYPOINT, "レストラン"));
+		this.mapTasks.add(new MapTask(TaskType.START, start));
+		this.mapTasks.add(new MapTask(TaskType.GOAL, goal));
+		if (waypoint != null)
+			this.mapTasks.add(new MapTask(TaskType.WAYPOINT, waypoint));
 
 		resetSpotList();
 
