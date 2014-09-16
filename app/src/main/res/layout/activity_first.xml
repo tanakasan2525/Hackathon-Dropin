@@ -1,11 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
     tools:context=".FirstActivity">
+
 
 
     <TextView
@@ -25,6 +28,8 @@
         android:text="現在地"
         android:hint="出発地"/>
 
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,51 +44,39 @@
         android:layout_gravity="center_horizontal"
         android:hint="経由地"/>
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/timeLeftButton"
-        android:layout_width="313dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="暇な時間"
-        android:layout_gravity="center_horizontal" />
+        android:layout_margin="10dp"
+        android:text="空き時間"
+        android:layout_gravity="center_horizontal"
+        bootstrap:bb_roundedCorners ="true"
+        bootstrap:bb_icon_right="fa-angle-down"
+        bootstrap:bb_type="success" />
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
+    <!--<com.beardedhen.androidbootstrap.FontAwesomeText-->
+        <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:weightSum="1"-->
-        <!--android:layout_marginTop="20dp">-->
-
-        <!--<NumberPicker-->
-            <!--android:id="@+id/hours"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="100dp" />-->
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:text="時間"-->
-            <!--android:id="@+id/textView2"-->
-            <!--android:gravity="center"/>-->
-
-        <!--<NumberPicker-->
-            <!--android:id="@+id/minutes"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content" />-->
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:text="分"-->
-            <!--android:id="@+id/textView3"-->
-            <!--android:gravity="center"/>-->
-    <!--</LinearLayout>-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:textSize="32sp"-->
+        <!--bootstrap:fa_icon="fa-github" />-->
 
     <Button
         android:id="@+id/searchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="検索"/>
+        android:text="検索"
+        android:textColor="@color/white"
+        android:background="@drawable/searchbutton_customize"/>
+    <!--<com.beardedhen.androidbootstrap.BootstrapEditText-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:gravity="center"-->
+        <!--android:hint="rounded"-->
+        <!--bootstrap:be_roundedCorners="true"-->
+        <!--bootstrap:be_state="success" />-->
 
 </LinearLayout>

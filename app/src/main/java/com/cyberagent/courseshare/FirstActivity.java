@@ -14,49 +14,57 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
+import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.beardedhen.androidbootstrap.BootstrapEditText;
 
 public class FirstActivity extends Activity {
+
     private Button searchButton;
     private EditText start;
     private EditText goal;
-    private Button timeLeftButton;
+    private BootstrapButton timeLeftButton;
     private NumberPicker hours;
     private NumberPicker minutes;
     private EditText transitPoint;
-    private int timeLeft;
+    //空き時間の初期設定（分）
+    private int timeLeft = 60;
+    //検索ができるかどうかのチェック
+    private boolean isSearchEnabled = false;
 
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
+        //遷移させる画面の決定
         intent = new Intent(FirstActivity.this,CourceActivity.class);
         findViews();
         initViews(intent);
-
-
     }
 
     private void findViews() {
         this.searchButton = (Button)findViewById(R.id.searchButton);
         this.start = (EditText)findViewById(R.id.start);
         this.goal = (EditText)findViewById(R.id.goal);
-        this.timeLeftButton = (Button)findViewById(R.id.timeLeftButton);
+        this.timeLeftButton = (BootstrapButton) findViewById(R.id.timeLeftButton);
 //        this.hours = (NumberPicker)findViewById(R.id.hours);
 //        this.minutes = (NumberPicker)findViewById(R.id.minutes);
         this.transitPoint = (EditText)findViewById(R.id.transitPoint);
     }
 
     private void initViews(final Intent intent){
+        timeLeftButton.setText("空き時間: "+ Integer.toString(timeLeft)+"分");
 
         //ボタンクリック時の処理を実装する
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendInputData(intent);
-                startActivity(intent);
+                isSearchEnabled = showSearchAlert();
+                if (isSearchEnabled == true ) {
+                    sendInputData(intent);
+                    startActivity(intent);
+                }
             }
         });
         timeLeftButton.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +79,6 @@ public class FirstActivity extends Activity {
         intent.putExtra("start", start.getText().toString());
         intent.putExtra("goal", goal.getText().toString());
         intent.putExtra("transitPoint", transitPoint.getText().toString());
-        timeLeft = hours.getValue()* 60 + minutes.getValue();
         intent.putExtra("timeLeft",timeLeft);
     }
 
@@ -99,6 +106,8 @@ public class FirstActivity extends Activity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        timeLeft = hours.getValue()* 60 + minutes.getValue();
+                        timeLeftButton.setText("空き時間: "+ Integer.toString(timeLeft)+"分");
                     }
                 });
         // アラートダイアログの否定ボタンがクリックされた時に呼び出されるコールバックリスナーを登録します
@@ -114,6 +123,32 @@ public class FirstActivity extends Activity {
         // アラートダイアログを表示します
         alertDialog.show();
     }
+
+    private boolean showSearchAlert() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        // アラートダイアログのタイトルを設定します
+        if (start.getText().length() == 0) {
+            alertDialogBuilder.setMessage("出発地を選択して下さい");
+        } else if (goal.getText().length() == 0 ) {
+            alertDialogBuilder.setMessage("目的地を選択して下さい");
+        } else {
+            return true;
+        }
+        // アラートダイアログの肯定ボタンがクリックされた時に呼び出されるコールバックリスナーを登録します
+        alertDialogBuilder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        // アラートダイアログのキャンセルが可能かどうかを設定します
+        alertDialogBuilder.setCancelable(true);
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // アラートダイアログを表示します
+        alertDialog.show();
+        return false;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
