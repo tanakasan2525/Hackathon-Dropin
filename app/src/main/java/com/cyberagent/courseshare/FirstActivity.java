@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,31 +38,36 @@ public class FirstActivity extends Activity {
     private NumberPicker hours;
     private NumberPicker minutes;
     private EditText transitPoint;
+    private Button transitPointButton;
     //空き時間の初期設定（分）
     private int hoursLeft = 1;
     private int minutesLeft = 0;
     private int timeLeft = 60;
     //検索ができるかどうかのチェック
     private boolean isSearchEnabled = false;
+    public static final int REQUEST_CODE = 100;
 
     // キーボード表示を制御するためのオブジェクト
     InputMethodManager inputMethodManager;
     // 背景のレイアウト
     private LinearLayout mainLayout;
 
-    Intent intent;
+    Intent intentCourse;
+    Intent intentSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        //titleを非表示
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_first);
+
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mainLayout = (LinearLayout) findViewById(R.id.firstActivity);
         //遷移させる画面の決定
-        intent = new Intent(FirstActivity.this, CourseActivity.class);
         findViews();
-        initViews(intent);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        initViews();
 
 //        final AutoCompleteTextView autoCompView = (AutoCompleteTextView)findViewById(R.id.transitPoint);
 //        autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
@@ -80,12 +86,12 @@ public class FirstActivity extends Activity {
 //                return false;
 //            }
 //        });
-    }
-    private void returnIntent(String keyword) {
-        Intent i = new Intent();
-        i.putExtra("keyword", keyword);
-        setResult(RESULT_OK, i);
-        finish();
+//    }
+//    private void returnIntent(String keyword) {
+//        Intent i = new Intent();
+//        i.putExtra("keyword", keyword);
+//        setResult(RESULT_OK, i);
+//        finish();
     }
 
     private void findViews() {
@@ -97,10 +103,13 @@ public class FirstActivity extends Activity {
         this.goalButton = (BootstrapButton)findViewById(R.id.goalButton);
 //        this.hours = (NumberPicker)findViewById(R.id.hours);
 //        this.minutes = (NumberPicker)findViewById(R.id.minutes);
-        this.transitPoint = (EditText)findViewById(R.id.transitPoint);
+//        this.transitPoint = (EditText)findViewById(R.id.transitPoint);
+        this.transitPointButton = (Button)findViewById(R.id.transitPointButton);
+        intentCourse = new Intent(FirstActivity.this, CourseActivity.class);
+        intentSearch = new Intent(FirstActivity.this, SearchActivity.class);
     }
 
-    private void initViews(final Intent intent){
+    private void initViews(){
         timeLeftButton.setText("空き時間： "+ Integer.toString(hoursLeft)+"時間"+Integer.toString(minutesLeft)+"分");
 
         startButton.setOnClickListener(new View.OnClickListener() {
@@ -123,8 +132,8 @@ public class FirstActivity extends Activity {
             public void onClick(View v) {
                 isSearchEnabled = showSearchAlert();
                 if (isSearchEnabled == true ) {
-                    sendInputData(intent);
-                    startActivity(intent);
+                    sendInputData(intentCourse);
+                    startActivity(intentCourse);
                 }
             }
         });
@@ -134,12 +143,21 @@ public class FirstActivity extends Activity {
                 showTimeDialog();
             }
         });
+
+        transitPointButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(intentSearch, REQUEST_CODE);
+            }
+        });
+
+
     }
 
     private void sendInputData(Intent intent) {
         intent.putExtra("start", start.getText().toString());
         intent.putExtra("goal", goal.getText().toString());
-        intent.putExtra("transitPoint", transitPoint.getText().toString());
+        intent.putExtra("transitPoint", transitPointButton.getText().toString());
         intent.putExtra("timeLeft",timeLeft);
     }
 
@@ -243,6 +261,16 @@ public class FirstActivity extends Activity {
         mainLayout.requestFocus();
 
         return true;
-
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Bundle extra = data.getExtras();
+                String keyword = extra.getString("keyword");
+                transitPointButton.setText(keyword);
+            }
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 
 public class SearchActivity extends Activity {
+    Intent firstActivityIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class SearchActivity extends Activity {
 
 		final AutoCompleteTextView autoCompView = (AutoCompleteTextView)findViewById(R.id.autocomplete);
 		autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
+        firstActivityIntent = getIntent();
 
 		autoCompView.setOnKeyListener(new View.OnKeyListener() {
 			//コールバックとしてonKey()メソッドを定義
@@ -30,8 +32,10 @@ public class SearchActivity extends Activity {
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				// エンターキーで決定
 				if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    firstActivityIntent.putExtra("keyword", autoCompView.getText().toString());
 					returnIntent(autoCompView.getText().toString());
-
+                    setResult(RESULT_OK, firstActivityIntent);
+                    finish();
 					return true;
 				}
 

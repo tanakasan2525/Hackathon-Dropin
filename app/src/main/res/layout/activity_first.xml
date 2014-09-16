@@ -50,6 +50,7 @@
             android:id="@+id/start"
             android:text="現在地"
             android:hint="出発地"
+            android:singleLine="true"
             android:gravity="center_vertical"
             android:layout_gravity="center_horizontal"
             bootstrap:bb_roundedCorners ="true"
@@ -126,15 +127,30 @@
         bootstrap:bb_icon_right="fa-angle-down"
         bootstrap:bb_type="success" />
 
-    <AutoCompleteTextView
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/transitPoint_text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/transitPoint"
-        android:hint="よりみち"
-        />
+        android:text="よりみち"
+        android:textColor="@color/white"
+        android:background="@drawable/end_text"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:drawableLeft="@drawable/abc_ic_search"
+        android:gravity="left|center_vertical"
+        android:hint="よりみち検索"
+        android:background="#FFFFFF"
+        android:id="@+id/transitPointButton"/>
+
+        </LinearLayout>
 
 
     <!--<com.beardedhen.androidbootstrap.FontAwesomeText-->
