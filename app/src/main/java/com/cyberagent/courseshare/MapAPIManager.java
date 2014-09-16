@@ -143,7 +143,7 @@ public class MapAPIManager {
                     spots.add(spot);
                 }
 
-                listener.onEndRequestListener(spots);
+                listener.onEndRequestListener(response.getStatus(), spots);
             }
 
             @Override

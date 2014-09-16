@@ -307,7 +307,7 @@ public class CourseActivity extends FragmentActivity {
 		// call WebAPI
 		this.apiManager.searchPlaces(prevPoint.latitude, prevPoint.longitude, keywords, 2000, new OnEndPlaceRequestListener() {
 			@Override
-			public void onEndRequestListener(ArrayList<Spot> spots) {
+			public void onEndRequestListener(String status, ArrayList<Spot> spots) {
 
 				//if (!spots.isEmpty())
 				//	map.setCenter(spots.get(0).getCoordinates());
