@@ -425,37 +425,35 @@ public class Map {
             Pin pin = getPinFromMarker(marker);
 			this.title.setText(marker.getTitle());
 			this.snippet.setText(marker.getSnippet());
+            // もしPinが画像を保持していたらビューに読み込み
+            this.icon.setImageBitmap(null);
+            if (pin.img != null) {
+                this.icon.setImageBitmap(pin.img);
+            }
 			//icon.setImageResource(imgID);
 
 			mapView.setMarkerWithInfoWindow(marker, this.window);
+            // Pinの持っているSpot
             Spot spot = pin.spot;
+            // SpotのイメージURIリストを取得
             final ArrayList<URI> imgURIs = spot.getImageURI();
-            if (imgURIs != null) {
-                URL url = null;
-                InputStream inputStream;
-                AsyncHttpClient client = new AsyncHttpClient();
+            // imgURIが存在している かつ Pinのimgが空の時
+            if (imgURIs != null && pin.img == null) {
                 try {
-                    Log.v("INPUT_TEST", "error 1");
-                    url = imgURIs.get(0).toURL();
-                    Log.v("INPUT_TEST", "error 2");
-                    final ImageView imgView = this.icon;
-                    client.get(url.toString(), new BinaryHttpResponseHandler(){
+                    URL url = imgURIs.get(0).toURL();
+                    AsyncHttpClient client = new AsyncHttpClient();
+                    client.get(url.toString(), new MyBinaryHttpResponseHandler(this.icon, pin){
                         @Override
                         public void onSuccess(byte[] binaryData) {
                             super.onSuccess(binaryData);
                             Log.v("INPUT_TEST", "IMG request sucsess");
                             Bitmap bmp = BitmapFactory.decodeByteArray(binaryData, 0, binaryData.length);
-                            imgView.setImageBitmap(bmp);
+                            handleMemberPin.img = bmp;
+                            handleMemberIcon.setImageBitmap(bmp);
+                            Log.v("INPUT_TEST", handleMemberPin.spot.getName());
                         }
                     });
-                    /*
-                    inputStream = url.openStream();
-                    Log.v("INPUT_TEST", "error 3");
-                    Drawable drawable = Drawable.createFromStream(inputStream, "");
-                    Log.v("INPUT_TEST", "error 4");
 
-                    this.icon.setImageDrawable(drawable);
-                    */
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -505,6 +503,7 @@ public class Map {
 	class Pin {
 		public Spot spot;
 		public Marker marker;
+        public Bitmap img;
 
 		Pin(Marker marker, Spot spot) {
 			this.marker = marker;
