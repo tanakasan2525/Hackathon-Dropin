@@ -6,6 +6,8 @@
     android:id="@+id/searchActivity"
     tools:context="com.cyberagent.courseshare.SearchActivity">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,111 +34,87 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:orientation="horizontal">
-        <LinearLayout
+        <ToggleButton
+            android:layout_margin="5dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:orientation="vertical"
-            style="@android:style/Widget.Button"
-            android:onClick="onClickRestaurant">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/restaurant" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="レストラン"
-                android:textColor="#333333" />
-        </LinearLayout>
+            android:gravity="center"
+            android:drawableTop="@drawable/restaurant"
+            android:background="@drawable/genre_button"
+            android:textOff="レストラン"
+            android:textOn="レストラン"
+            android:onClick="onClickRestaurant"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            />
+        <ToggleButton
+            android:layout_margin="5dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:drawableTop="@drawable/cafe"
+            android:background="@drawable/genre_button"
+            android:textOff="カフェ"
+            android:textOn="レストラン"
+            android:onClick="onClickCafe"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            />
 
-        <LinearLayout
+        <ToggleButton
+            android:layout_margin="5dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:orientation="vertical"
-            style="@android:style/Widget.Button"
-            android:onClick="onClickCafe">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/cafe" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="カフェ"
-                android:textColor="#333333" />
-        </LinearLayout>
-
-        <LinearLayout
+            android:gravity="center"
+            android:drawableTop="@drawable/bar"
+            android:background="@drawable/genre_button"
+            android:textOff="居酒屋・バー"
+            android:textOn="居酒屋・バー"
+            android:onClick="onClickBar"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            />
+        <ToggleButton
+            android:layout_margin="5dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:orientation="vertical"
-            style="@android:style/Widget.Button"
-            android:onClick="onClickBar">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bar" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="居酒屋・バー"
-                android:textColor="#333333" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:orientation="vertical"
-            style="@android:style/Widget.Button"
-            android:onClick="onClickGasSt">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/gas_st" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="ガソリンスタンド"
-                android:textColor="#333333" />
-        </LinearLayout>
+            android:gravity="center"
+            android:drawableTop="@drawable/book"
+            android:background="@drawable/genre_button"
+            android:textOff="本屋"
+            android:textOn="本屋"
+            android:onClick="onClickBookStore"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            />
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
         android:orientation="horizontal">
-        <LinearLayout
+        <ToggleButton
+            android:layout_margin="5dp"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:orientation="vertical"
-            style="@android:style/Widget.Button"
-            android:onClick="onClickGasSt">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/aogaku" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|center_vertical"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="本屋"
-                android:textColor="#333333" />
-        </LinearLayout>
+            android:gravity="center"
+            android:drawableTop="@drawable/gas_st"
+            android:background="@drawable/genre_button"
+            android:textOff="ガソリンスタンド"
+            android:textOn="ガソリンスタンド"
+            android:onClick="onClickGasSt"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            />
     </LinearLayout>
+
+
     <Button
         android:id="@+id/randomButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="ランダム"
         android:textColor="@color/white"
