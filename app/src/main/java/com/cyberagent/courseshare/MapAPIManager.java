@@ -71,8 +71,16 @@ public class MapAPIManager {
         for (String word : searchWords) {
             searchWord += word + "&";
         }
-        Log.v(TAG, "search word:" + searchWord);
-        search.setKeyword(searchWord);
+
+        if (searchWords.size() <= 1) {
+            Log.v(TAG, "equal 1");
+            Log.v(TAG, searchWords.get(0));
+            search.setKeyword(searchWords.get(0));
+        } else {
+            Log.v(TAG, "over 2");
+            Log.v(TAG, "search word:" + searchWord);
+            search.setKeyword(searchWord);
+        }
 
         // リクエストの送信
         search.sendRequest(new PlacesCallback() {
