@@ -64,7 +64,8 @@ public class MapAPIManager {
         PlacesSettings.getInstance().setApiKey(context.getResources().getString(R.string.google_api_key)/*context.getResources().getString(R.string.google_maps_key)*/);
 
         // 検索範囲の指定
-        NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
+        //NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
+        NearbySearch search = PlaceSearch.nearbySearch(lat, lng);
 
         String searchWord = "";
         // 検索ワードの設定
