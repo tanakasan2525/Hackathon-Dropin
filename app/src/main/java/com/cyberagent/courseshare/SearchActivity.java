@@ -56,6 +56,8 @@ public class SearchActivity extends Activity {
 			}
 		});
 
+		UIUtil.animateAppearing(mainLayout, 800);
+
     }
 
     @Override
@@ -110,4 +112,8 @@ public class SearchActivity extends Activity {
 	public void onClickGasSt(View view) {
 		returnIntent("ガソリンスタンド");
 	}
+
+    public void onClickBookStore(View view) {returnIntent("本屋");}
+
+
 }

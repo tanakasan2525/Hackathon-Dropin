@@ -178,42 +178,11 @@ public class CourseActivity extends FragmentActivity {
 		String waypoint = i.getStringExtra("transitPoint");
 		int timeLeft = i.getIntExtra("timeLeft", 0);
 
-
-
-		// Google ジオコーディングテスト
-		/*try {
-			StringBuilder sb = new StringBuilder("http://maps.google.com/maps/api/geocode/json?sensor=false");
-			sb.append("&address=" + URLEncoder.encode(start, "utf8"));
-			WebUtil.getJson(sb.toString(), new WebUtil.JsonListener() {
-				@Override
-				public void callback(JSONObject json) {
-					Log.v("TEST", "callback " + json);
-					try {
-						double lat = json.getJSONArray("results").getJSONObject(0)
-								.getJSONObject("geometry").getJSONObject("location")
-								.getDouble("lat");
-
-						double lng = json.getJSONArray("results").getJSONObject(0)
-								.getJSONObject("geometry").getJSONObject("location")
-								.getDouble("lng");
-
-						LatLng latlng = new LatLng(lat, lng);
-						Log.v("TEST", latlng.toString());
-
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
-
 		this.mapTasks.add(new MapTask(TaskType.START, "dummy")); // doNextTaskをうまく動かすためのダミー
 
-		if (!"現在地".equals(start)) {
-			this.mapTasks.add(new MapTask(TaskType.START, start));
-		}
+		//if (!"現在地".equals(start)) {
+		this.mapTasks.add(new MapTask(TaskType.START, start));
+		//}
 		this.mapTasks.add(new MapTask(TaskType.GOAL, goal));
 		if (waypoint != null)
 			this.mapTasks.add(new MapTask(TaskType.WAYPOINT, waypoint));
@@ -224,9 +193,10 @@ public class CourseActivity extends FragmentActivity {
 		LatLng now = new LatLng(this.personTracker.getLatitude(), this.personTracker.getLongitude());
 		this.map.setCenter(now);
 
-		if ("現在地".equals(start)) {
+		/*if ("現在地".equals(start)) {
 			this.map.confirmPin(this.map.addPin(new Spot(start, now)));
-		} else
+			this.map.confirmPin(this.map.addPin(new Spot(start, now)));
+		} else*/
 			doNextTask();
 	}
 
@@ -284,6 +254,12 @@ public class CourseActivity extends FragmentActivity {
 	}
 
 	public void search(String keyword) {
+		if ("現在地".equals(keyword)) {
+			LatLng now = new LatLng(this.personTracker.getLatitude(), this.personTracker.getLongitude());
+			this.map.confirmPin(this.map.addPin(new Spot(keyword, now)));
+			return;
+		}
+
 		this.waitDialog = new ProgressDialog(this);
 		this.waitDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		this.waitDialog.setMessage("検索中");
@@ -310,6 +286,10 @@ public class CourseActivity extends FragmentActivity {
 
 				//if (!spots.isEmpty())
 				//	map.setCenter(spots.get(0).getCoordinates());
+
+				if (getTaskType() == TaskType.START)
+					if (!spots.isEmpty())
+						map.setCenter(spots.get(0).getCoordinates());
 
 				if (waitDialog != null)
 					waitDialog.dismiss();

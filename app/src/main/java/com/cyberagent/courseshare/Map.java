@@ -107,7 +107,7 @@ public class Map {
 
 	public void setStart(Spot start) {
 		this.startPin = addPin(start);
-		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+		BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.pin1);
 		this.startPin.marker.setIcon(icon);
 		this.startPin.marker.setAlpha(1.0f);
 
@@ -117,7 +117,7 @@ public class Map {
 
 	public void setGoal(Spot goal) {
 		this.goalPin = addPin(goal);
-		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED);
+		BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.pin1);
 		this.goalPin.marker.setIcon(icon);
 		this.goalPin.marker.setAlpha(1.0f);
 
@@ -344,6 +344,10 @@ public class Map {
 			return this.goalPin;
 		else
 			return waypoints.get(waypoints.size() - 1);
+	}
+
+	public ArrayList<Pin> getPins() {
+		return this.pins;
 	}
 
 	public ArrayList<Pin> getWaypoints() {

@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -19,8 +21,10 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
@@ -29,11 +33,14 @@ import com.beardedhen.androidbootstrap.BootstrapEditText;
 
 public class FirstActivity extends Activity {
 
+	private ImageView topTitleView;
     private Button searchButton;
     private BootstrapButton startButton;
     private BootstrapButton goalButton;
     private EditText start;
     private EditText goal;
+	private TextView startText;
+	private TextView endText;
     private BootstrapButton timeLeftButton;
     private NumberPicker hours;
     private NumberPicker minutes;
@@ -68,37 +75,16 @@ public class FirstActivity extends Activity {
         //遷移させる画面の決定
         findViews();
         initViews();
-
-//        final AutoCompleteTextView autoCompView = (AutoCompleteTextView)findViewById(R.id.transitPoint);
-//        autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
-//
-//        autoCompView.setOnKeyListener(new View.OnKeyListener() {
-//            //コールバックとしてonKey()メソッドを定義
-//            @Override
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                // エンターキーで決定
-//                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-//                    returnIntent(autoCompView.getText().toString());
-//
-//                    return true;
-//                }
-//
-//                return false;
-//            }
-//        });
-//    }
-//    private void returnIntent(String keyword) {
-//        Intent i = new Intent();
-//        i.putExtra("keyword", keyword);
-//        setResult(RESULT_OK, i);
-//        finish();
     }
 
     private void findViews() {
+		this.topTitleView = (ImageView)findViewById(R.id.top_title);
         this.searchButton = (Button)findViewById(R.id.searchButton);
         this.start = (EditText)findViewById(R.id.start);
         this.goal = (EditText)findViewById(R.id.goal);
-        this.timeLeftButton = (BootstrapButton) findViewById(R.id.timeLeftButton);
+		this.startText = (TextView)findViewById(R.id.start_text);
+		this.endText = (TextView)findViewById(R.id.end_text);
+		this.timeLeftButton = (BootstrapButton) findViewById(R.id.timeLeftButton);
         this.startButton = (BootstrapButton)findViewById(R.id.startButton);
         this.goalButton = (BootstrapButton)findViewById(R.id.goalButton);
 //        this.hours = (NumberPicker)findViewById(R.id.hours);
@@ -151,6 +137,29 @@ public class FirstActivity extends Activity {
             }
         });
 
+		start.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View view, boolean b) {
+				if (b) {
+					startText.setBackgroundColor(Color.parseColor("#8cc152")); // focus
+				} else {
+					startText.setBackgroundColor(Color.parseColor("#53cc91")); // default
+				}
+			}
+		});
+
+		goal.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View view, boolean b) {
+				if (b) {
+					endText.setBackgroundColor(Color.parseColor("#8cc152"));
+				} else {
+					endText.setBackgroundColor(Color.parseColor("#53cc91"));
+				}
+			}
+		});
+
+		UIUtil.animateAppearing(mainLayout, 2000);
 
     }
 
