@@ -180,9 +180,9 @@ public class CourseActivity extends FragmentActivity {
 
 		this.mapTasks.add(new MapTask(TaskType.START, "dummy")); // doNextTaskをうまく動かすためのダミー
 
-		if (!"現在地".equals(start)) {
-			this.mapTasks.add(new MapTask(TaskType.START, start));
-		}
+		//if (!"現在地".equals(start)) {
+		this.mapTasks.add(new MapTask(TaskType.START, start));
+		//}
 		this.mapTasks.add(new MapTask(TaskType.GOAL, goal));
 		if (waypoint != null)
 			this.mapTasks.add(new MapTask(TaskType.WAYPOINT, waypoint));
@@ -193,9 +193,10 @@ public class CourseActivity extends FragmentActivity {
 		LatLng now = new LatLng(this.personTracker.getLatitude(), this.personTracker.getLongitude());
 		this.map.setCenter(now);
 
-		if ("現在地".equals(start)) {
+		/*if ("現在地".equals(start)) {
 			this.map.confirmPin(this.map.addPin(new Spot(start, now)));
-		} else
+			this.map.confirmPin(this.map.addPin(new Spot(start, now)));
+		} else*/
 			doNextTask();
 	}
 
@@ -253,6 +254,12 @@ public class CourseActivity extends FragmentActivity {
 	}
 
 	public void search(String keyword) {
+		if ("現在地".equals(keyword)) {
+			LatLng now = new LatLng(this.personTracker.getLatitude(), this.personTracker.getLongitude());
+			this.map.confirmPin(this.map.addPin(new Spot(keyword, now)));
+			return;
+		}
+
 		this.waitDialog = new ProgressDialog(this);
 		this.waitDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		this.waitDialog.setMessage("検索中");

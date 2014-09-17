@@ -10,6 +10,6 @@
     <string name="title_activity_search">よりみち検索</string>
     <string name="title_activity_first">Drop-in</string>
     <string name="str_title_comment">出発地</string>
-    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_splash">Drop-in</string>
 
 </resources>
