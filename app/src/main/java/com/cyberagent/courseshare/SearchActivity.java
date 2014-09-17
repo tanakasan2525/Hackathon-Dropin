@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import java.util.Random;
 public class SearchActivity extends Activity {
     Intent firstActivityIntent;
     private LinearLayout mainLayout;
-	private LinearLayout btnListLayout;
+	private ArrayList<LinearLayout> btnListLayouts;
 
     InputMethodManager inputMethodManager;
 
@@ -36,7 +37,9 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.activity_search);
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mainLayout = (LinearLayout) findViewById(R.id.searchActivity);
-		btnListLayout = (LinearLayout) findViewById(R.id.btn_list);
+		btnListLayouts = new ArrayList<LinearLayout>();
+		btnListLayouts.add((LinearLayout) findViewById(R.id.btn_list));
+		btnListLayouts.add((LinearLayout) findViewById(R.id.btn_list2));
 		final AutoCompleteTextView autoCompView = (AutoCompleteTextView)findViewById(R.id.autocomplete);
 		autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
         autoCompView.postDelayed(new Runnable() {
@@ -61,6 +64,13 @@ public class SearchActivity extends Activity {
 				}
 
 				return false;
+			}
+		});
+
+		((Button)findViewById(R.id.randomButton)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				selectAtRandom();
 			}
 		});
 
@@ -106,35 +116,41 @@ public class SearchActivity extends Activity {
     }
 
 	private void selectAtRandom() {
-		Random rnd = new Random();
-		final int rndNum = rnd.nextInt(20) + 20;
+		long seed = System.currentTimeMillis();
+		Random rnd = new Random(seed);
+		final int rndNum = rnd.nextInt(20) + 30;
 
 		final ArrayList<ToggleButton> btnList = new ArrayList<ToggleButton>();
-		final int btnNum = btnListLayout.getChildCount();
-		for (int i = 0; i < btnNum; ++i) {
-			ToggleButton btn = (ToggleButton)btnListLayout.getChildAt(i);
-			btnList.add(btn);
+		int btnNumBuffer = 0;
+		for (LinearLayout ll : btnListLayouts) {
+			btnNumBuffer += ll.getChildCount();
+			for (int i = 0; i < ll.getChildCount(); ++i) {
+				ToggleButton btn = (ToggleButton) ll.getChildAt(i);
+				btnList.add(btn);
+			}
 		}
+
+		final int btnNum = btnNumBuffer;
 
 		final Handler handler = new Handler();
 
 		new Thread(new Runnable() {
 			public void run() {
-				int counter = rndNum;
+				int counter = 0;
 				while(true){
 					try {
-						Thread.sleep(300);
+						Thread.sleep(100);
 					}catch(InterruptedException e){
 					}
 					final int counterForHandler = counter;
 					handler.post(new Runnable() {
 						public void run() {
-							btnList.get((counterForHandler - 1) % btnNum).setChecked(false);
+							btnList.get((counterForHandler + btnNum - 1) % btnNum).setChecked(false);
 							btnList.get(counterForHandler % btnNum).setChecked(true);
 						}
 					});
 
-					if (counter-- < 0) {
+					if (++counter > rndNum) {
 						btnList.get(rndNum % btnNum).callOnClick();
 						break;
 					}
@@ -159,7 +175,13 @@ public class SearchActivity extends Activity {
 		returnIntent("ガソリンスタンド");
 	}
 
-    public void onClickBookStore(View view) {returnIntent("本屋");}
+	public void onClickBookStore(View view) {returnIntent("本屋");}
+
+	public void onClickCinema(View view) {returnIntent("映画館");}
+
+	public void onClickKaraoke(View view) {returnIntent("カラオケ");}
+
+
 
 
 }
