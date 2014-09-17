@@ -13,8 +13,4 @@
     	android:id="@+id/lblTitle"
     	android:gravity="left"
         />
-<<<<<<< HEAD
-</LinearLayout><!-- From: file:/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/row_title.xml -->
-=======
 </LinearLayout><!-- From: file:/C:/Users/tanakasan/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/res/layout/row_title.xml -->
->>>>>>> map_display

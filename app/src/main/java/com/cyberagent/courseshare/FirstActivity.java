@@ -175,7 +175,7 @@ public class FirstActivity extends Activity {
         final View layout = inflater.inflate(R.layout.timealertdialog,(ViewGroup)findViewById(R.id.timealertdialog_layout));
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         // アラートダイアログのタイトルを設定します
-        alertDialogBuilder.setTitle("暇な時間");
+        alertDialogBuilder.setTitle("空き時間");
         //timePickerを表示します
         alertDialogBuilder.setView(layout);
         //timePickerの設定をします

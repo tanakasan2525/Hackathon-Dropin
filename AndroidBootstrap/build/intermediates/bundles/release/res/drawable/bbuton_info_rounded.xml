@@ -20,8 +20,4 @@
             <corners android:radius="@dimen/bbuton_rounded_corner_radius"/>
         </shape></item>
 
-<<<<<<< HEAD
-</selector><!-- From: file:/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_info_rounded.xml -->
-=======
 </selector><!-- From: file:/C:/Users/tanakasan/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/res/drawable/bbuton_info_rounded.xml -->
->>>>>>> map_display

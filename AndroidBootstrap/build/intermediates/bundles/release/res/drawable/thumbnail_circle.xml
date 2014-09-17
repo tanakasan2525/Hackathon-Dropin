@@ -4,8 +4,4 @@
         android:shape="oval">
         <solid android:color="@color/bthumbnail_placeholder"/>
     </shape>
-<<<<<<< HEAD
-<!-- From: file:/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/thumbnail_circle.xml -->
-=======
 <!-- From: file:/C:/Users/tanakasan/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/res/drawable/thumbnail_circle.xml -->
->>>>>>> map_display
