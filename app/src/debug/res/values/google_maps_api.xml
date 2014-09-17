@@ -16,10 +16,6 @@ https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend
 
     <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyCrGaab-hNNst1kGS8L2Qf9NV77VEIapPo</string>
 	<!--<string name="google_api_key">AIzaSyAFmAPTBebdVwG2tlkBIIGaM_gowOuu62E</string>-->
-<<<<<<< HEAD
-    <string name="google_api_key">AIzaSyAN_B0_xjV4FP4_POmqV8djx_ALEdgpBtc</string>
 
-=======
 	<string name="google_api_key">AIzaSyAN_B0_xjV4FP4_POmqV8djx_ALEdgpBtc</string>
->>>>>>> search_button
 </resources>
