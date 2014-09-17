@@ -78,6 +78,7 @@ public class CourseActivity extends FragmentActivity {
 	private ActionBarDrawerToggle drawerToggle;
 	private DrawerLayout drawer;
 	private RatingBar ratingBar;
+	private TextView timeLeftView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,7 @@ public class CourseActivity extends FragmentActivity {
 		this.personTracker = new PersonTracker(this);
 		this.mapTasks = new ArrayList<MapTask>();
 
-		//layoutFactory = LayoutInflater.from(this);
+		layoutFactory = LayoutInflater.from(this);
 
 		//CoursePagerAdapter adapter = new CoursePagerAdapter(this);
 
@@ -169,6 +170,8 @@ public class CourseActivity extends FragmentActivity {
 			}
 		});
 		//map.hidePinByRating(rating);
+
+		this.timeLeftView = (TextView)findViewById(R.id.time_left_view);
 
 		this.map = new Map(this, mapView, (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map), this.apiManager);
 
@@ -253,6 +256,10 @@ public class CourseActivity extends FragmentActivity {
 		return false;//super.onOptionsItemSelected(item);
 	}
 
+	public void setLeftTime(int second) {
+		this.timeLeftView.setText((second / 60) + "分" + (second % 60) + "秒");
+	}
+
 	public void search(String keyword) {
 		if ("現在地".equals(keyword)) {
 			LatLng now = new LatLng(this.personTracker.getLatitude(), this.personTracker.getLongitude());
@@ -316,17 +323,36 @@ public class CourseActivity extends FragmentActivity {
 		Map.Pin start = this.map.getStartPin();
 		Map.Pin goal = this.map.getGoalPin();
 
-		if (start != null)
-			adapter.add(start.spot.getName());
+		LinearLayout listView = (LinearLayout)findViewById(R.id.waypoint_list);
+		listView.removeAllViews();
 
-		for (Map.Pin pin : this.map.getWaypoints())
-			adapter.add(pin.spot.getName());
+		if (start != null) {
+			LinearLayout item = (LinearLayout)layoutFactory.inflate(R.layout.waypoint_list_item, null);
+			((TextView)item.findViewById(R.id.textView)).setText(start.spot.getName());
+			listView.addView(item);
+			//adapter.add(start.spot.getName());
+		}
 
-		if (goal != null)
-			adapter.add(goal.spot.getName());
+		for (Map.Pin pin : this.map.getWaypoints()) {
+			LinearLayout item = (LinearLayout)layoutFactory.inflate(R.layout.waypoint_list_item, null);
+			((TextView)item.findViewById(R.id.textView)).setText(pin.spot.getName());
+			listView.addView(item);
+			//adapter.add(pin.spot.getName());
+		}
 
-		SortableListView listView = (SortableListView)findViewById(R.id.waypoint_list);
-		listView.setAdapter(adapter);
+		if (goal != null) {
+			LinearLayout item = (LinearLayout)layoutFactory.inflate(R.layout.waypoint_list_item_side, null);
+			((TextView)item.findViewById(R.id.textView)).setText(goal.spot.getName());
+			listView.addView(item);
+			// adapter.add(goal.spot.getName());
+		}
+
+		//SortableListView listView = (SortableListView)findViewById(R.id.waypoint_list);
+		//listView.setAdapter(adapter);
+
+
+
+		Map.Pin newPin = map.getNewPin();
 	}
 
 	public void doNextTask() {

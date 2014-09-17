@@ -46,6 +46,15 @@
 			android:maxLines="2"
 			android:text="この場所の説明です。この場所の説明です。この場所の説明です。"/>
 
+		<!--<TextView
+			android:id="@+id/time_left_view"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ellipsize="end"
+			android:textColor="#ffeeeeee"
+			android:textSize="14dp"
+			android:text="移動時間："/>時間がなーーーーい-->
+
 		<Button
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

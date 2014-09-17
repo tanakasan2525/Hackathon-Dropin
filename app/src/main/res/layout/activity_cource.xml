@@ -70,11 +70,36 @@
 			android:textSize="30dp"
 			android:textColor="#FFFFFF"
 			android:gravity="center_horizontal"/>
-		<com.cyberagent.courseshare.SortableListView
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:id="@+id/waypoint_list"
+			>
+
+			</LinearLayout>
+		<!--<com.cyberagent.courseshare.SortableListView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/waypoint_list"
-			android:background="#CCCCCC"/>
+			android:background="#CCCCCC"/>-->
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="- 移動時間 -"
+			android:textSize="16dp"
+			android:textColor="#FFFFFF"
+			android:gravity="center_horizontal"/>
+		<TextView
+			android:id="@+id/time_left_view"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="0分"
+			android:textSize="16dp"
+			android:textColor="#FFFFFF"
+			android:gravity="center_horizontal"/>
 		<TextView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

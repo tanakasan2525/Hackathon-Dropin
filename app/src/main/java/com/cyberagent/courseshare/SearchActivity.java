@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,13 +13,19 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 
 public class SearchActivity extends Activity {
     Intent firstActivityIntent;
     private LinearLayout mainLayout;
+	private LinearLayout btnListLayout;
 
     InputMethodManager inputMethodManager;
 
@@ -29,6 +36,7 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.activity_search);
         inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         mainLayout = (LinearLayout) findViewById(R.id.searchActivity);
+		btnListLayout = (LinearLayout) findViewById(R.id.btn_list);
 		final AutoCompleteTextView autoCompView = (AutoCompleteTextView)findViewById(R.id.autocomplete);
 		autoCompView.setAdapter(new PlaceAutoCompleteAdapter(this, R.layout.search_list_item));
         autoCompView.postDelayed(new Runnable() {
@@ -90,12 +98,50 @@ public class SearchActivity extends Activity {
 
 // キーボードを隠す
         inputMethodManager.hideSoftInputFromWindow(mainLayout.getWindowToken(),
-                InputMethodManager.HIDE_NOT_ALWAYS);
+				InputMethodManager.HIDE_NOT_ALWAYS);
 // 背景にフォーカスを移す
         mainLayout.requestFocus();
 
         return true;
     }
+
+	private void selectAtRandom() {
+		Random rnd = new Random();
+		final int rndNum = rnd.nextInt(20) + 20;
+
+		final ArrayList<ToggleButton> btnList = new ArrayList<ToggleButton>();
+		final int btnNum = btnListLayout.getChildCount();
+		for (int i = 0; i < btnNum; ++i) {
+			ToggleButton btn = (ToggleButton)btnListLayout.getChildAt(i);
+			btnList.add(btn);
+		}
+
+		final Handler handler = new Handler();
+
+		new Thread(new Runnable() {
+			public void run() {
+				int counter = rndNum;
+				while(true){
+					try {
+						Thread.sleep(300);
+					}catch(InterruptedException e){
+					}
+					final int counterForHandler = counter;
+					handler.post(new Runnable() {
+						public void run() {
+							btnList.get((counterForHandler - 1) % btnNum).setChecked(false);
+							btnList.get(counterForHandler % btnNum).setChecked(true);
+						}
+					});
+
+					if (counter-- < 0) {
+						btnList.get(rndNum % btnNum).callOnClick();
+						break;
+					}
+				}
+			}
+		}).start();
+	}
 
 	public void onClickRestaurant(View view) {
 		returnIntent("レストラン");

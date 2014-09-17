@@ -246,6 +246,7 @@ public class Map {
 				lineOptions.width(11);
 				lineOptions.color(0x5500ff00);
 				line = map.addPolyline(lineOptions);
+				owner.setLeftTime((Integer)((Long)data.get("duration")).intValue());
 			}
 		});
 
@@ -273,8 +274,9 @@ public class Map {
 	 * @param pin 追加するピン
 	 */
 	public void addWeyPoint(Pin pin) {
-		BitmapDescriptor icon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+		BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.pin2);
 		pin.marker.setIcon(icon);
+		pin.marker.setAlpha(1.0f);
 
 		this.waypoints.add(pin);
 
