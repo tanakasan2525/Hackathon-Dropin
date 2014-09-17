@@ -286,8 +286,30 @@ public class CourseActivity extends FragmentActivity {
 			prevPoint = this.map.getPrevPin().spot.getCoordinates();
 		}
 
+        double centerLat;
+        double centerLng;
+
+        Log.v("debug_tag", "debug");
+        if (this.map.getGoalPin() == null) {
+            centerLat = prevPoint.latitude;
+            centerLng = prevPoint.longitude;
+        } else {
+            LatLng startLatLng= this.map.getStartPin().spot.getCoordinates();
+            LatLng goalLatLng = this.map.getGoalPin().spot.getCoordinates();
+
+            double startLat = startLatLng.latitude;
+            double startLng = startLatLng.longitude;
+
+            double goalLat = goalLatLng.latitude;
+            double goalLng = goalLatLng.longitude;
+
+            centerLat = startLat + (goalLat - startLat)/2;
+            centerLng = startLng + (goalLng - startLng)/2;
+
+        }
+
 		// call WebAPI
-		this.apiManager.searchPlaces(prevPoint.latitude, prevPoint.longitude, keywords, 2000, new OnEndPlaceRequestListener() {
+		this.apiManager.searchPlaces(centerLat, centerLng, keywords, 2000, new OnEndPlaceRequestListener() {
 			@Override
 			public void onEndRequestListener(String status, ArrayList<Spot> spots) {
 
