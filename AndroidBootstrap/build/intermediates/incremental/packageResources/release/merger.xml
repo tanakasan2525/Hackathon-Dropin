@@ -2,234 +2,386 @@
 <merger version="2" >
 
     <dataSet config="main" >
+<<<<<<< HEAD
         <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res" >
             <file
                 name="bbuton_danger"
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_danger.xml"
+=======
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res" >
+            <file
+                name="bbuton_danger"
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_danger.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_danger_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_danger_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_danger_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_default"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_default.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_default.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_default_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_default_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_default_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_info"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_info.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_info.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_info_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_info_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_info_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_inverse"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_inverse.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_inverse.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_inverse_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_inverse_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_inverse_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_primary"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_primary.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_primary.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_primary_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_primary_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_primary_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_success"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_success.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_success.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_success_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_success_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_success_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_warning"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_warning.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_warning.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_warning_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bbuton_warning_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bbuton_warning_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_container_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bthumbnail_container_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bthumbnail_container_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_container_square"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bthumbnail_container_square.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bthumbnail_container_square.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_placeholder_default"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/bthumbnail_placeholder_default.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\bthumbnail_placeholder_default.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_danger"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background_danger.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background_danger.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background_rounded.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background_rounded.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_danger"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background_rounded_danger.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background_rounded_danger.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_success"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background_rounded_success.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background_rounded_success.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_warning"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background_rounded_warning.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background_rounded_warning.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_success"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background_success.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background_success.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_warning"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/edittext_background_warning.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\edittext_background_warning.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/thumbnail_circle.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\thumbnail_circle.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle_container"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/thumbnail_circle_container.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\thumbnail_circle_container.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle_minimal"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable/thumbnail_circle_minimal.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable\thumbnail_circle_minimal.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="drawable" />
             <file
                 name="ic_launcher"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable-hdpi/ic_launcher.png"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable-hdpi\ic_launcher.png"
+>>>>>>> map_display
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable-mdpi/ic_launcher.png"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable-mdpi\ic_launcher.png"
+>>>>>>> map_display
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/drawable-xhdpi/ic_launcher.png"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\drawable-xhdpi\ic_launcher.png"
+>>>>>>> map_display
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="bootstrap_button"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/bootstrap_button.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\bootstrap_button.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_fill"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/bootstrap_button_fill.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\bootstrap_button_fill.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_edit_text"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/bootstrap_edit_text.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\bootstrap_edit_text.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/bootstrap_thumbnail.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\bootstrap_thumbnail.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail_circle"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/bootstrap_thumbnail_circle.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\bootstrap_thumbnail_circle.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="font_awesome_text"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/font_awesome_text.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\font_awesome_text.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_title"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/row_title.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\row_title.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_title_and_subtitle"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/row_title_and_subtitle.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\row_title_and_subtitle.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_two_columns"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/layout/row_two_columns.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\layout\row_two_columns.xml"
+>>>>>>> map_display
                 qualifiers=""
                 type="layout" />
             <file
                 name="main"
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/menu/main.xml"
                 qualifiers=""
                 type="menu" />
             <file
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values/attrs.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\menu\main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values\attrs.xml"
+>>>>>>> map_display
                 qualifiers="" >
-                <declare-styleable name="BootstrapCircleThumbnail" >
-                    <attr
-                        name="bct_image"
-                        format="integer" />
-                    <attr
-                        name="bct_size"
-                        format="string" />
-                    <attr
-                        name="bct_minimal"
-                        format="boolean" />
-                    <attr name="android:text" />
-                </declare-styleable>
-                <declare-styleable name="FontAwesomeText" >
-                    <attr
-                        name="fa_icon"
-                        format="string" />
-                    <attr name="android:textSize" />
-                    <attr name="android:textColor" />
-                </declare-styleable>
                 <declare-styleable name="BootstrapButton" >
                     <attr
                         name="bb_type"
@@ -275,6 +427,13 @@
                         format="dimension" />
                     <attr name="android:text" />
                 </declare-styleable>
+                <declare-styleable name="FontAwesomeText" >
+                    <attr
+                        name="fa_icon"
+                        format="string" />
+                    <attr name="android:textSize" />
+                    <attr name="android:textColor" />
+                </declare-styleable>
                 <declare-styleable name="BootstrapEditText" >
                     <attr
                         name="be_roundedCorners"
@@ -287,143 +446,171 @@
                     <attr name="android:hint" />
                     <attr name="android:enabled" />
                 </declare-styleable>
+                <declare-styleable name="BootstrapCircleThumbnail" >
+                    <attr
+                        name="bct_image"
+                        format="integer" />
+                    <attr
+                        name="bct_size"
+                        format="string" />
+                    <attr
+                        name="bct_minimal"
+                        format="boolean" />
+                    <attr name="android:text" />
+                </declare-styleable>
             </file>
             <file
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values/colors.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values\colors.xml"
+>>>>>>> map_display
                 qualifiers="" >
+                <color name="bbutton_default_pressed" >#ffebebeb
+                </color>
+                <color name="bbutton_default_disabled_edge" >#a5cccccc
+                </color>
+                <color name="bbutton_inverse_edge" >#ff141414
+                </color>
+                <color name="bbutton_success_pressed" >#ff47a447
+                </color>
+                <color name="bbutton_inverse_pressed_edge" >#ff292929
+                </color>
+                <color name="bbutton_inverse" >#ff0a0a0a
+                </color>
+                <color name="bthumbnail_background" >#ffffffff
+                </color>
+                <color name="bbutton_info_edge" >#ff46b8da
+                </color>
+                <color name="bthumbnail_font" >#7e7e7e
+                </color>
+                <color name="bbutton_primary" >#ff428bca
+                </color>
+                <color name="bbutton_primary_pressed_edge" >#ff285e8e
+                </color>
+                <color name="bbutton_info_pressed_edge" >#ff269abc
+                </color>
+                <color name="bbutton_success_pressed_edge" >#ff398439
+                </color>
+                <color name="bbutton_warning" >#fff0ad4e
+                </color>
+                <color name="black" >#ff000000
+                </color>
+                <color name="bbutton_edittext_disabled" >#ffe0e0e0
+                </color>
+                <color name="bbutton_danger_pressed_edge" >#ffac2925
+                </color>
+                <color name="bbutton_danger_pressed" >#ffd2322d
+                </color>
+                <color name="bbutton_default_disabled" >#a5ffffff
+                </color>
+                <color name="bthumbnail_placeholder" >#e9e9e9
+                </color>
+                <color name="bbutton_default_edge" >#ffcccccc
+                </color>
+                <color name="bbutton_warning_disabled_edge" >#a5eea236
+                </color>
+                <color name="bbutton_warning_disabled" >#a5f0ad4e
+                </color>
+                <color name="bbutton_default" >#ffffffff
+                </color>
+                <color name="bbutton_primary_pressed" >#ff3276b1
+                </color>
+                <color name="bbutton_primary_disabled_edge" >#a5357ebd
+                </color>
+                <color name="bbutton_info_disabled_edge" >#a546b8da
+                </color>
+                <color name="bbutton_success" >#ff5cb85c
+                </color>
+                <color name="bbutton_warning_edge" >#ffeea236
+                </color>
+                <color name="bbutton_danger" >#ffd9534f
+                </color>
+                <color name="bbutton_inverse_disabled" >#a50a0a0a
+                </color>
+                <color name="bbutton_inverse_pressed" >#ff1f1f1f
+                </color>
+                <color name="bbutton_info_pressed" >#ff39b3d7
+                </color>
+                <color name="bbutton_warning_pressed_edge" >#ffd58512
+                </color>
+                <color name="bbutton_success_disabled_edge" >#a54cae4c
+                </color>
+                <color name="bbutton_danger_edge" >#ffd43f3a
+                </color>
                 <color name="bbutton_danger_disabled" >#a5d9534f
+                </color>
+                <color name="bbutton_info_disabled" >#a55bc0de
+                </color>
+                <color name="bbutton_inverse_disabled_edge" >#a5141414
                 </color>
                 <color name="bbutton_primary_edge" >#ff357ebd
                 </color>
                 <color name="bthumbnail_border" >#dbdbdb
                 </color>
-                <color name="bbutton_primary_disabled_edge" >#a5357ebd
-                </color>
                 <color name="bbutton_info" >#ff5bc0de
-                </color>
-                <color name="bbutton_default_edge" >#ffcccccc
-                </color>
-                <color name="bbutton_edittext_disabled" >#ffe0e0e0
-                </color>
-                <color name="bbutton_warning_pressed_edge" >#ffd58512
-                </color>
-                <color name="bbutton_danger_disabled_edge" >#a5d43f3a
-                </color>
-                <color name="bbutton_success_pressed" >#ff47a447
-                </color>
-                <color name="bbutton_primary_disabled" >#a5428bca
-                </color>
-                <color name="bbutton_danger_pressed_edge" >#ffac2925
-                </color>
-                <color name="bbutton_default_pressed_edge" >#ffadadad
-                </color>
-                <color name="bbutton_inverse_disabled" >#a50a0a0a
-                </color>
-                <color name="bbutton_primary_pressed" >#ff3276b1
-                </color>
-                <color name="bbutton_danger_edge" >#ffd43f3a
-                </color>
-                <color name="bbutton_warning_disabled" >#a5f0ad4e
-                </color>
-                <color name="bbutton_inverse_disabled_edge" >#a5141414
-                </color>
-                <color name="bbutton_info_disabled_edge" >#a546b8da
-                </color>
-                <color name="bbutton_success_edge" >#ff4cae4c
-                </color>
-                <color name="bbutton_inverse" >#ff0a0a0a
-                </color>
-                <color name="bbutton_primary_pressed_edge" >#ff285e8e
-                </color>
-                <color name="bbutton_edittext_border" >#ccc
-                </color>
-                <color name="bbutton_warning_disabled_edge" >#a5eea236
-                </color>
-                <color name="bthumbnail_background" >#ffffffff
-                </color>
-                <color name="white" >#ffffffff
-                </color>
-                <color name="bbutton_danger" >#ffd9534f
-                </color>
-                <color name="bbutton_default" >#ffffffff
-                </color>
-                <color name="black" >#ff000000
-                </color>
-                <color name="bbutton_inverse_pressed" >#ff1f1f1f
-                </color>
-                <color name="bbutton_success_pressed_edge" >#ff398439
-                </color>
-                <color name="bbutton_inverse_pressed_edge" >#ff292929
-                </color>
-                <color name="bbutton_default_disabled" >#a5ffffff
-                </color>
-                <color name="bbutton_default_disabled_edge" >#a5cccccc
-                </color>
-                <color name="bbutton_success_disabled_edge" >#a54cae4c
-                </color>
-                <color name="bbutton_inverse_edge" >#ff141414
                 </color>
                 <color name="bbutton_warning_pressed" >#ffed9c28
                 </color>
-                <color name="bbutton_warning" >#fff0ad4e
-                </color>
-                <color name="bbutton_default_pressed" >#ffebebeb
-                </color>
-                <color name="bbutton_info_pressed_edge" >#ff269abc
-                </color>
-                <color name="bthumbnail_font" >#7e7e7e
-                </color>
                 <color name="bbutton_success_disabled" >#a55cb85c
                 </color>
-                <color name="bbutton_success" >#ff5cb85c
+                <color name="bbutton_success_edge" >#ff4cae4c
                 </color>
-                <color name="bbutton_info_pressed" >#ff39b3d7
+                <color name="bbutton_danger_disabled_edge" >#a5d43f3a
                 </color>
-                <color name="bthumbnail_placeholder" >#e9e9e9
+                <color name="white" >#ffffffff
                 </color>
-                <color name="bbutton_danger_pressed" >#ffd2322d
+                <color name="bbutton_edittext_border" >#ccc
                 </color>
-                <color name="bbutton_warning_edge" >#ffeea236
+                <color name="bbutton_default_pressed_edge" >#ffadadad
                 </color>
-                <color name="bbutton_info_edge" >#ff46b8da
-                </color>
-                <color name="bbutton_info_disabled" >#a55bc0de
-                </color>
-                <color name="bbutton_primary" >#ff428bca
+                <color name="bbutton_primary_disabled" >#a5428bca
                 </color>
             </file>
             <file
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values/dimens.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values\dimens.xml"
+>>>>>>> map_display
                 qualifiers="" >
-                <dimen name="activity_vertical_margin" >16dp
-                </dimen>
-                <dimen name="padding_large" >16dp
-                </dimen>
-                <dimen name="bbuton_rounded_corner_radius" >5dp
+                <dimen name="padding_medium" >12dp
                 </dimen>
                 <dimen name="padding_micro" >4dp
                 </dimen>
                 <dimen name="activity_horizontal_margin" >16dp
                 </dimen>
-                <dimen name="padding_medium" >12dp
-                </dimen>
                 <dimen name="bthumbnail_rounded_corner_radius" >3dp
                 </dimen>
                 <dimen name="padding_small" >8dp
                 </dimen>
+                <dimen name="bbuton_rounded_corner_radius" >5dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+                <dimen name="padding_large" >16dp
+                </dimen>
             </file>
             <file
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values/strings.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values\strings.xml"
+>>>>>>> map_display
                 qualifiers="" >
-                <string name="hello_world" >Hello world!
-                </string>
                 <string name="action_settings" >Settings
                 </string>
                 <string name="app_name" >BButton
                 </string>
+                <string name="hello_world" >Hello world!
+                </string>
             </file>
             <file
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values/styles.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values\styles.xml"
+>>>>>>> map_display
                 qualifiers="" >
 
                 <style
@@ -438,13 +625,21 @@
                 </style>
             </file>
             <file
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values-sw720dp-land/dimens.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values-sw720dp-land\dimens.xml"
+>>>>>>> map_display
                 qualifiers="sw720dp-land-v13" >
                 <dimen name="activity_horizontal_margin" >128dp
                 </dimen>
             </file>
             <file
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values-v11/styles.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values-v11\styles.xml"
+>>>>>>> map_display
                 qualifiers="v11" >
 
                 <style
@@ -455,7 +650,11 @@
                 </style>
             </file>
             <file
+<<<<<<< HEAD
                 path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values-v14/styles.xml"
+=======
+                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\res\values-v14\styles.xml"
+>>>>>>> map_display
                 qualifiers="v14" >
 
                 <style
@@ -466,11 +665,19 @@
                 </style>
             </file>
         </source>
+<<<<<<< HEAD
         <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/generated/res/rs/release" />
         <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/build/generated/res/generated/release" />
     </dataSet>
     <dataSet config="release" >
         <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/src/release/res" />
+=======
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\build\generated\res\rs\release" />
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\build\generated\res\generated\release" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\src\release\res" />
+>>>>>>> map_display
     </dataSet>
 
 </merger>

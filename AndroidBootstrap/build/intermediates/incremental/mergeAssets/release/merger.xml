@@ -2,10 +2,17 @@
 <merger version="2" >
 
     <dataSet config="main" >
+<<<<<<< HEAD
         <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/src/main/assets" />
     </dataSet>
     <dataSet config="release" >
         <source path="/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/src/release/assets" />
+=======
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\src\main\assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrap\src\release\assets" />
+>>>>>>> map_display
     </dataSet>
 
 </merger>

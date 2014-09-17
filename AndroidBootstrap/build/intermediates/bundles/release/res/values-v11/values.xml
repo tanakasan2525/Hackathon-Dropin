@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
     <!-- From: file:/Users/shogo/ownCloud/Workspace/AndroidStudioProjects/CourseShare/AndroidBootstrap/res/values-v11/styles.xml -->
+=======
+    <!-- From: file:/C:/Users/tanakasan/AndroidStudioProjects/tokyo_smartphone2_E/AndroidBootstrap/res/values-v11/styles.xml -->
+>>>>>>> map_display
     <eat-comment />
 
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
