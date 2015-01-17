@@ -485,8 +485,8 @@ public class Map {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                this.btnDropIn.setOnTouchListener(infoBtnAddListener);
             }
-
 
 			if (!waypoints.contains(pin) && !pin.equals(startPin) && !pin.equals(goalPin)) {
 				this.infoBtnAddListener.setMarker(marker);

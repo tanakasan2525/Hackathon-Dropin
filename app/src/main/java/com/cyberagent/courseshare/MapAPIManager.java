@@ -64,13 +64,14 @@ public class MapAPIManager {
         PlacesSettings.getInstance().setApiKey(context.getResources().getString(R.string.google_api_key)/*context.getResources().getString(R.string.google_maps_key)*/);
 
         // 検索範囲の指定
-        NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
-        //NearbySearch search = PlaceSearch.nearbySearch(lat, lng);
+        //NearbySearch search = PlaceSearch.nearbySearch(lat, lng, radius);
+        NearbySearch search = PlaceSearch.nearbySearch(lat, lng);
 
         String searchWord = "";
         // 検索ワードの設定
         for (String word : searchWords) {
-            searchWord += word + "&";
+            //searchWord += word + "&";
+            searchWord += word;
         }
 
         if (searchWords.size() <= 1) {
@@ -120,7 +121,8 @@ public class MapAPIManager {
                             String maxWidth = "maxwidth=" + IMAGE_SIZE;
                             String maxHeight = "maxheight=" + IMAGE_SIZE;
                             String ref = "photoreference=" + photo.getPhoto_reference();
-                            String sensor = "sensor=true";
+                            //String sensor = "sensor=true";
+                            String sensor = "sensor=false";
                             String key = "key=" + context.getResources().getString(R.string.google_api_key);
 
                             String reqUrl = mapsUrl+maxWidth+"&"+maxHeight+"&"+ref+"&"+sensor+"&"+key;

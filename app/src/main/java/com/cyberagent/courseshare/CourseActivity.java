@@ -187,7 +187,7 @@ public class CourseActivity extends FragmentActivity {
 		this.mapTasks.add(new MapTask(TaskType.START, start));
 		//}
 		this.mapTasks.add(new MapTask(TaskType.GOAL, goal));
-		if (waypoint != null)
+		if (waypoint != null && waypoint.equals(""))
 			this.mapTasks.add(new MapTask(TaskType.WAYPOINT, waypoint));
 
 		resetSpotList();

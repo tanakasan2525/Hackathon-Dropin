@@ -2,214 +2,214 @@
 <merger version="2" >
 
     <dataSet config="unspecified" >
-        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res" >
+        <source path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res" >
             <file
                 name="bbuton_danger"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_danger.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_danger.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_danger_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_danger_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_danger_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_default"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_default.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_default.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_default_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_default_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_default_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_info"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_info.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_info.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_info_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_info_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_info_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_inverse"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_inverse.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_inverse.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_inverse_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_inverse_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_inverse_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_primary"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_primary.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_primary.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_primary_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_primary_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_primary_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_success"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_success.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_success.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_success_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_success_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_success_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_warning"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_warning.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_warning.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bbuton_warning_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bbuton_warning_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bbuton_warning_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_container_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bthumbnail_container_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bthumbnail_container_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_container_square"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bthumbnail_container_square.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bthumbnail_container_square.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="bthumbnail_placeholder_default"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\bthumbnail_placeholder_default.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/bthumbnail_placeholder_default.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_danger"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background_danger.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background_danger.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background_rounded.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background_rounded.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_danger"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background_rounded_danger.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background_rounded_danger.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_success"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background_rounded_success.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background_rounded_success.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_rounded_warning"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background_rounded_warning.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background_rounded_warning.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_success"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background_success.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background_success.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="edittext_background_warning"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\edittext_background_warning.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/edittext_background_warning.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\thumbnail_circle.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/thumbnail_circle.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle_container"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\thumbnail_circle_container.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/thumbnail_circle_container.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="thumbnail_circle_minimal"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable\thumbnail_circle_minimal.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable/thumbnail_circle_minimal.xml"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable-hdpi-v4\ic_launcher.png"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable-hdpi-v4/ic_launcher.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable-mdpi-v4\ic_launcher.png"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable-mdpi-v4/ic_launcher.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\drawable-xhdpi-v4\ic_launcher.png"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/drawable-xhdpi-v4/ic_launcher.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="bootstrap_button"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\bootstrap_button.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/bootstrap_button.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_fill"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\bootstrap_button_fill.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/bootstrap_button_fill.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_edit_text"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\bootstrap_edit_text.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/bootstrap_edit_text.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\bootstrap_thumbnail.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/bootstrap_thumbnail.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail_circle"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\bootstrap_thumbnail_circle.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/bootstrap_thumbnail_circle.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="font_awesome_text"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\font_awesome_text.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/font_awesome_text.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_title"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\row_title.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/row_title.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_title_and_subtitle"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\row_title_and_subtitle.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/row_title_and_subtitle.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="row_two_columns"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\layout\row_two_columns.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/layout/row_two_columns.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="main"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\menu\main.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/menu/main.xml"
                 qualifiers=""
                 type="menu" />
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\values\values.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/values/values.xml"
                 qualifiers="" >
                 <color name="bbutton_inverse_edge" >#ff141414
                 </color>
@@ -450,13 +450,13 @@
                 </color>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\values-sw720dp-land-v13\values.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/values-sw720dp-land-v13/values.xml"
                 qualifiers="sw720dp-land-v13" >
                 <dimen name="activity_horizontal_margin" >128dp
                 </dimen>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\values-v11\values.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/values-v11/values.xml"
                 qualifiers="v11" >
 
                 <style
@@ -467,7 +467,7 @@
                 </style>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\intermediates\exploded-aar\tokyo_smartphone2_E\AndroidBootstrap\unspecified\res\values-v14\values.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/intermediates/exploded-aar/tokyo_smartphone2_E/AndroidBootstrap/unspecified/res/values-v14/values.xml"
                 qualifiers="v14" >
 
                 <style
@@ -480,89 +480,89 @@
         </source>
     </dataSet>
     <dataSet config="main" >
-        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res" >
+        <source path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res" >
             <file
                 name="headshot"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\drawable\headshot.jpg"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/drawable/headshot.jpg"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\drawable-hdpi\ic_launcher.png"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/drawable-hdpi/ic_launcher.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\drawable-mdpi\ic_launcher.png"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/drawable-mdpi/ic_launcher.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\drawable-xhdpi\ic_launcher.png"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/drawable-xhdpi/ic_launcher.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\drawable-xxhdpi\ic_launcher.png"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/drawable-xxhdpi/ic_launcher.png"
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="activity_main"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\activity_main.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/activity_main.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_basic_buttons_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_button_basic_buttons_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_button_basic_buttons_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_disabled_buttons_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_button_disabled_buttons_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_button_disabled_buttons_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_other_buttons_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_button_other_buttons_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_button_other_buttons_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_rounded_buttons_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_button_rounded_buttons_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_button_rounded_buttons_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_button_size_buttons_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_button_size_buttons_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_button_size_buttons_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_edit_text_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_edit_text_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_edit_text_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail_circle_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_thumbnail_circle_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_thumbnail_circle_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="bootstrap_thumbnail_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\bootstrap_thumbnail_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/bootstrap_thumbnail_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="font_awesome_text_example"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\layout\font_awesome_text_example.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/layout/font_awesome_text_example.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="main"
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\menu\main.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/menu/main.xml"
                 qualifiers=""
                 type="menu" />
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\values\dimens.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/values/dimens.xml"
                 qualifiers="" >
                 <dimen name="activity_horizontal_margin" >16dp
                 </dimen>
@@ -570,7 +570,7 @@
                 </dimen>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\values\strings.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/values/strings.xml"
                 qualifiers="" >
                 <string name="action_settings" >Settings
                 </string>
@@ -580,7 +580,7 @@
                 </string>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\values\styles.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/values/styles.xml"
                 qualifiers="" >
 
                 <style
@@ -605,13 +605,13 @@ true
                 </style>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\values-sw720dp-land\dimens.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/values-sw720dp-land/dimens.xml"
                 qualifiers="sw720dp-land-v13" >
                 <dimen name="activity_horizontal_margin" >128dp
                 </dimen>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\values-v11\styles.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/values-v11/styles.xml"
                 qualifiers="v11" >
 
                 <style
@@ -622,7 +622,7 @@ true
                 </style>
             </file>
             <file
-                path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\res\values-v14\styles.xml"
+                path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/res/values-v14/styles.xml"
                 qualifiers="v14" >
 
                 <style
@@ -633,11 +633,11 @@ true
                 </style>
             </file>
         </source>
-        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\generated\res\rs\debug" />
-        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\build\generated\res\generated\debug" />
+        <source path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/generated/res/rs/debug" />
+        <source path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/build/generated/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\tanakasan\AndroidStudioProjects\tokyo_smartphone2_E\AndroidBootstrapTest\src\debug\res" />
+        <source path="/Users/tanakasan2525/mywork/Android/tokyo_smartphone2_E/AndroidBootstrapTest/src/debug/res" />
     </dataSet>
 
 </merger>
